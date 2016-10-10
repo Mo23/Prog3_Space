@@ -30,11 +30,17 @@ public class Virusk extends Commons{
 	if (key == KeyEvent.VK_LEFT)
       {
           dx = -4;
+          if(this.x>0)
+          this.setXY(this.x+this.dx, this.y);
       }
 
       if (key == KeyEvent.VK_RIGHT)
       {
           dx = 4;
+          if(this.x<1098)
+          this.setXY(this.x+this.dx, this.y);
+          
+
       }
   } 
 public void keyReleased(KeyEvent e) {

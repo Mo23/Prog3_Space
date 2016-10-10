@@ -59,7 +59,6 @@ public class SpaceInvaders extends JFrame{
 
              virus.keyPressed(e);
              
-             virus.setXY(virus.x+virus.dx, virus.y);
              repaint();
     	
     }}
