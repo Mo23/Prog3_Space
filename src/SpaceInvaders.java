@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -7,6 +8,8 @@ import java.awt.GraphicsEnvironment;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,11 +18,13 @@ import javax.swing.SwingUtilities;
 public class SpaceInvaders extends JFrame{
 	final private int WIDTH = 1200;
 	final private int HEIGHT = 700;
+	final private int computerX =7;
+	final private int computerY = 0;
 	
 	private Drawing board;
 	public Virusk virus = new Virusk(550,650);
-	public Computer gegner = new Computer(600,100);
-	public Shot shot = new Shot(gegner.getX(),gegner.getY());
+	public ArrayList computer;
+	//public Shot shot = new Shot(gegner.getX(),gegner.getY());
 	public SpaceInvaders()
     {
     	
@@ -41,6 +46,7 @@ public class SpaceInvaders extends JFrame{
             super.paintComponent(g);     // paint parent's background
             setBackground(Color.BLACK);  // set background color for this JPanel
             g.setColor(Color.GREEN);
+            initComputer();
             DrawPlayer(g);
             DrawComputer(g);
             DrawShot(g);
@@ -53,11 +59,32 @@ public class SpaceInvaders extends JFrame{
     public void DrawPlayer(Graphics g){
     	g.drawImage(virus.getImage(), virus.x, virus.y, this);
     }
-    public void DrawComputer(Graphics g){
-    	g.drawImage(gegner.getImage(), gegner.getX(), gegner.getY(), this);
+    public void DrawComputer(Graphics g) 
+    {
+        Iterator it = computer.iterator();
+
+        while (it.hasNext()) {
+            Computer computer = (Computer) it.next();
+
+           
+         g.drawImage(computer.getImage(), computer.getX(),  computer.getY(), this);
+        }   
+        
     }
     public void DrawShot(Graphics g){
-    	g.drawImage(shot.getImage(), gegner.getX(), gegner.getY(), this);
+    	//g.drawImage(shot.getImage(), gegner.getX(), gegner.getY(), this);
+    }
+    public void initComputer(){
+        computer = new ArrayList();
+
+        
+        for (int i=0; i < 4; i++) {
+            for (int j=0; j < 10; j++) {
+                Computer gegner = new Computer((computerX + 120*j), (computerY + 80*i));
+               
+                computer.add(gegner);
+            }
+        }
     }
     private class TAdapter extends KeyAdapter {
     	 public void keyReleased(KeyEvent e) {
