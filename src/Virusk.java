@@ -27,14 +27,14 @@ public class Virusk extends Commons{
       int key = e.getKeyCode();
 
       
-	if (key == KeyEvent.VK_LEFT)
+	if (key == KeyEvent.VK_A)
       {
           dx = -4;
           if(this.x>0)
           this.setXY(this.x+this.dx, this.y);
       }
 
-      if (key == KeyEvent.VK_RIGHT)
+      if (key == KeyEvent.VK_D)
       {
           dx = 4;
           if(this.x<1098)
