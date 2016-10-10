@@ -13,7 +13,8 @@ public class Spieler extends NormalFunctions{
 	 public int dx=0;
 
 	
-  public Spieler(int startx, int starty){
+  public Spieler(int startx, int starty,int hp){
+	  this.HP=hp;
 	  this.x=startx;
 	  this.y=starty;
 	  ImageIcon  img =  new ImageIcon("/home/maurice/Schreibtisch/ship.png");
@@ -27,14 +28,14 @@ public class Spieler extends NormalFunctions{
       int key = e.getKeyCode();
 
       
-	if (key == KeyEvent.VK_A)
+  if (key == KeyEvent.VK_A)
       {
           dx = -4;
           if(this.x>0)
           this.setXY(this.x+this.dx, this.y);
       }
 
-      if (key == KeyEvent.VK_D)
+   if (key == KeyEvent.VK_D)
       {
           dx = 4;
           if(this.x<1098)
@@ -43,6 +44,7 @@ public class Spieler extends NormalFunctions{
 
       }
   } 
+  
 public void keyReleased(KeyEvent e) {
 	int key = e.getKeyCode();
 
