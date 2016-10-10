@@ -1,30 +1,17 @@
-import java.awt.Component;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-public class Virusk extends JPanel{
+public class Virusk extends Commons{
 
-	 public int x=550;
-	 public int y=550;
+	 public int xstart=550;
+	 public int ystart=550;
 	 private Image image;
 	 public int dx=0;
-	public Image setImage(Image bild) {
-         this.image = bild;
-         return this.image;
-     }
-	public Image getImage() {
-        return this.image;
-    }
+
 	
   public Virusk(int startx, int starty){
 	  this.x=startx;
@@ -34,12 +21,7 @@ public class Virusk extends JPanel{
 
  
   }
-  public void setXY(int x, int y){
-	  if(this.x>0 && this.x<=1098){
-		  this.x=x;
-	  	  this.y=y;}
-	  System.out.println(this.x);
-  }
+
   
   public void keyPressed(KeyEvent e) {
       int key = e.getKeyCode();
