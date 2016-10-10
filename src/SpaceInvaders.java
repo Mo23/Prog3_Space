@@ -13,13 +13,14 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class SpaceInvaders extends JFrame{
-	
-	private Drawing board;
-	public Virusk virus = new Virusk(550,650);
 	final private int WIDTH = 1200;
 	final private int HEIGHT = 700;
 	
-    public SpaceInvaders()
+	private Drawing board;
+	public Virusk virus = new Virusk(550,650);
+	public Computer gegner = new Computer(600,100);
+	public Shot shot = new Shot(gegner.getX(),gegner.getY());
+	public SpaceInvaders()
     {
     	
     	addKeyListener(new TAdapter());
@@ -41,6 +42,8 @@ public class SpaceInvaders extends JFrame{
             setBackground(Color.BLACK);  // set background color for this JPanel
             g.setColor(Color.GREEN);
             DrawPlayer(g);
+            DrawComputer(g);
+            DrawShot(g);
         
            
            
@@ -50,7 +53,12 @@ public class SpaceInvaders extends JFrame{
     public void DrawPlayer(Graphics g){
     	g.drawImage(virus.getImage(), virus.x, virus.y, this);
     }
-    
+    public void DrawComputer(Graphics g){
+    	g.drawImage(gegner.getImage(), gegner.getX(), gegner.getY(), this);
+    }
+    public void DrawShot(Graphics g){
+    	g.drawImage(shot.getImage(), gegner.getX(), gegner.getY(), this);
+    }
     private class TAdapter extends KeyAdapter {
     	 public void keyReleased(KeyEvent e) {
              virus.keyReleased(e);
