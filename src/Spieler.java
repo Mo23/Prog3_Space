@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 
-public class Virusk extends Commons{
+public class Spieler extends NormalFunctions{
 
 	 public int xstart=550;
 	 public int ystart=550;
@@ -13,7 +13,7 @@ public class Virusk extends Commons{
 	 public int dx=0;
 
 	
-  public Virusk(int startx, int starty){
+  public Spieler(int startx, int starty){
 	  this.x=startx;
 	  this.y=starty;
 	  ImageIcon  img =  new ImageIcon("/home/maurice/Schreibtisch/ship.png");

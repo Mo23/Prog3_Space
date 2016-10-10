@@ -1,7 +1,7 @@
 import javax.swing.ImageIcon;
 
 
-public class Computer extends Commons {
+public class Computer extends NormalFunctions {
 	
 	public Computer(int x, int y){
 		this.x=x;

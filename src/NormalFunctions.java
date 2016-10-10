@@ -1,11 +1,12 @@
 import java.awt.Image;
 
 
-public class Commons {
+public class NormalFunctions {
 	
 	private Image image;
 	protected int x;
 	protected int y;
+	protected int HP;
 	
 	public Image setImage(Image bild) {
         this.image = bild;

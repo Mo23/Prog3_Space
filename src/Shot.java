@@ -1,7 +1,7 @@
 import javax.swing.ImageIcon;
 
 
-public class Shot extends Commons{
+public class Shot extends NormalFunctions{
 	
 	
 	public Shot(int x,int y){

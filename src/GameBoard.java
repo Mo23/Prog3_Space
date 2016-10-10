@@ -15,17 +15,17 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-public class SpaceInvaders extends JFrame{
+public class GameBoard extends JFrame{
 	final private int WIDTH = 1200;
 	final private int HEIGHT = 700;
 	final private int computerX =7;
 	final private int computerY = 0;
 	
 	private Drawing board;
-	public Virusk virus = new Virusk(550,650);
+	public Spieler virus = new Spieler(550,650);
 	public ArrayList computer;
 	//public Shot shot = new Shot(gegner.getX(),gegner.getY());
-	public SpaceInvaders()
+	public GameBoard()
     {
     	
     	addKeyListener(new TAdapter());
@@ -37,7 +37,7 @@ public class SpaceInvaders extends JFrame{
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
         pack();
         setLocationRelativeTo(null);
-        setTitle("Space Invaders");
+        setTitle("Virenschleuder");
         setVisible(true);
     }
     
@@ -102,7 +102,7 @@ public class SpaceInvaders extends JFrame{
     	 SwingUtilities.invokeLater(new Runnable() {
              @Override
              public void run() {
-                new SpaceInvaders(); // Let the constructor do the job
+                new GameBoard(); // Let the constructor do the job
                 
              }
           });
