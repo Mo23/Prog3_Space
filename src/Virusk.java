@@ -26,17 +26,19 @@ public class Virusk extends JPanel{
         return this.image;
     }
 	
-  public Virusk(){
- 
-	  
+  public Virusk(int startx, int starty){
+	  this.x=startx;
+	  this.y=starty;
 	  ImageIcon  img =  new ImageIcon("/home/maurice/Schreibtisch/ship.png");
 	  setImage(img.getImage());
 
  
   }
   public void setXY(int x, int y){
-	  this.x=x;
-	  this.y=y;
+	  if(this.x>0 && this.x<=1098){
+		  this.x=x;
+	  	  this.y=y;}
+	  System.out.println(this.x);
   }
   
   public void keyPressed(KeyEvent e) {

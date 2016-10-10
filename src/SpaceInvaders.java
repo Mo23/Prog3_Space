@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -13,14 +15,18 @@ import javax.swing.SwingUtilities;
 public class SpaceInvaders extends JFrame{
 	
 	private Drawing board;
-	public Virusk virus = new Virusk();
+	public Virusk virus = new Virusk(550,650);
+	final private int WIDTH = 1200;
+	final private int HEIGHT = 700;
 	
     public SpaceInvaders()
     {
+    	
     	addKeyListener(new TAdapter());
     	board = new Drawing();
-    	board.setPreferredSize(new Dimension(1200, 600));
     	Container cp = getContentPane();
+    	
+    	board.setPreferredSize(new Dimension(WIDTH, HEIGHT));
     	setContentPane(board);
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
         pack();
