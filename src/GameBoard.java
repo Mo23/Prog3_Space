@@ -13,9 +13,12 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import javax.swing.WindowConstants;
 
 public class GameBoard extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	final private int WIDTH = 1200;
 	final private int HEIGHT = 700;
 	final private int computerX =7;
@@ -23,8 +26,11 @@ public class GameBoard extends JFrame{
 	protected int FIXED_HP=100;
 	private Drawing board;
 	public Spieler virus = new Spieler(550,650,FIXED_HP);
-	public ArrayList computer;
+	public ArrayList<Computer> computer;
+	public Shot shot = new Shot(virus.getX(),virus.getY());
 	public Sound sound = new Sound();
+	@SuppressWarnings("unused")
+	private Container cp;
 
 	//public Shot shot = new Shot(gegner.getX(),gegner.getY());
 	public GameBoard() throws UnsupportedAudioFileException, IOException, LineUnavailableException
@@ -32,7 +38,7 @@ public class GameBoard extends JFrame{
 		
     	addKeyListener(new TAdapter());
     	board = new Drawing();
-    	Container cp = getContentPane();
+    	cp = getContentPane();
     	
     	board.setPreferredSize(new Dimension(WIDTH, HEIGHT));
     	setContentPane(board);
@@ -46,7 +52,12 @@ public class GameBoard extends JFrame{
     }
     
     private class Drawing extends JPanel{
-    	public void paintComponent(Graphics g) {
+    	/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		public void paintComponent(Graphics g) {
             super.paintComponent(g);     // paint parent's background
             setBackground(Color.BLACK);  // set background color for this JPanel
             g.setColor(Color.GREEN);
@@ -65,7 +76,7 @@ public class GameBoard extends JFrame{
     }
     public void DrawComputer(Graphics g) 
     {
-        Iterator it = computer.iterator();
+        Iterator<Computer> it = computer.iterator();
 
         while (it.hasNext()) {
             Computer computer = (Computer) it.next();
@@ -76,7 +87,7 @@ public class GameBoard extends JFrame{
         
     }
     public void DrawShot(Graphics g){
-    	//g.drawImage(shot.getImage(), gegner.getX(), gegner.getY(), this);
+    	g.drawImage(shot.getImage(), shot.getX(), shot.getY(), this);
     }
     public void initGame(Graphics g) {
     	 DrawPlayer(g);
@@ -87,7 +98,7 @@ public class GameBoard extends JFrame{
     	 
     }
     public void initComputer(){
-        computer = new ArrayList();
+        computer = new ArrayList<Computer>();
 
         
         for (int i=0; i < 4; i++) {
@@ -111,7 +122,7 @@ public class GameBoard extends JFrame{
     	 public void keyPressed(KeyEvent e) {
 
              virus.keyPressed(e);
-             
+             shot.setXY(shot.getX(), shot.getY()-5);		//Müll richtig implementieren
              repaint();
     	
     }}

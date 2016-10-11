@@ -2,13 +2,13 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 
 
 public class Spieler extends NormalFunctions{
 
 	 public int xstart=550;
 	 public int ystart=550;
+	 @SuppressWarnings("unused")
 	 private Image image;
 	 public int dx=0;
 
