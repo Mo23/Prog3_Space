@@ -103,6 +103,7 @@ public class GameBoard extends JFrame{
              virus.keyReleased(e);
              if(KeyEvent.VK_ESCAPE== e.getKeyCode()){
                  dispose(); 
+                 sound.playCompleted =true;
                  //System.exit(ABORT); Schließt sofort und verschwindet nicht nur!!
              }
             	 
