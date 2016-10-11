@@ -43,6 +43,10 @@ public class Spieler extends NormalFunctions{
           
 
       }
+   if (key == KeyEvent.VK_SPACE){
+	   System.out.println("Space");
+   }
+	   
   } 
   
 public void keyReleased(KeyEvent e) {
