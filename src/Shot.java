@@ -1,3 +1,5 @@
+import java.awt.event.KeyEvent;
+
 import javax.swing.ImageIcon;
 
 
@@ -10,5 +12,9 @@ public class Shot extends NormalFunctions{
 		  setImage(img.getImage());
 		
 	}
+
+
+
+
 
 }

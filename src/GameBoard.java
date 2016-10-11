@@ -57,19 +57,42 @@ public class GameBoard extends JFrame{
 		 */
 		private static final long serialVersionUID = 1L;
 
-		public void paintComponent(Graphics g) {
+		public void paint(Graphics g) {
             super.paintComponent(g);     // paint parent's background
             setBackground(Color.BLACK);  // set background color for this JPanel
             g.setColor(Color.GREEN);
             
             initComputer();
             initGame(g);
+           
             
             
            
            
     	
     }}
+    
+    public void initGame(Graphics g) {
+   	 	DrawPlayer(g);
+        DrawComputer(g);
+        DrawShot(g);
+        
+        g.setColor(Color.cyan);
+   	 g.drawString("Lebenspunkte: "+Integer.toString(virus.HP), 0, 650);
+   	 
+   }
+   public void initComputer(){
+       computer = new ArrayList<Computer>();
+
+       
+       for (int i=0; i < 4; i++) {
+           for (int j=0; j < 10; j++) {
+               Computer gegner = new Computer((computerX + 120*j), (computerY + 80*i),FIXED_HP);
+              
+               computer.add(gegner);
+           }
+       }
+   }
     
     public void DrawPlayer(Graphics g){
     	g.drawImage(virus.getImage(), virus.x, virus.y, this);
@@ -89,40 +112,25 @@ public class GameBoard extends JFrame{
     public void DrawShot(Graphics g){
     	g.drawImage(shot.getImage(), shot.getX(), shot.getY(), this);
     }
-    public void initGame(Graphics g) {
-    	 DrawPlayer(g);
-         DrawComputer(g);
-         DrawShot(g);
-         g.setColor(Color.cyan);
-    	 g.drawString("Lebenspunkte: "+Integer.toString(virus.HP), 0, 650);
-    	 
-    }
-    public void initComputer(){
-        computer = new ArrayList<Computer>();
-
-        
-        for (int i=0; i < 4; i++) {
-            for (int j=0; j < 10; j++) {
-                Computer gegner = new Computer((computerX + 120*j), (computerY + 80*i),FIXED_HP);
-               
-                computer.add(gegner);
-            }
-        }
-    }
     private class TAdapter extends KeyAdapter {
     	 public void keyReleased(KeyEvent e) {
              virus.keyReleased(e);
-             if(KeyEvent.VK_ESCAPE== e.getKeyCode()){
-                 dispose(); 
-                 sound.playCompleted =true;
-                 //System.exit(ABORT); Schließt sofort und verschwindet nicht nur!!
-             }
+          
             	 
          }
     	 public void keyPressed(KeyEvent e) {
 
              virus.keyPressed(e);
+            
              shot.setXY(shot.getX(), shot.getY()-5);		//Müll richtig implementieren
+             if(KeyEvent.VK_SPACE==e.getKeyCode()){
+            	 new Shot(virus.getX()+20,virus.getY()-30);
+             }
+             if(KeyEvent.VK_ESCAPE== e.getKeyCode()){
+                 dispose(); 
+                 sound.playCompleted =true;
+                 //System.exit(ABORT); Schließt sofort und verschwindet nicht nur!!
+             }
              repaint();
     	
     }}
