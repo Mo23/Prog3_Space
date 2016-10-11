@@ -13,6 +13,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 
 public class GameBoard extends JFrame{
 	final private int WIDTH = 1200;
@@ -100,6 +101,11 @@ public class GameBoard extends JFrame{
     private class TAdapter extends KeyAdapter {
     	 public void keyReleased(KeyEvent e) {
              virus.keyReleased(e);
+             if(KeyEvent.VK_ESCAPE== e.getKeyCode()){
+                 dispose(); 
+                 //System.exit(ABORT); Schließt sofort und verschwindet nicht nur!!
+             }
+            	 
          }
     	 public void keyPressed(KeyEvent e) {
 
