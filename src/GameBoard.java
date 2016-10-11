@@ -23,6 +23,7 @@ public class GameBoard extends JFrame{
 	final private int HEIGHT = 700;
 	final private int computerX =7;
 	final private int computerY = 0;
+	private boolean running=false;
 	protected int FIXED_HP=100;
 	private Drawing board;
 	public Spieler virus = new Spieler(550,650,FIXED_HP);
@@ -33,9 +34,9 @@ public class GameBoard extends JFrame{
 	private Container cp;
 
 	//public Shot shot = new Shot(gegner.getX(),gegner.getY());
-	public GameBoard() throws UnsupportedAudioFileException, IOException, LineUnavailableException
+	public GameBoard() 
     {
-		
+		running=true;
     	addKeyListener(new TAdapter());
     	board = new Drawing();
     	cp = getContentPane();
@@ -124,7 +125,7 @@ public class GameBoard extends JFrame{
             
              shot.setXY(shot.getX(), shot.getY()-5);		//Müll richtig implementieren
              if(KeyEvent.VK_SPACE==e.getKeyCode()){
-            	 new Shot(virus.getX()+20,virus.getY()-30);
+            	 shot.setXY(virus.getX()+20,virus.getY()-30);
              }
              if(KeyEvent.VK_ESCAPE== e.getKeyCode()){
                  dispose(); 
@@ -145,16 +146,7 @@ public class GameBoard extends JFrame{
     	 SwingUtilities.invokeLater(new Runnable() {
              @Override
              public void run() {
-                try {
-					new GameBoard();
-				
-		            
-					
-				} catch (UnsupportedAudioFileException | IOException
-						| LineUnavailableException e) {
-					
-					e.printStackTrace();
-				}
+                new GameBoard();
           
                 
              }
