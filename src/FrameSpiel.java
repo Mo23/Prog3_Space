@@ -61,7 +61,7 @@ public class FrameSpiel extends JPanel{
    }
     
     public void DrawPlayer(Graphics g){
-    	g.drawImage(virus.getImage(), virus.x, virus.y, this);
+    	g.drawImage(virus.getImage(), virus.getX(), virus.getY(), this);
     }
     public void DrawComputer(Graphics g) 
     {

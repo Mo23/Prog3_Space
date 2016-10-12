@@ -1,7 +1,7 @@
 import javax.swing.JFrame;
 
 		@SuppressWarnings("serial")
-		public class GameBoard extends JFrame {
+		public class GameBoard extends JFrame{
 
 			final private int WIDTH = 1200;
 			final private int HEIGTH = 720;
@@ -17,6 +17,15 @@ import javax.swing.JFrame;
 		    }
 
 		    public static void main(String[] args) {
-		        new GameBoard();
+		   	 Thread thread = new Thread(){
+				 public void run(){
+					 new GameBoard();
+				 }
+			 };
+	            
+			 thread.start();
+		    	
 		    }
+
+			
 		}

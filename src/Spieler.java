@@ -6,8 +6,7 @@ import javax.swing.ImageIcon;
 
 public class Spieler extends NormalFunctions{
 
-	 public int xstart=550;
-	 public int ystart=500;
+	
 	 @SuppressWarnings("unused")
 	 private Image image;
 	 public int dx=0;
