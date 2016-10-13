@@ -24,6 +24,7 @@ public class FrameSpiel extends JPanel{
 	public TAdapter adapter;
 	public boolean dispose = false;
 	public short score=0;
+	public Thread gamerunning;
 
 		public FrameSpiel(){
 			addKeyListener(adapter = new TAdapter());
@@ -49,6 +50,8 @@ public class FrameSpiel extends JPanel{
         g.setColor(Color.cyan);
    	 	g.drawString("Lebenspunkte: "+Integer.toString(virus.HP), 0, 680);
    	 	g.drawString("Score: "+Integer.toString(this.score), 1110, 680);
+   	 	running=true;
+   	 //	g.drawString("Lebenspunktegegner: "+computer.get(0).HP, 200, 200);	//DEBUGING
    	 
    }
    public void initComputer(){
@@ -56,7 +59,7 @@ public class FrameSpiel extends JPanel{
 
        for (int i=0; i < 4; i++) {
            for (int j=0; j < 10; j++) {
-               Computer gegner = new Computer((computerX + 120*j), (computerY + 80*i),FIXED_HP);
+               Computer gegner = new Computer((computerX + 120*j), (computerY + 80*i));
               
                computer.add(gegner);
            }
@@ -80,8 +83,16 @@ public class FrameSpiel extends JPanel{
     	g.drawImage(shot.getImage(), shot.getX(), shot.getY(), this);
     }
     public void act(){
+    gamerunning=new Thread(){
+    public void run(){
     	
+    	
+    	
+    }};
+    	if(running)
+    		gamerunning.start();
     }
+    
     private class TAdapter extends KeyAdapter {
     
     	
