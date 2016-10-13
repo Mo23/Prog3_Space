@@ -21,10 +21,11 @@ public class FrameSpiel extends JPanel{
 	public Shot shot = new Shot(virus.getX(),virus.getY());
 	public Sound sound = new Sound();
 	protected Dimension dimension;
-
+	public TAdapter adapter;
+	public boolean dispose = false;
 
 		public FrameSpiel(){
-			addKeyListener(new TAdapter());
+			addKeyListener(adapter = new TAdapter());
 			setFocusable(true);
 			dimension = new Dimension(WIDTH, HEIGHT);
 			setBackground(Color.BLACK);  // set background color for this JPanel
@@ -37,6 +38,8 @@ public class FrameSpiel extends JPanel{
             
             initComputer();
             initGame(g);
+            
+        
 
     }
     
@@ -77,7 +80,9 @@ public class FrameSpiel extends JPanel{
     	g.drawImage(shot.getImage(), shot.getX(), shot.getY(), this);
     }
     private class TAdapter extends KeyAdapter {
-    	 public void keyReleased(KeyEvent e) {
+    
+    	
+    	public void keyReleased(KeyEvent e) {
              virus.keyReleased(e);
           
             	 
@@ -90,11 +95,12 @@ public class FrameSpiel extends JPanel{
              if(KeyEvent.VK_SPACE==e.getKeyCode()){
             	 shot.setXY(virus.getX()+20,virus.getY()-30);
              }
-             if(KeyEvent.VK_ESCAPE== e.getKeyCode()){
-             //    dispose(); 
-                 sound.playCompleted =true;
-                 //System.exit(ABORT); Schließt sofort und verschwindet nicht nur!!
-             }
+      	   if(KeyEvent.VK_ESCAPE== e.getKeyCode()){
+           	GameBoard.gameboard.dispose();
+        sound.playCompleted =true;
+        
+    }
+          
              repaint();
     	
     }}
