@@ -83,7 +83,7 @@ public class Sound extends Thread implements LineListener {
 	            System.out.println("Playback started.");
 	             
 	        } else if (type == LineEvent.Type.STOP) {
-	            playCompleted = true;
+	           
 	            System.out.println("Playback completed.");
 	        }
 		

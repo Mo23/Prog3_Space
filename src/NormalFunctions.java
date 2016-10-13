@@ -9,6 +9,7 @@ public class NormalFunctions {
 	protected int HP;
 	protected int difficult=0;
 	protected int weapon=0;
+	protected boolean fired=false;
 	
 	public void setImage(Image bild) {
         this.image = bild;

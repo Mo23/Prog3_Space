@@ -40,13 +40,16 @@ public class FrameSpiel extends JPanel{
             initComputer();
             initGame(g);
             act();
+            if(shot.fired==true){
+            	DrawShot(g);
+            }
 
     }
     
     public void initGame(Graphics g) {
    	 	DrawPlayer(g);
         DrawComputer(g);
-        DrawShot(g);
+        
         g.setColor(Color.cyan);
    	 	g.drawString("Lebenspunkte: "+Integer.toString(virus.HP), 0, 680);
    	 	g.drawString("Score: "+Integer.toString(this.score), 1110, 680);
@@ -84,7 +87,20 @@ public class FrameSpiel extends JPanel{
     }
     public void act(){
     gamerunning=new Thread(){
-    public void run(){
+    @SuppressWarnings("static-access")
+	public void run(){
+    	try {
+			gamerunning.sleep(2);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	if(shot.getY()>0)
+    	shot.setXY(shot.getX(),shot.getY()-1);
+    	else{
+    	shot.fired=false;
+    	}
+    	repaint();
     	
     	
     	
@@ -105,9 +121,9 @@ public class FrameSpiel extends JPanel{
 
              virus.keyPressed(e);
             
-             shot.setXY(shot.getX(), shot.getY()-5);		//Müll richtig implementieren
-             if(KeyEvent.VK_SPACE==e.getKeyCode()){
+             if(KeyEvent.VK_SPACE==e.getKeyCode() && shot.fired==false){
             	 shot.setXY(virus.getX()+20,virus.getY()-30);
+            		shot.fired=true;
              }
       	   	if(KeyEvent.VK_ESCAPE== e.getKeyCode()){
            	
