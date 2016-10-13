@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 public class FrameSpiel extends JPanel{
 
 
-	final private int computerX =7;
+	final private int computerX = 7;
 	final private int computerY = 0;
 	private boolean running=false;		//Still need to be Implemented
 	protected int FIXED_HP=100;
@@ -23,6 +23,7 @@ public class FrameSpiel extends JPanel{
 	protected Dimension dimension;
 	public TAdapter adapter;
 	public boolean dispose = false;
+	public short score=0;
 
 		public FrameSpiel(){
 			addKeyListener(adapter = new TAdapter());
@@ -35,11 +36,9 @@ public class FrameSpiel extends JPanel{
 		public void paint(Graphics g) {
 			super.paint(g);
             g.setColor(Color.GREEN);
-            
             initComputer();
             initGame(g);
-            
-        
+            act();
 
     }
     
@@ -48,7 +47,8 @@ public class FrameSpiel extends JPanel{
         DrawComputer(g);
         DrawShot(g);
         g.setColor(Color.cyan);
-   	 	g.drawString("Lebenspunkte: "+Integer.toString(virus.HP), 0, 650);
+   	 	g.drawString("Lebenspunkte: "+Integer.toString(virus.HP), 0, 680);
+   	 	g.drawString("Score: "+Integer.toString(this.score), 1110, 680);
    	 
    }
    public void initComputer(){
@@ -79,6 +79,9 @@ public class FrameSpiel extends JPanel{
     public void DrawShot(Graphics g){
     	g.drawImage(shot.getImage(), shot.getX(), shot.getY(), this);
     }
+    public void act(){
+    	
+    }
     private class TAdapter extends KeyAdapter {
     
     	
@@ -95,9 +98,10 @@ public class FrameSpiel extends JPanel{
              if(KeyEvent.VK_SPACE==e.getKeyCode()){
             	 shot.setXY(virus.getX()+20,virus.getY()-30);
              }
-      	   if(KeyEvent.VK_ESCAPE== e.getKeyCode()){
-           	GameBoard.gameboard.dispose();
-        sound.playCompleted =true;
+      	   	if(KeyEvent.VK_ESCAPE== e.getKeyCode()){
+           	
+      	   		GameBoard.gameboard.dispose();
+      	   		sound.playCompleted =true;
         
     }
           

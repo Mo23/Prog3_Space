@@ -42,9 +42,7 @@ public class Spieler extends NormalFunctions{
           
 
       }
-   if (key == KeyEvent.VK_SPACE){
-	   System.out.println("Space");
-   }
+
 	   
   } 
   
