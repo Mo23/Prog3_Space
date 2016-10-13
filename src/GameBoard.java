@@ -20,7 +20,7 @@ import javax.swing.JFrame;
 		        
 		    }
 
-		    public static void main(String[] args) {
+		    public static void spielstart() {
 		    	
 		    	 Thread thread = new Thread(){
 				 public void run(){

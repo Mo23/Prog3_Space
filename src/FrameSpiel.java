@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 @SuppressWarnings("serial")
 public class FrameSpiel extends JPanel{
@@ -39,7 +40,7 @@ public class FrameSpiel extends JPanel{
             g.setColor(Color.GREEN);
             initComputer();
             initGame(g);
-            act();
+            SwingUtilities.invokeLater(act());
             if(shot.fired==true){
             	DrawShot(g);
             }
@@ -85,12 +86,12 @@ public class FrameSpiel extends JPanel{
     public void DrawShot(Graphics g){
     	g.drawImage(shot.getImage(), shot.getX(), shot.getY(), this);
     }
-    public void act(){
+    public Runnable act(){
     gamerunning=new Thread(){
     @SuppressWarnings("static-access")
 	public void run(){
     	try {
-			gamerunning.sleep(2);
+			gamerunning.sleep(3);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -107,6 +108,7 @@ public class FrameSpiel extends JPanel{
     }};
     	if(running)
     		gamerunning.start();
+		return gamerunning;
     }
     
     private class TAdapter extends KeyAdapter {
