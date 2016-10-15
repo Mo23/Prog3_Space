@@ -5,13 +5,17 @@ import javax.swing.JFrame;
 public class Startscreen extends JFrame {
 	public static Startscreen startscreen;
 	public static StartPanel startpanel;
+	public static AnleitungPanel anleitungpanel;
 	final private short WIDTH=1200;
 	final private short HEIGTH=720;
 	public boolean startedgame;
 	public Thread gamestart;
 	public Startscreen(){
 			this.startedgame=false;
+
+			add(anleitungpanel = new AnleitungPanel());
 			add(startpanel =new StartPanel());
+			//anleitungpanel.setVisible(false);
 	        setTitle("VirenSchleuder");
 	        setDefaultCloseOperation(EXIT_ON_CLOSE);
 	        setSize(WIDTH, HEIGTH);
