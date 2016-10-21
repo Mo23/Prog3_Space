@@ -5,54 +5,54 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-
-public class StartPanel extends JPanel{
+public class StartPanel extends JPanel {
 	private JButton ButtonStartGame = new JButton("Spiel starten");
 	private JButton ButtonAnleitung = new JButton("Anleitung");
 	private JButton ButtonEinstellung = new JButton("Einstellung");
 	private JButton ButtonZurueck = new JButton("Zurück");
-	public StartPanel(){
+
+	public StartPanel() {
 		this.setLayout(null);
 		setFocusable(true);
-		//dimension = new Dimension(1200, 720);
-		setBackground(Color.CYAN);  // set background color for this JPanel
+		// dimension = new Dimension(1200, 720);
+		setBackground(Color.CYAN); // set background color for this JPanel
 		this.setVisible(true);
 		ButtonStartGame.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Startscreen.startpanel.setVisible(false);
 				Startscreen.startscreen.dispose();
 				GameBoard.spielstart();
-				
+
 			}
 		});
-	ButtonAnleitung.addActionListener(new ActionListener() {
-			
+		ButtonAnleitung.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Startscreen.startpanel.setVisible(false);
 				Startscreen.anleitungpanel.setVisible(true);
-				
+
 			}
 		});
-	ButtonEinstellung.addActionListener(new ActionListener() {
-		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			Startscreen.startpanel.setVisible(false);
-			Startscreen.einstellungspanel.setVisible(true);
-			
-		}
-	});
-	ButtonZurueck.addActionListener(new ActionListener() {
-		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			Startscreen.startpanel.setVisible(false);
-			
-		}
-	});
+		ButtonEinstellung.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Startscreen.startpanel.setVisible(false);
+				Startscreen.einstellungspanel.setVisible(true);
+
+			}
+		});
+		ButtonZurueck.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Startscreen.startpanel.setVisible(false);
+
+			}
+		});
 		this.add(ButtonEinstellung);
 		this.add(ButtonStartGame);
 		this.add(ButtonAnleitung);
@@ -66,8 +66,5 @@ public class StartPanel extends JPanel{
 		ButtonEinstellung.setVisible(true);
 		ButtonZurueck.setVisible(true);
 	}
-	
-	
-	
-}
 
+}

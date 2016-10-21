@@ -6,25 +6,24 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
 public class AnleitungPanel extends JPanel {
 	private JLabel text = new JLabel("sss");
 	private JButton zurueck = new JButton("Zurück");
-	public AnleitungPanel(){
+
+	public AnleitungPanel() {
 		this.setLayout(null);
 		this.setSize(1200, 720);
 		setFocusable(true);
-		this.setBackground(Color.CYAN);  // set background color for this JPanel
+		this.setBackground(Color.CYAN); // set background color for this JPanel
 		this.setVisible(false);
 		text.setBounds(200, 200, 200, 200);
 		zurueck.setBounds(550, 600, 100, 30);
 		zurueck.addActionListener(new ActionListener() {
-			
-			
+
 			public void actionPerformed(ActionEvent arg0) {
 				Startscreen.anleitungpanel.setVisible(false);
 				Startscreen.startpanel.setVisible(true);
-				
+
 			}
 		});
 		this.add(text);

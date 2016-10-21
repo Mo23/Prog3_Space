@@ -5,54 +5,53 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-
 public class EinstellungPanel extends JPanel {
 	private JButton leicht = new JButton("Leicht");
 	private JButton mittel = new JButton("Mittel");
 	private JButton schwer = new JButton("Schwer");
 	private JButton zurueck = new JButton("Zurück");
-	public EinstellungPanel(){
-	this.setLayout(null);
-	this.setSize(1200, 720);
-	setFocusable(true);
-	this.setBackground(Color.CYAN);  // set background color for this JPanel
-	this.setVisible(false);
-	createInput();
+
+	public EinstellungPanel() {
+		this.setLayout(null);
+		this.setSize(1200, 720);
+		setFocusable(true);
+		this.setBackground(Color.CYAN); // set background color for this JPanel
+		this.setVisible(false);
+		createInput();
 	}
-	
-	
-	public void createInput(){
+
+	public void createInput() {
 		zurueck.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				Startscreen.einstellungspanel.setVisible(false);
 				Startscreen.startpanel.setVisible(true);
-				
+
 			}
 		});
 		leicht.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
 		mittel.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
 		schwer.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
 		this.add(leicht);
@@ -68,6 +67,6 @@ public class EinstellungPanel extends JPanel {
 		mittel.setVisible(true);
 		schwer.setVisible(true);
 		zurueck.setVisible(true);
-		
+
 	}
 }
