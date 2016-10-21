@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,7 +7,6 @@ import javax.swing.JPanel;
 
 
 public class StartPanel extends JPanel{
-	private Dimension dimension;
 	JButton ButtonStartGame = new JButton("Spiel starten");
 	JButton ButtonAnleitung = new JButton("Anleitung");
 	JButton ButtonEinstellung = new JButton("Einstellung");
@@ -43,6 +41,7 @@ public class StartPanel extends JPanel{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Startscreen.startpanel.setVisible(false);
+			Startscreen.einstellungspanel.setVisible(true);
 			
 		}
 	});
@@ -67,6 +66,8 @@ public class StartPanel extends JPanel{
 		ButtonEinstellung.setVisible(true);
 		ButtonZurueck.setVisible(true);
 	}
+	
+	
 	
 }
 

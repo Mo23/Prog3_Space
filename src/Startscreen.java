@@ -6,6 +6,7 @@ public class Startscreen extends JFrame {
 	public static Startscreen startscreen;
 	public static StartPanel startpanel;
 	public static AnleitungPanel anleitungpanel;
+	public static EinstellungPanel einstellungspanel;
 	final private short WIDTH=1200;
 	final private short HEIGTH=720;
 	public boolean startedgame;
@@ -14,6 +15,7 @@ public class Startscreen extends JFrame {
 			this.startedgame=false;
 
 			add(anleitungpanel = new AnleitungPanel());
+			add(einstellungspanel=new EinstellungPanel());
 			add(startpanel =new StartPanel());
 			//anleitungpanel.setVisible(false);
 	        setTitle("VirenSchleuder");
