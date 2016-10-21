@@ -16,9 +16,9 @@ public class FrameSpiel extends JPanel {
 	final private int computerY = 0;
 	private boolean running = false; // Still need to be Implemented
 	protected int FIXED_HP = 100;
-	public Spieler virus = new Spieler(550, 650, FIXED_HP);
+	public Spieler spieler = new Spieler(550, 625, FIXED_HP);
 	public ArrayList<Enemy> computer;
-	public Shot shot = new Shot(virus.getX(), virus.getY());
+	public Shot shot = new Shot(spieler.getX(), spieler.getY());
 	public Sound sound = new Sound();
 	protected Dimension dimension;
 	public TAdapter adapter;
@@ -51,7 +51,7 @@ public class FrameSpiel extends JPanel {
 		DrawComputer(g);
 
 		g.setColor(Color.cyan);
-		g.drawString("Lebenspunkte: " + Integer.toString(virus.HP), 0, 680);
+		g.drawString("Lebenspunkte: " + Integer.toString(spieler.HP), 0, 680);
 		g.drawString("Score: " + Integer.toString(this.score), 1110, 680);
 		running = true;
 		// g.drawString("Lebenspunktegegner: "+computer.get(0).HP, 200, 200);
@@ -73,7 +73,7 @@ public class FrameSpiel extends JPanel {
 	}
 
 	public void DrawPlayer(Graphics g) {
-		g.drawImage(virus.getImage(), virus.getX(), virus.getY(), this);
+		g.drawImage(spieler.getImage(), spieler.getX(), spieler.getY(), this);
 	}
 
 	public void DrawComputer(Graphics g) {
@@ -118,16 +118,16 @@ public class FrameSpiel extends JPanel {
 	private class TAdapter extends KeyAdapter {
 
 		public void keyReleased(KeyEvent e) {
-			virus.keyReleased(e);
+			spieler.keyReleased(e);
 
 		}
 
 		public void keyPressed(KeyEvent e) {
 
-			virus.keyPressed(e);
+			spieler.keyPressed(e);
 
 			if (KeyEvent.VK_SPACE == e.getKeyCode() && shot.fired == false) {
-				shot.setXY(virus.getX() + 20, virus.getY() - 30);
+				shot.setXY(spieler.getX(), spieler.getY() - 40);
 				shot.fired = true;
 			}
 			if (KeyEvent.VK_ESCAPE == e.getKeyCode()) {

@@ -13,7 +13,7 @@ public class Spieler extends NormalFunctions {
 		this.HP = hp;
 		this.x = startx;
 		this.y = starty;
-		ImageIcon img = new ImageIcon("/home/maurice/Schreibtisch/ship.png");
+		ImageIcon img = new ImageIcon("/home/maurice/Schreibtisch/computer.png");
 		setImage(img.getImage());
 
 	}
