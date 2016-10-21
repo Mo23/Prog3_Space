@@ -1,8 +1,8 @@
 import javax.swing.ImageIcon;
 
-public class Computer extends NormalFunctions {
+public class Enemy extends NormalFunctions {
 
-	public Computer(int x, int y) {
+	public Enemy(int x, int y) {
 		if (this.difficult == 0) {
 			this.HP = 100;
 		} else if (this.difficult == 1) {

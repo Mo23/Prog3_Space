@@ -17,7 +17,7 @@ public class FrameSpiel extends JPanel {
 	private boolean running = false; // Still need to be Implemented
 	protected int FIXED_HP = 100;
 	public Spieler virus = new Spieler(550, 650, FIXED_HP);
-	public ArrayList<Computer> computer;
+	public ArrayList<Enemy> computer;
 	public Shot shot = new Shot(virus.getX(), virus.getY());
 	public Sound sound = new Sound();
 	protected Dimension dimension;
@@ -60,11 +60,11 @@ public class FrameSpiel extends JPanel {
 	}
 
 	public void initComputer() {
-		computer = new ArrayList<Computer>();
+		computer = new ArrayList<Enemy>();
 
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 10; j++) {
-				Computer gegner = new Computer((computerX + 120 * j),
+				Enemy gegner = new Enemy((computerX + 120 * j),
 						(computerY + 80 * i));
 
 				computer.add(gegner);
@@ -77,10 +77,10 @@ public class FrameSpiel extends JPanel {
 	}
 
 	public void DrawComputer(Graphics g) {
-		Iterator<Computer> it = computer.iterator();
+		Iterator<Enemy> it = computer.iterator();
 
 		while (it.hasNext()) {
-			Computer computer = (Computer) it.next();
+			Enemy computer = (Enemy) it.next();
 			g.drawImage(computer.getImage(), computer.getX(), computer.getY(),
 					this);
 		}
