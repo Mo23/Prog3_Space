@@ -7,10 +7,10 @@ import javax.swing.JPanel;
 
 
 public class EinstellungPanel extends JPanel {
-	JButton leicht = new JButton("Leicht");
-	JButton mittel = new JButton("Mittel");
-	JButton schwer = new JButton("Schwer");
-	JButton zurueck = new JButton("Zurück");
+	private JButton leicht = new JButton("Leicht");
+	private JButton mittel = new JButton("Mittel");
+	private JButton schwer = new JButton("Schwer");
+	private JButton zurueck = new JButton("Zurück");
 	public EinstellungPanel(){
 	this.setLayout(null);
 	this.setSize(1200, 720);

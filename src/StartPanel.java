@@ -7,10 +7,10 @@ import javax.swing.JPanel;
 
 
 public class StartPanel extends JPanel{
-	JButton ButtonStartGame = new JButton("Spiel starten");
-	JButton ButtonAnleitung = new JButton("Anleitung");
-	JButton ButtonEinstellung = new JButton("Einstellung");
-	JButton ButtonZurueck = new JButton("Zurück");
+	private JButton ButtonStartGame = new JButton("Spiel starten");
+	private JButton ButtonAnleitung = new JButton("Anleitung");
+	private JButton ButtonEinstellung = new JButton("Einstellung");
+	private JButton ButtonZurueck = new JButton("Zurück");
 	public StartPanel(){
 		this.setLayout(null);
 		setFocusable(true);

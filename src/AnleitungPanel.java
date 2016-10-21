@@ -8,8 +8,8 @@ import javax.swing.JPanel;
 
 
 public class AnleitungPanel extends JPanel {
-	JLabel text = new JLabel("sss");
-	JButton zurueck = new JButton("Zurück");
+	private JLabel text = new JLabel("sss");
+	private JButton zurueck = new JButton("Zurück");
 	public AnleitungPanel(){
 		this.setLayout(null);
 		this.setSize(1200, 720);
