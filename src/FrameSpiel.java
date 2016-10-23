@@ -54,7 +54,7 @@ public class FrameSpiel extends JPanel {
 		g.drawString("Lebenspunkte: " + Integer.toString(spieler.HP), 0, 680);
 		g.drawString("Score: " + Integer.toString(this.score), 1110, 680);
 		running = true;
-		// g.drawString("Lebenspunktegegner: "+computer.get(0).HP, 200, 200);
+		 g.drawString("Lebenspunktegegner: "+computer.get(0).HP, 200, 200);
 		// //DEBUGING
 
 	}

@@ -1,21 +1,27 @@
 import javax.swing.ImageIcon;
 
 public class Enemy extends NormalFunctions {
-
+	public static int dmg_factor;
+	private int dmg=20;
 	public Enemy(int x, int y) {
 		if (this.difficult == 0) {
 			this.HP = 100;
-		} else if (this.difficult == 1) {
+			this.dmg*=dmg_factor;
+		} else if (difficult == 1) {
 			this.HP = 200;
-		} else {
+
+			this.dmg*=dmg_factor;
+		} else if(this.difficult == 2) {
 			this.HP = 300;
+
+			this.dmg*=dmg_factor;
 		}
 		this.x = x;
 		this.y = y;
 		ImageIcon img = new ImageIcon(
 				"/home/maurice/Schreibtisch/shipgedreht.png");
 		setImage(img.getImage());
-
+		
 	}
 
 }

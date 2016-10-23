@@ -34,7 +34,8 @@ public class EinstellungPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
+				Enemy.difficult=0;
+				Enemy.dmg_factor=1;
 
 			}
 		});
@@ -42,7 +43,9 @@ public class EinstellungPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
+				Enemy.difficult=1;
+
+				Enemy.dmg_factor=2;
 
 			}
 		});
@@ -50,7 +53,9 @@ public class EinstellungPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
+				Enemy.difficult=2;
+
+				Enemy.dmg_factor=3;
 
 			}
 		});

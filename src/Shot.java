@@ -1,7 +1,7 @@
 import javax.swing.ImageIcon;
 
 public class Shot extends NormalFunctions {
-
+	ImageIcon img;
 	public Shot(int x, int y) {
 		if (this.weapon == 0) {
 
@@ -13,7 +13,7 @@ public class Shot extends NormalFunctions {
 
 		}
 		this.setXY(x, y);
-		ImageIcon img = new ImageIcon(
+		this.img = new ImageIcon(
 				"/home/maurice/Schreibtisch/shipgedreht.png");
 		setImage(img.getImage());
 

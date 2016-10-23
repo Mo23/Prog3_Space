@@ -6,7 +6,7 @@ public class NormalFunctions {
 	protected int x;
 	protected int y;
 	protected int HP;
-	protected int difficult = 0;
+	protected static int difficult = 0;
 	protected int weapon = 0;
 	protected boolean fired = false;
 
@@ -32,5 +32,8 @@ public class NormalFunctions {
 
 	public int getY() {
 		return this.y;
+	}
+	public int berechneraender(){
+		return 0;
 	}
 }
