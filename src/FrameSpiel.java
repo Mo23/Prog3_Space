@@ -109,6 +109,15 @@ if(!this.running){
 	}
 	public void DrawEnemyShot(Graphics g){
 		
+		int size_a = computer.size();
+		for(int i=0;i<size_a;i++){
+			Enemy e = computer.get(i);
+			EnemyShot b = e.geteshot();
+
+            g.drawImage(b.getImage(), b.getX(), b.getY()+20, this); 
+		}
+			
+		/*
 		Iterator<Enemy>ashot = computer.iterator();
 		while(ashot.hasNext()){
 			Enemy e = (Enemy) ashot.next();
@@ -119,6 +128,7 @@ if(!this.running){
 			
 			
 		}
+		*/
 		
 	}
 
@@ -139,7 +149,25 @@ if(!this.running){
 					shot.fired = false;
 				}
 				
-				Iterator<Enemy> eshotupdate = computer.iterator();
+				int size_a = computer.size();
+				for(int i=0;i<size_a;i++){
+					Enemy e = computer.get(i);
+					EnemyShot a = e.geteshot();
+
+					stoppinganimations = random.nextInt(3);
+					if(a.getY()<1200 && stoppinganimations==0){
+						a.setXY(a.getX(), a.y+1);
+
+						repaint();
+						}
+						else if(a.getY()>=1200){
+							
+							a.setXY(e.getX(), e.getY());
+								
+						}
+				}
+				
+			/*	Iterator<Enemy> eshotupdate = computer.iterator();
 				
 				while(eshotupdate.hasNext()){
 
@@ -157,7 +185,7 @@ if(!this.running){
 						a.setXY(e.getX(), e.getY());
 							
 					}
-			}
+			}*/
 				}
 
 			
