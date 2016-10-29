@@ -1,15 +1,15 @@
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
-public class GameBoard extends JFrame {
+public class GameFrame extends JFrame {
 
 	final private int WIDTH = 1200;
 	final private int HEIGTH = 720;
-	public FrameSpiel framespiel;
-	public static GameBoard gameboard;
+	public PanelSpiel framespiel;
+	public static GameFrame gameboard;
 
-	public GameBoard() {
-		add(framespiel = new FrameSpiel());
+	public GameFrame() {
+		add(framespiel = new PanelSpiel());
 		setTitle("VirenSchleuder");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(WIDTH, HEIGTH);
@@ -23,7 +23,7 @@ public class GameBoard extends JFrame {
 
 		Thread thread = new Thread() {
 			public void run() {
-				gameboard = new GameBoard();
+				gameboard = new GameFrame();
 
 			}
 		};
