@@ -141,12 +141,19 @@ if(!this.running){
 				Iterator<Enemy> eshotupdate = computer.iterator();
 				
 				while(eshotupdate.hasNext()){
+					int i=0;
 					Enemy e = (Enemy) eshotupdate.next();
 					EnemyShot a = e.geteshot();
 
 					System.out.println("Hier war ich auch");
 					System.out.println(a.getY());
-					a.setXY(a.getX(), a.y+200);
+					if(a.getY()<1200 && (i%20000)==0){
+					a.setXY(a.getX(), a.y+10);
+					i++;
+					}
+					else{
+						a.setXY(a.getX(), e.getY());
+					}
 					System.out.println(a.getY());
 			}
 				
