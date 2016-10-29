@@ -22,7 +22,7 @@ public class StartPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Startscreen.startpanel.setVisible(false);
-				Startscreen.startscreen.dispose();
+				Startscreen.startscreen.setVisible(false);
 				GameBoard.spielstart();
 
 			}

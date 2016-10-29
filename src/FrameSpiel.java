@@ -131,8 +131,10 @@ public class FrameSpiel extends JPanel {
 				shot.fired = true;
 			}
 			if (KeyEvent.VK_ESCAPE == e.getKeyCode()) {
-
-				GameBoard.gameboard.dispose();
+				
+				GameBoard.gameboard.setVisible(false);
+				Startscreen.startpanel.setVisible(true);
+				Startscreen.startscreen.setVisible(true);
 				sound.playCompleted = true;
 
 			}
