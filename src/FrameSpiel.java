@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Random;
 
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -26,7 +27,9 @@ public class FrameSpiel extends JPanel {
 	public boolean dispose = false;
 	public short score = 0;
 	public Thread gamerunning;
-
+	public int stoppinganimations=0;
+	public Random random = new Random();
+	
 	public FrameSpiel() {
 		addKeyListener(adapter = new TAdapter());
 		setFocusable(true);
@@ -50,7 +53,6 @@ if(!this.running){
 		if (shot.fired == true) {
 			DrawShot(g);
 		}
-	
 
 	}
 	public void animations(Graphics g){
@@ -108,7 +110,6 @@ if(!this.running){
 	public void DrawEnemyShot(Graphics g){
 		
 		Iterator<Enemy>ashot = computer.iterator();
-		System.out.println("Ich war hier");
 		while(ashot.hasNext()){
 			Enemy e = (Enemy) ashot.next();
 			
@@ -141,23 +142,23 @@ if(!this.running){
 				Iterator<Enemy> eshotupdate = computer.iterator();
 				
 				while(eshotupdate.hasNext()){
-					int i=0;
+
+					stoppinganimations = random.nextInt(3);
 					Enemy e = (Enemy) eshotupdate.next();
 					EnemyShot a = e.geteshot();
+					
+					if(a.getY()<1200 && stoppinganimations==0){
+					a.setXY(a.getX(), a.y+1);
 
-					System.out.println("Hier war ich auch");
-					System.out.println(a.getY());
-					if(a.getY()<1200 && (i%20000)==0){
-					a.setXY(a.getX(), a.y+10);
-					i++;
+					repaint();
 					}
-					else{
-						a.setXY(a.getX(), e.getY());
+					else if(a.getY()>=1200){
+						
+						a.setXY(e.getX(), e.getY());
+							
 					}
-					System.out.println(a.getY());
 			}
-				
-				repaint();}
+				}
 
 			
 		};
