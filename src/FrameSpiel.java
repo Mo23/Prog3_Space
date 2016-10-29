@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 
 import javax.swing.JPanel;
@@ -31,30 +32,44 @@ public class FrameSpiel extends JPanel {
 		setFocusable(true);
 		dimension = new Dimension(WIDTH, HEIGHT);
 		setBackground(Color.BLACK); // set background color for this JPanel
+		//running=true;
 
 	}
 
 	public void paint(Graphics g) {
 		super.paint(g);
 		g.setColor(Color.GREEN);
-		initComputer();
-		initGame(g);
-		SwingUtilities.invokeLater(act());
+		
+if(!this.running){
+			initGame(g);}
+
+			SwingUtilities.invokeLater(act());
+		animations(g);
+		
+			
 		if (shot.fired == true) {
 			DrawShot(g);
 		}
+	
 
+	}
+	public void animations(Graphics g){
+		DrawPlayer(g);
+		DrawComputer(g);
+		DrawEnemyShot(g);
+		
 	}
 
 	public void initGame(Graphics g) {
+		initComputer();
 		DrawPlayer(g);
 		DrawComputer(g);
-
+		DrawEnemyShot(g);
 		g.setColor(Color.cyan);
 		g.drawString("Lebenspunkte: " + Integer.toString(spieler.HP), 0, 680);
 		g.drawString("Score: " + Integer.toString(this.score), 1110, 680);
 		running = true;
-		 g.drawString("Lebenspunktegegner: "+computer.get(0).HP, 200, 200);
+		g.drawString("Lebenspunktegegner: "+computer.get(0).HP, 200, 200);
 		// //DEBUGING
 
 	}
@@ -66,7 +81,7 @@ public class FrameSpiel extends JPanel {
 			for (int j = 0; j < 10; j++) {
 				Enemy gegner = new Enemy((computerX + 120 * j),
 						(computerY + 80 * i));
-
+				gegner.fired=false;
 				computer.add(gegner);
 			}
 		}
@@ -78,7 +93,7 @@ public class FrameSpiel extends JPanel {
 
 	public void DrawComputer(Graphics g) {
 		Iterator<Enemy> it = computer.iterator();
-
+		
 		while (it.hasNext()) {
 			Enemy computer = (Enemy) it.next();
 			g.drawImage(computer.getImage(), computer.getX(), computer.getY(),
@@ -90,6 +105,21 @@ public class FrameSpiel extends JPanel {
 	public void DrawShot(Graphics g) {
 		g.drawImage(shot.getImage(), shot.getX(), shot.getY(), this);
 	}
+	public void DrawEnemyShot(Graphics g){
+		
+		Iterator<Enemy>ashot = computer.iterator();
+		System.out.println("Ich war hier");
+		while(ashot.hasNext()){
+			Enemy e = (Enemy) ashot.next();
+			
+			EnemyShot b = e.geteshot();
+			
+            g.drawImage(b.getImage(), b.getX(), b.getY()+20, this); 
+			
+			
+		}
+		
+	}
 
 	public Runnable act() {
 		gamerunning = new Thread() {
@@ -97,6 +127,7 @@ public class FrameSpiel extends JPanel {
 			public void run() {
 				try {
 					gamerunning.sleep(3);
+					
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -106,13 +137,32 @@ public class FrameSpiel extends JPanel {
 				else {
 					shot.fired = false;
 				}
-				repaint();
+				
+				Iterator<Enemy> eshotupdate = computer.iterator();
+				
+				while(eshotupdate.hasNext()){
+					Enemy e = (Enemy) eshotupdate.next();
+					EnemyShot a = e.geteshot();
 
+					System.out.println("Hier war ich auch");
+					System.out.println(a.getY());
+					a.setXY(a.getX(), a.y+200);
+					System.out.println(a.getY());
 			}
+				
+				repaint();}
+
+			
 		};
-		if (running)
-			gamerunning.start();
+		gamerunning.start();
 		return gamerunning;
+	}
+	
+	public void updateanimations(){
+		
+		
+		
+		
 	}
 
 	private class TAdapter extends KeyAdapter {
@@ -139,7 +189,7 @@ public class FrameSpiel extends JPanel {
 
 			}
 
-			repaint();
+			
 
 		}
 	}

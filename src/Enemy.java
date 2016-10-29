@@ -3,6 +3,7 @@ import javax.swing.ImageIcon;
 public class Enemy extends NormalFunctions {
 	public static int dmg_factor;
 	private int dmg=20;
+	private EnemyShot eshot;
 	public Enemy(int x, int y) {
 		if (this.difficult == 0) {
 			this.HP = 100;
@@ -21,7 +22,11 @@ public class Enemy extends NormalFunctions {
 		ImageIcon img = new ImageIcon(
 				"/home/maurice/Schreibtisch/shipgedreht.png");
 		setImage(img.getImage());
+		eshot = new EnemyShot(x, y);
 		
+	}
+	public EnemyShot geteshot(){
+		return this.eshot;
 	}
 
 }
