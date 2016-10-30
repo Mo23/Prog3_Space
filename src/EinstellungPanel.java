@@ -34,8 +34,8 @@ public class EinstellungPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Enemy.difficult=0;
-				Enemy.dmg_factor=1;
+				Enemy.difficult = 0;
+				Enemy.dmg_factor = 1;
 
 			}
 		});
@@ -43,9 +43,9 @@ public class EinstellungPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Enemy.difficult=1;
+				Enemy.difficult = 1;
 
-				Enemy.dmg_factor=2;
+				Enemy.dmg_factor = 2;
 
 			}
 		});
@@ -53,9 +53,9 @@ public class EinstellungPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Enemy.difficult=2;
+				Enemy.difficult = 2;
 
-				Enemy.dmg_factor=3;
+				Enemy.dmg_factor = 3;
 
 			}
 		});

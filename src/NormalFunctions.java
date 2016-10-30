@@ -33,7 +33,8 @@ public class NormalFunctions {
 	public int getY() {
 		return this.y;
 	}
-	public int berechneraender(){
+
+	public int berechneraender() {
 		return 0;
 	}
 }

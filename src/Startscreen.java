@@ -10,7 +10,6 @@ public class Startscreen extends JFrame {
 	final private short HEIGTH = 720;
 	public boolean startedgame;
 	public Thread gamestart;
-	
 
 	public Startscreen() {
 		this.startedgame = false;

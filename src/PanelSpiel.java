@@ -26,41 +26,42 @@ public class PanelSpiel extends JPanel {
 	public boolean dispose = false;
 	public short score = 0;
 	public Thread gamerunning;
-	public int stoppinganimations=0;
+	public int stoppinganimations = 0;
 	public Random random = new Random();
-	
+
 	public PanelSpiel() {
 		addKeyListener(adapter = new TAdapter());
 		setFocusable(true);
 		dimension = new Dimension(WIDTH, HEIGHT);
 		setBackground(Color.BLACK); // set background color for this JPanel
-		//running=true;
+		// running=true;
 
 	}
 
 	public void paint(Graphics g) {
 		super.paint(g);
 		g.setColor(Color.GREEN);
-		
-		if(!this.running){
-			initGame(g);}
 
-			SwingUtilities.invokeLater(act());
+		if (!this.running) {
+			initGame(g);
+		} else {
 			animations(g);
-		
-			
+		}
+
+		SwingUtilities.invokeLater(act());
 		if (shot.fired == true) {
 			DrawShot(g);
 		}
 
 	}
-	public void animations(Graphics g){
+
+	public void animations(Graphics g) {
 		g.setColor(Color.cyan);
 		DrawPlayer(g);
 		DrawComputer(g);
 		DrawEnemyShot(g);
 		DrawStatus(g);
-		
+
 	}
 
 	public void initGame(Graphics g) {
@@ -80,18 +81,19 @@ public class PanelSpiel extends JPanel {
 			for (int j = 0; j < 10; j++) {
 				Enemy gegner = new Enemy((computerX + 120 * j),
 						(computerY + 80 * i));
-				gegner.fired=false;
+				gegner.fired = false;
 				enemylist.add(gegner);
 			}
 		}
 	}
-	public void DrawStatus(Graphics g){
+
+	public void DrawStatus(Graphics g) {
 
 		g.drawString("Lebenspunkte: " + Integer.toString(spieler.HP), 0, 680);
 		g.drawString("Score: " + Integer.toString(this.score), 1110, 680);
-	
-		g.drawString("Lebenspunktegegner: "+enemylist.get(0).HP, 200, 200);
-		
+
+		g.drawString("Lebenspunktegegner: " + enemylist.get(0).HP, 200, 200);
+
 	}
 
 	public void DrawPlayer(Graphics g) {
@@ -100,7 +102,7 @@ public class PanelSpiel extends JPanel {
 
 	public void DrawComputer(Graphics g) {
 		Iterator<Enemy> it = enemylist.iterator();
-		
+
 		while (it.hasNext()) {
 			Enemy computer = (Enemy) it.next();
 			g.drawImage(computer.getImage(), computer.getX(), computer.getY(),
@@ -112,29 +114,29 @@ public class PanelSpiel extends JPanel {
 	public void DrawShot(Graphics g) {
 		g.drawImage(shot.getImage(), shot.getX(), shot.getY(), this);
 	}
-	public void DrawEnemyShot(Graphics g){
-		
+
+	public void DrawEnemyShot(Graphics g) {
+
 		int size_a = enemylist.size();
-		for(int i=0;i<size_a;i++){
+		for (int i = 0; i < size_a; i++) {
 			Enemy e = enemylist.get(i);
 			EnemyShot b = e.geteshot();
 
-            g.drawImage(b.getImage(), b.getX(), b.getY()+20, this); 
+			g.drawImage(b.getImage(), b.getX(), b.getY() + 20, this);
 		}
-			
+
 		/*
-		Iterator<Enemy>ashot = computer.iterator();
-		while(ashot.hasNext()){
-			Enemy e = (Enemy) ashot.next();
-			
-			EnemyShot b = e.geteshot();
-			
-            g.drawImage(b.getImage(), b.getX(), b.getY()+20, this); 
-			
-			
-		}
-		*/
-		
+		 * Iterator<Enemy>ashot = computer.iterator(); while(ashot.hasNext()){
+		 * Enemy e = (Enemy) ashot.next();
+		 * 
+		 * EnemyShot b = e.geteshot();
+		 * 
+		 * g.drawImage(b.getImage(), b.getX(), b.getY()+20, this);
+		 * 
+		 * 
+		 * }
+		 */
+
 	}
 
 	public Runnable act() {
@@ -143,7 +145,7 @@ public class PanelSpiel extends JPanel {
 			public void run() {
 				try {
 					gamerunning.sleep(3);
-					
+
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -152,58 +154,50 @@ public class PanelSpiel extends JPanel {
 				else {
 					shot.fired = false;
 				}
-				
+
 				int size_a = enemylist.size();
 
-				for(int i=0;i<size_a;i++){
+				for (int i = 0; i < size_a; i++) {
 					Enemy e = enemylist.get(i);
 					EnemyShot a = e.geteshot();
 
 					stoppinganimations = random.nextInt(10);
-					if(a.getY()<1200 && stoppinganimations==0){
-						a.setXY(a.getX(), a.y+1);
+					if (a.getY() < 1200 && stoppinganimations == 0) {
+						a.setXY(a.getX(), a.y + 1);
 
-						
-						}
-						else if(a.getY()>=1200){
-							
-							a.setXY(e.getX(), e.getY());
-								
-						}
+					} else if (a.getY() >= 1200) {
+
+						a.setXY(e.getX(), e.getY());
+
+					}
 				}
 				repaint();
-			/*	Iterator<Enemy> eshotupdate = computer.iterator();
-				
-				while(eshotupdate.hasNext()){
+				/*
+				 * Iterator<Enemy> eshotupdate = computer.iterator();
+				 * 
+				 * while(eshotupdate.hasNext()){
+				 * 
+				 * stoppinganimations = random.nextInt(3); Enemy e = (Enemy)
+				 * eshotupdate.next(); EnemyShot a = e.geteshot();
+				 * 
+				 * if(a.getY()<1200 && stoppinganimations==0){ a.setXY(a.getX(),
+				 * a.y+1);
+				 * 
+				 * repaint(); } else if(a.getY()>=1200){
+				 * 
+				 * a.setXY(e.getX(), e.getY());
+				 * 
+				 * } }
+				 */
+			}
 
-					stoppinganimations = random.nextInt(3);
-					Enemy e = (Enemy) eshotupdate.next();
-					EnemyShot a = e.geteshot();
-					
-					if(a.getY()<1200 && stoppinganimations==0){
-					a.setXY(a.getX(), a.y+1);
-
-					repaint();
-					}
-					else if(a.getY()>=1200){
-						
-						a.setXY(e.getX(), e.getY());
-							
-					}
-			}*/
-				}
-
-			
 		};
 		gamerunning.start();
 		return gamerunning;
 	}
-	
-	public void updateanimations(){
-		
-		
-		
-		
+
+	public void updateanimations() {
+
 	}
 
 	private class TAdapter extends KeyAdapter {
@@ -222,15 +216,13 @@ public class PanelSpiel extends JPanel {
 				shot.fired = true;
 			}
 			if (KeyEvent.VK_ESCAPE == e.getKeyCode()) {
-				
+
 				GameFrame.gameboard.setVisible(false);
 				Startscreen.startpanel.setVisible(true);
 				Startscreen.startscreen.setVisible(true);
 				sound.playCompleted = true;
 
 			}
-
-			
 
 		}
 	}
