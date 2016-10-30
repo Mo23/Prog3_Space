@@ -42,11 +42,11 @@ public class PanelSpiel extends JPanel {
 		super.paint(g);
 		g.setColor(Color.GREEN);
 		
-if(!this.running){
+		if(!this.running){
 			initGame(g);}
 
 			SwingUtilities.invokeLater(act());
-		animations(g);
+			animations(g);
 		
 			
 		if (shot.fired == true) {
@@ -55,9 +55,11 @@ if(!this.running){
 
 	}
 	public void animations(Graphics g){
+		g.setColor(Color.cyan);
 		DrawPlayer(g);
 		DrawComputer(g);
 		DrawEnemyShot(g);
+		DrawStatus(g);
 		
 	}
 
@@ -66,11 +68,7 @@ if(!this.running){
 		DrawPlayer(g);
 		DrawComputer(g);
 		DrawEnemyShot(g);
-		g.setColor(Color.cyan);
-		g.drawString("Lebenspunkte: " + Integer.toString(spieler.HP), 0, 680);
-		g.drawString("Score: " + Integer.toString(this.score), 1110, 680);
 		running = true;
-		g.drawString("Lebenspunktegegner: "+enemylist.get(0).HP, 200, 200);
 		// //DEBUGING
 
 	}
@@ -86,6 +84,14 @@ if(!this.running){
 				enemylist.add(gegner);
 			}
 		}
+	}
+	public void DrawStatus(Graphics g){
+
+		g.drawString("Lebenspunkte: " + Integer.toString(spieler.HP), 0, 680);
+		g.drawString("Score: " + Integer.toString(this.score), 1110, 680);
+	
+		g.drawString("Lebenspunktegegner: "+enemylist.get(0).HP, 200, 200);
+		
 	}
 
 	public void DrawPlayer(Graphics g) {
@@ -148,15 +154,16 @@ if(!this.running){
 				}
 				
 				int size_a = enemylist.size();
+
 				for(int i=0;i<size_a;i++){
 					Enemy e = enemylist.get(i);
 					EnemyShot a = e.geteshot();
 
-					stoppinganimations = random.nextInt(3);
+					stoppinganimations = random.nextInt(10);
 					if(a.getY()<1200 && stoppinganimations==0){
 						a.setXY(a.getX(), a.y+1);
 
-						repaint();
+						
 						}
 						else if(a.getY()>=1200){
 							
@@ -164,7 +171,7 @@ if(!this.running){
 								
 						}
 				}
-				
+				repaint();
 			/*	Iterator<Enemy> eshotupdate = computer.iterator();
 				
 				while(eshotupdate.hasNext()){
