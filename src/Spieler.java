@@ -16,7 +16,7 @@ public class Spieler extends NormalFunctions {
 		this.HP = hp;
 		this.x = startx;
 		this.y = starty;
-		ImageIcon img = new ImageIcon("/home/maurice/Schreibtisch/computer.png");
+		ImageIcon img = new ImageIcon("images/computer_bild.png");
 		setImage(img.getImage());
 
 	}
@@ -52,13 +52,7 @@ public class Spieler extends NormalFunctions {
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();
 
-		if (key == KeyEvent.VK_LEFT) {
-			dx = 0;
-		}
-
-		if (key == KeyEvent.VK_RIGHT) {
-			dx = 0;
-		}
+	
 	}
 
 }

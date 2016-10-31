@@ -6,7 +6,7 @@ public class EnemyShot extends NormalFunctions {
 		this.x = x;
 		this.y = y;
 		ImageIcon img = new ImageIcon(
-				"/home/maurice/Schreibtisch/shipgedreht.png");
+				"images/wurmschuss_bild.png");
 		setImage(img.getImage());
 	}
 

@@ -14,7 +14,7 @@ public class Shot extends NormalFunctions {
 
 		}
 		this.setXY(x, y);
-		this.img = new ImageIcon("/home/maurice/Schreibtisch/shipgedreht.png");
+		this.img = new ImageIcon("images/Spielerschuss_bild.png");
 		setImage(img.getImage());
 
 	}

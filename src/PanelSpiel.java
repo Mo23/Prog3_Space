@@ -121,7 +121,7 @@ public class PanelSpiel extends JPanel {
 		for (int i = 0; i < size_a; i++) {
 			Enemy e = enemylist.get(i);
 			EnemyShot b = e.geteshot();
-
+			if(e.fired)
 			g.drawImage(b.getImage(), b.getX(), b.getY() + 20, this);
 		}
 
@@ -162,8 +162,12 @@ public class PanelSpiel extends JPanel {
 					EnemyShot a = e.geteshot();
 
 					stoppinganimations = random.nextInt(10);
-					if (a.getY() < 1200 && stoppinganimations == 0) {
-						a.setXY(a.getX(), a.y + 1);
+					int startshot = random.nextInt(8000);
+							
+						if(startshot==0)
+							e.fired=true;
+					if (a.getY() < 1200 && stoppinganimations == 0 && e.fired) {
+						a.setXY(a.getX(), a.y + 2);
 
 					} else if (a.getY() >= 1200) {
 
@@ -196,25 +200,25 @@ public class PanelSpiel extends JPanel {
 		return gamerunning;
 	}
 
-	public void updateanimations() {
 
-	}
 
 	private class TAdapter extends KeyAdapter {
 
 		public void keyReleased(KeyEvent e) {
-			spieler.keyReleased(e);
-
-		}
-
-		public void keyPressed(KeyEvent e) {
-
-			spieler.keyPressed(e);
-
+			
 			if (KeyEvent.VK_SPACE == e.getKeyCode() && shot.fired == false) {
 				shot.setXY(spieler.getX(), spieler.getY() - 40);
 				shot.fired = true;
 			}
+
+		}
+
+		public void keyPressed(KeyEvent e) {
+			spieler.keyPressed(e);
+			if(KeyEvent.VK_A == e.getKeyCode() || KeyEvent.VK_D == e.getKeyCode())
+				spieler.keyPressed(e);
+
+			
 			if (KeyEvent.VK_ESCAPE == e.getKeyCode()) {
 
 				GameFrame.gameboard.setVisible(false);
