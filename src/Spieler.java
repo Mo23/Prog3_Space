@@ -8,9 +8,9 @@ public class Spieler extends NormalFunctions {
 	@SuppressWarnings("unused")
 	private Image image;
 	public int dx = 0;
-	private int wHP1 = 30;
-	private int wHP2 = 50;
-	private int wHP3 = 70;
+	private int wSc1 = 30;
+	private int wSc2 = 50;
+	private int wSc3 = 70;
 	public ImageIcon img;
 	public Spieler(int startx, int starty, int hp) {
 		this.HP = hp;
@@ -18,20 +18,24 @@ public class Spieler extends NormalFunctions {
 		this.y = starty;
 		img = new ImageIcon("images/computer_bild.png");
 		setImage(img.getImage());
-
 	}
 
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
-		if (key == KeyEvent.VK_1 && this.HP > wHP1 && this.weapon < 2) {
-			this.weapon = 1;
-			this.HP -= wHP1;
-		} else if (key == KeyEvent.VK_2 && this.HP > wHP2 && this.weapon < 3) {
-			this.weapon = 2;
-			this.HP -= wHP2;
-		} else if (key == KeyEvent.VK_3 && this.HP > wHP3 && this.weapon < 3) {
-			this.weapon = 3;
-			this.HP -= wHP3;
+		if (key == KeyEvent.VK_1 && PanelSpiel.logik.getScore() > wSc1 && PanelSpiel.logik.weapon < 2) {
+			PanelSpiel.logik.weapon=2;
+			PanelSpiel.logik.getShot().dmg=50;
+			PanelSpiel.logik.setScore((short)(PanelSpiel.logik.getScore()-wSc1));
+		} else if (key == KeyEvent.VK_2 && PanelSpiel.logik.getScore() > wSc2 && PanelSpiel.logik.weapon < 3) {
+			PanelSpiel.logik.weapon=3;
+			PanelSpiel.logik.setScore((short)(PanelSpiel.logik.getScore()-wSc2));
+
+			PanelSpiel.logik.getShot().dmg=80;
+		} else if (key == KeyEvent.VK_3 && PanelSpiel.logik.getScore() > wSc3 && PanelSpiel.logik.weapon < 4) {
+			PanelSpiel.logik.weapon=4;
+			PanelSpiel.logik.setScore((short)(PanelSpiel.logik.getScore()-wSc3));
+
+			PanelSpiel.logik.getShot().dmg=90;
 		}
 
 		if (key == KeyEvent.VK_A) {

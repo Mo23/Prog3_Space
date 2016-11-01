@@ -11,13 +11,13 @@ public class PanelSpiel extends JPanel {
 
 	public boolean running = false; // Still need to be Implemented
 
-	private TAdapter adapter; // Tastatureingabe Adapter
+	private TLogik adapter; // Tastatureingabe Adapter
 	public Thread gamerunning;
 
-	public Logikadapter logik;
+	public static Logikadapter logik;
 
 	public PanelSpiel() {
-		addKeyListener(this.adapter = new TAdapter());
+		addKeyListener(this.adapter = new TLogik());
 		setFocusable(true);
 		setBackground(Color.BLACK); // set background color for this JPanel
 		logik = new Logikadapter();
@@ -32,9 +32,7 @@ public class PanelSpiel extends JPanel {
 		if (running) {
 			animations(g);
 		}
-		else{
-			gamerunning.stop();
-		}
+	
 
 		SwingUtilities.invokeLater(act());
 		SwingUtilities.invokeLater(logik.act());
@@ -80,8 +78,6 @@ public class PanelSpiel extends JPanel {
 				680);
 		g.drawString("Score: " + Integer.toString(logik.getScore()), 1110, 680);
 
-		g.drawString("Lebenspunktegegner: " + logik.getEnemylist().get(0).HP,
-				200, 200);
 
 	}
 
@@ -118,7 +114,7 @@ public class PanelSpiel extends JPanel {
 	}
 
 
-	private class TAdapter extends KeyAdapter {
+	private class TLogik extends KeyAdapter {
 
 		public void keyReleased(KeyEvent e) {
 

@@ -7,7 +7,7 @@ public class Logikadapter {
 	final private int computerY = 0;
 	final private int FIXED_HP = 100;
 	private short score = 0;
-
+	public int weapon=1;
 	private Spieler spieler = new Spieler(550, 625, FIXED_HP);
 	private Shot shot = new Shot(spieler.getX(), spieler.getY());
 	private ArrayList<Enemy> enemylist;
@@ -31,6 +31,7 @@ public class Logikadapter {
 				if(spieler.HP<=0){
 					GameFrame.gameboard.framespiel.running=false;
 					sound.playCompleted=true;
+					updates.stop();
 				}
 			}
 		};
@@ -69,8 +70,8 @@ public class Logikadapter {
 				e.HP-=shot.dmg;
 					if(e.HP<=0){
 						score+=20;
-					}
-				enemylist.remove(i);	
+						enemylist.remove(i);
+					}	
 				break;
 			}
 		}

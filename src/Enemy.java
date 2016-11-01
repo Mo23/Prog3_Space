@@ -20,6 +20,7 @@ public class Enemy extends NormalFunctions {
 
 			this.dmg *= dmg_factor;
 		}*/
+		this.HP=100;
 		this.x = x;
 		this.y = y;
 		img = new ImageIcon("images/wurm_bild.png");
