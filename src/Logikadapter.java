@@ -89,15 +89,25 @@ public class Logikadapter {
 
 			if (startshot == 0)
 				e.fired = true;
-			if (a.getY() < 1200 && stoppinganimations == 0 && e.fired) {
+			if (a.getY() < 1200  && e.fired) {
 				a.setXY(a.getX(), a.y + 2);
 
+				ckeckIfPlayerHit(e, a);
 			} else if (a.getY() >= 1200) {
 
 				a.setXY(e.getX(), e.getY());
 
 			}
 		}
+	}
+	
+	public void ckeckIfPlayerHit(Enemy e, EnemyShot a){
+		if(a.x<(spieler.x+spieler.img.getIconWidth()/2) && a.x>=(spieler.x-spieler.img.getIconWidth()/2) && a.y>=(spieler.y-spieler.img.getIconHeight()/2)&& a.y<(spieler.y+spieler.img.getIconHeight()/2) ){
+			e.fired=false;
+			spieler.HP -= a.dmg;
+		}
+		
+		
 	}
 
 	/**

@@ -8,7 +8,7 @@ public class Enemy extends NormalFunctions {
 	public boolean visible=true;
 
 	public Enemy(int x, int y) {
-		if (this.difficult == 0) {
+	/*	if (this.difficult == 0) {
 			this.HP = 100;
 			this.dmg *= dmg_factor;
 		} else if (difficult == 1) {
@@ -19,12 +19,12 @@ public class Enemy extends NormalFunctions {
 			this.HP = 300;
 
 			this.dmg *= dmg_factor;
-		}
+		}*/
 		this.x = x;
 		this.y = y;
 		img = new ImageIcon("images/wurm_bild.png");
 		setImage(img.getImage());
-		eshot = new EnemyShot(x, y);
+		eshot = new EnemyShot(x, y, dmg);
 
 	}
 

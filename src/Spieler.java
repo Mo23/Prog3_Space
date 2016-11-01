@@ -11,12 +11,12 @@ public class Spieler extends NormalFunctions {
 	private int wHP1 = 30;
 	private int wHP2 = 50;
 	private int wHP3 = 70;
-
+	public ImageIcon img;
 	public Spieler(int startx, int starty, int hp) {
 		this.HP = hp;
 		this.x = startx;
 		this.y = starty;
-		ImageIcon img = new ImageIcon("images/computer_bild.png");
+		img = new ImageIcon("images/computer_bild.png");
 		setImage(img.getImage());
 
 	}
