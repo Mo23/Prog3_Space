@@ -10,6 +10,7 @@ public class EinstellungPanel extends JPanel {
 	private JButton mittel = new JButton("Mittel");
 	private JButton schwer = new JButton("Schwer");
 	private JButton zurueck = new JButton("Zurück");
+	public int difficult=0;
 
 	public EinstellungPanel() {
 		this.setLayout(null);
@@ -34,8 +35,7 @@ public class EinstellungPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Enemy.difficult = 0;
-				Enemy.dmg_factor = 1;
+				difficult =0;
 
 			}
 		});
@@ -43,9 +43,8 @@ public class EinstellungPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Enemy.difficult = 1;
+				difficult = 1;
 
-				Enemy.dmg_factor = 2;
 
 			}
 		});
@@ -53,9 +52,9 @@ public class EinstellungPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Enemy.difficult = 2;
+				difficult = 2;
+				
 
-				Enemy.dmg_factor = 3;
 
 			}
 		});

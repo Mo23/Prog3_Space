@@ -5,8 +5,6 @@ public class NormalFunctions {
 	private Image image;
 	protected int x;
 	protected int y;
-	protected int HP;
-	protected static int difficult = 0;
 	protected int weapon = 0;
 	protected boolean fired = false;
 

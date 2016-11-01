@@ -1,36 +1,35 @@
 import javax.swing.ImageIcon;
 
 public class Enemy extends NormalFunctions {
-	public static int dmg_factor;
-	private int dmg = 20;
+	public int dmg_factor =0;;
+	private int dmg = 10;
 	private EnemyShot eshot;
 	public ImageIcon img;
 	public boolean visible=true;
-
+	public int HP;
 	public Enemy(int x, int y) {
-	/*	if (this.difficult == 0) {
-			this.HP = 100;
-			this.dmg *= dmg_factor;
-		} else if (difficult == 1) {
-			this.HP = 200;
+		if (Startscreen.startscreen.einstellungspanel.difficult == 0) {
+			HP = 100;
+			eshot = new EnemyShot(x, y, (dmg));
+		} else if (Startscreen.startscreen.einstellungspanel.difficult == 1) {
+			HP = 200;
+			eshot = new EnemyShot(x, y, (dmg*2));
+		} else if (Startscreen.startscreen.einstellungspanel.difficult == 2) {
+			HP = 300;
+			eshot = new EnemyShot(x, y, (dmg*3));
 
-			this.dmg *= dmg_factor;
-		} else if (this.difficult == 2) {
-			this.HP = 300;
-
-			this.dmg *= dmg_factor;
-		}*/
-		this.HP=100;
+		}
 		this.x = x;
 		this.y = y;
 		img = new ImageIcon("images/wurm_bild.png");
 		setImage(img.getImage());
-		eshot = new EnemyShot(x, y, dmg);
 
 	}
 
 	public EnemyShot geteshot() {
 		return this.eshot;
 	}
+
+
 
 }
