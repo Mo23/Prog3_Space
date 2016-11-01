@@ -13,28 +13,22 @@ import javax.swing.SwingUtilities;
 @SuppressWarnings("serial")
 public class PanelSpiel extends JPanel {
 
-	final private int computerX = 7;
-	final private int computerY = 0;
 	private boolean running = false; // Still need to be Implemented
-	protected int FIXED_HP = 100;
-	public Spieler spieler = new Spieler(550, 625, FIXED_HP);
-	public ArrayList<Enemy> enemylist;
-	public Shot shot = new Shot(spieler.getX(), spieler.getY());
+	
 	public Sound sound = new Sound();
-	protected Dimension dimension;
 	public TAdapter adapter;
-	public boolean dispose = false;
 	public short score = 0;
 	public Thread gamerunning;
 	public int stoppinganimations = 0;
 	public Random random = new Random();
+	public Logikadapter logik;
 
 	public PanelSpiel() {
 		addKeyListener(adapter = new TAdapter());
 		setFocusable(true);
-		dimension = new Dimension(WIDTH, HEIGHT);
 		setBackground(Color.BLACK); // set background color for this JPanel
-		// running=true;
+		logik = new Logikadapter();
+		running=true;
 
 	}
 
@@ -42,18 +36,17 @@ public class PanelSpiel extends JPanel {
 		super.paint(g);
 		g.setColor(Color.GREEN);
 
-		if (!this.running) {
-			initGame(g);
-		} else {
-			animations(g);
-		}
+		if (running) {
+			animations(g);}
+		
 
 		SwingUtilities.invokeLater(act());
-		if (shot.fired == true) {
+		if (logik.getShot().fired == true) {
 			DrawShot(g);
 		}
 
 	}
+
 
 	public void animations(Graphics g) {
 		g.setColor(Color.cyan);
@@ -64,44 +57,25 @@ public class PanelSpiel extends JPanel {
 
 	}
 
-	public void initGame(Graphics g) {
-		initComputer();
-		DrawPlayer(g);
-		DrawComputer(g);
-		DrawEnemyShot(g);
-		running = true;
-		// //DEBUGING
 
-	}
 
-	public void initComputer() {
-		enemylist = new ArrayList<Enemy>();
 
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 10; j++) {
-				Enemy gegner = new Enemy((computerX + 120 * j),
-						(computerY + 80 * i));
-				gegner.fired = false;
-				enemylist.add(gegner);
-			}
-		}
-	}
 
 	public void DrawStatus(Graphics g) {
 
-		g.drawString("Lebenspunkte: " + Integer.toString(spieler.HP), 0, 680);
+		g.drawString("Lebenspunkte: " + Integer.toString(logik.getSpieler().HP), 0, 680);
 		g.drawString("Score: " + Integer.toString(this.score), 1110, 680);
 
-		g.drawString("Lebenspunktegegner: " + enemylist.get(0).HP, 200, 200);
+		g.drawString("Lebenspunktegegner: " + logik.getEnemylist().get(0).HP, 200, 200);
 
 	}
 
 	public void DrawPlayer(Graphics g) {
-		g.drawImage(spieler.getImage(), spieler.getX(), spieler.getY(), this);
+		g.drawImage(logik.getSpieler().getImage(), logik.getSpieler().getX(), logik.getSpieler().getY(), this);
 	}
 
 	public void DrawComputer(Graphics g) {
-		Iterator<Enemy> it = enemylist.iterator();
+		Iterator<Enemy> it = logik.getEnemylist().iterator();
 
 		while (it.hasNext()) {
 			Enemy computer = (Enemy) it.next();
@@ -112,31 +86,18 @@ public class PanelSpiel extends JPanel {
 	}
 
 	public void DrawShot(Graphics g) {
-		g.drawImage(shot.getImage(), shot.getX(), shot.getY(), this);
+		g.drawImage(logik.getShot().getImage(), logik.getShot().getX(), logik.getShot().getY(), this);
 	}
 
 	public void DrawEnemyShot(Graphics g) {
 
-		int size_a = enemylist.size();
+		int size_a = logik.getEnemylist().size();
 		for (int i = 0; i < size_a; i++) {
-			Enemy e = enemylist.get(i);
+			Enemy e = logik.getEnemylist().get(i);
 			EnemyShot b = e.geteshot();
 			if(e.fired)
 			g.drawImage(b.getImage(), b.getX(), b.getY() + 20, this);
 		}
-
-		/*
-		 * Iterator<Enemy>ashot = computer.iterator(); while(ashot.hasNext()){
-		 * Enemy e = (Enemy) ashot.next();
-		 * 
-		 * EnemyShot b = e.geteshot();
-		 * 
-		 * g.drawImage(b.getImage(), b.getX(), b.getY()+20, this);
-		 * 
-		 * 
-		 * }
-		 */
-
 	}
 
 	public Runnable act() {
@@ -149,16 +110,16 @@ public class PanelSpiel extends JPanel {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				if (shot.getY() > 0)
-					shot.setXY(shot.getX(), shot.getY() - 1);
+				if (logik.getShot().getY() > 0)
+					logik.getShot().setXY(logik.getShot().getX(), logik.getShot().getY() - 1);
 				else {
-					shot.fired = false;
+					logik.getShot().fired = false;
 				}
 
-				int size_a = enemylist.size();
+				int size_a = logik.getEnemylist().size();
 
 				for (int i = 0; i < size_a; i++) {
-					Enemy e = enemylist.get(i);
+					Enemy e = logik.getEnemylist().get(i);
 					EnemyShot a = e.geteshot();
 
 					stoppinganimations = random.nextInt(10);
@@ -176,23 +137,7 @@ public class PanelSpiel extends JPanel {
 					}
 				}
 				repaint();
-				/*
-				 * Iterator<Enemy> eshotupdate = computer.iterator();
-				 * 
-				 * while(eshotupdate.hasNext()){
-				 * 
-				 * stoppinganimations = random.nextInt(3); Enemy e = (Enemy)
-				 * eshotupdate.next(); EnemyShot a = e.geteshot();
-				 * 
-				 * if(a.getY()<1200 && stoppinganimations==0){ a.setXY(a.getX(),
-				 * a.y+1);
-				 * 
-				 * repaint(); } else if(a.getY()>=1200){
-				 * 
-				 * a.setXY(e.getX(), e.getY());
-				 * 
-				 * } }
-				 */
+			
 			}
 
 		};
@@ -206,17 +151,15 @@ public class PanelSpiel extends JPanel {
 
 		public void keyReleased(KeyEvent e) {
 			
-			if (KeyEvent.VK_SPACE == e.getKeyCode() && shot.fired == false) {
-				shot.setXY(spieler.getX(), spieler.getY() - 40);
-				shot.fired = true;
+			if (KeyEvent.VK_SPACE == e.getKeyCode() && logik.getShot().fired == false) {
+				logik.getShot().setXY(logik.getSpieler().getX(), logik.getSpieler().getY() - 40);
+				logik.getShot().fired = true;
 			}
 
 		}
 
 		public void keyPressed(KeyEvent e) {
-			spieler.keyPressed(e);
-			if(KeyEvent.VK_A == e.getKeyCode() || KeyEvent.VK_D == e.getKeyCode())
-				spieler.keyPressed(e);
+				logik.getSpieler().keyPressed(e);
 
 			
 			if (KeyEvent.VK_ESCAPE == e.getKeyCode()) {
