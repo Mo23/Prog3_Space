@@ -9,7 +9,7 @@ import javax.swing.SwingUtilities;
 @SuppressWarnings("serial")
 public class PanelSpiel extends JPanel {
 
-	private boolean running = false; // Still need to be Implemented
+	public boolean running = false; // Still need to be Implemented
 
 	private TAdapter adapter; // Tastatureingabe Adapter
 	public Thread gamerunning;
@@ -31,6 +31,9 @@ public class PanelSpiel extends JPanel {
 
 		if (running) {
 			animations(g);
+		}
+		else{
+			gamerunning.stop();
 		}
 
 		SwingUtilities.invokeLater(act());
@@ -99,7 +102,7 @@ public class PanelSpiel extends JPanel {
 			@SuppressWarnings("static-access")
 			public void run() {
 				try {
-					gamerunning.sleep(3);
+					gamerunning.sleep(8);
 
 				} catch (InterruptedException e) {
 					e.printStackTrace();

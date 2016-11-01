@@ -28,6 +28,10 @@ public class Logikadapter {
 			public void run() {
 				movePlayerShot();
 				moveEnemyShot();
+				if(spieler.HP<=0){
+					GameFrame.gameboard.framespiel.running=false;
+					sound.playCompleted=true;
+				}
 			}
 		};
 		updates.start();
@@ -62,8 +66,8 @@ public class Logikadapter {
 			Enemy e = enemylist.get(i);
 			EnemyShot a = e.geteshot();
 
-			stoppinganimations = random.nextInt(10);
-			int startshot = random.nextInt(8000);
+			stoppinganimations = random.nextInt(2);
+			int startshot = random.nextInt(6000);
 
 			if (startshot == 0)
 				e.fired = true;
