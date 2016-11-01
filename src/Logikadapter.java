@@ -1,22 +1,22 @@
 import java.util.ArrayList;
 
-
 public class Logikadapter {
 
 	final private int computerX = 7;
 	final private int computerY = 0;
-	protected int FIXED_HP = 100;
-	
+	final private int FIXED_HP = 100;
+	private short score = 0;
 
-	public Spieler spieler = new Spieler(550, 625, FIXED_HP);
-	public Shot shot = new Shot(spieler.getX(), spieler.getY());
-	public ArrayList<Enemy> enemylist;
-	
-	public Logikadapter(){
+	private Spieler spieler = new Spieler(550, 625, FIXED_HP);
+	private Shot shot = new Shot(spieler.getX(), spieler.getY());
+	private ArrayList<Enemy> enemylist;
+	private Sound sound = new Sound();
+
+	public Logikadapter() {
 		this.initComputer();
-		
+
 	}
-	
+
 	public void initComputer() {
 		enemylist = new ArrayList<Enemy>();
 
@@ -29,7 +29,7 @@ public class Logikadapter {
 			}
 		}
 	}
-	
+
 	/**
 	 * @return the enemylist
 	 */
@@ -45,13 +45,6 @@ public class Logikadapter {
 	}
 
 	/**
-	 * @param fIXED_HP the fIXED_HP to set
-	 */
-	public void setFIXED_HP(int fIXED_HP) {
-		FIXED_HP = fIXED_HP;
-	}
-
-	/**
 	 * @return the spieler
 	 */
 	public Spieler getSpieler() {
@@ -63,6 +56,36 @@ public class Logikadapter {
 	 */
 	public Shot getShot() {
 		return shot;
+	}
+
+	/**
+	 * @return the score
+	 */
+	public short getScore() {
+		return score;
+	}
+
+	/**
+	 * @param score
+	 *            the score to set
+	 */
+	public void setScore(short score) {
+		this.score = score;
+	}
+
+	/**
+	 * @return the sound
+	 */
+	public Sound getSound() {
+		return sound;
+	}
+
+	/**
+	 * @param sound
+	 *            the sound to set
+	 */
+	public void setSound(Sound sound) {
+		this.sound = sound;
 	}
 
 }

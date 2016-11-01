@@ -52,7 +52,6 @@ public class Spieler extends NormalFunctions {
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();
 
-	
 	}
 
 }

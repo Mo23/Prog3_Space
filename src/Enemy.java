@@ -20,8 +20,7 @@ public class Enemy extends NormalFunctions {
 		}
 		this.x = x;
 		this.y = y;
-		ImageIcon img = new ImageIcon(
-				"images/wurm_bild.png");
+		ImageIcon img = new ImageIcon("images/wurm_bild.png");
 		setImage(img.getImage());
 		eshot = new EnemyShot(x, y);
 

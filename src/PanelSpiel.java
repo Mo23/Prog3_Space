@@ -15,12 +15,12 @@ public class PanelSpiel extends JPanel {
 
 	private boolean running = false; // Still need to be Implemented
 	
-	public Sound sound = new Sound();
-	public TAdapter adapter;
-	public short score = 0;
+	private TAdapter adapter; //Tastatureingabe Adapter
 	public Thread gamerunning;
-	public int stoppinganimations = 0;
-	public Random random = new Random();
+	// Variablen zur Verlangsamung.
+	private Random random = new Random();
+	private int stoppinganimations = 0;
+	
 	public Logikadapter logik;
 
 	public PanelSpiel() {
@@ -64,7 +64,7 @@ public class PanelSpiel extends JPanel {
 	public void DrawStatus(Graphics g) {
 
 		g.drawString("Lebenspunkte: " + Integer.toString(logik.getSpieler().HP), 0, 680);
-		g.drawString("Score: " + Integer.toString(this.score), 1110, 680);
+		g.drawString("Score: " + Integer.toString(logik.getScore()), 1110, 680);
 
 		g.drawString("Lebenspunktegegner: " + logik.getEnemylist().get(0).HP, 200, 200);
 
@@ -167,7 +167,7 @@ public class PanelSpiel extends JPanel {
 				GameFrame.gameboard.setVisible(false);
 				Startscreen.startpanel.setVisible(true);
 				Startscreen.startscreen.setVisible(true);
-				sound.playCompleted = true;
+				logik.getSound().playCompleted = true;
 
 			}
 
