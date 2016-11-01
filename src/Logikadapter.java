@@ -52,11 +52,29 @@ public class Logikadapter {
 	}
 
 	public void movePlayerShot() {
-		if (shot.getY() > 0)
+		if (shot.getY() > 0 && shot.fired){
 			shot.setXY(shot.getX(), shot.getY() - 1);
+				checkIfWormHit();}
 		else {
 			shot.fired = false;
 		}
+	}
+	
+	public void checkIfWormHit(){
+		int size_t = enemylist.size();
+		for(int i=0;i<size_t;i++){
+			Enemy e = enemylist.get(i);
+			if(shot.x<(e.x+e.img.getIconWidth()/2) && shot.x>=(e.x-e.img.getIconWidth()/2) && shot.y>=(e.y-e.img.getIconHeight()/2)&& shot.y<(e.y+e.img.getIconHeight()/2) ){
+				shot.fired=false;
+				e.HP-=shot.dmg;
+					if(e.HP<=0){
+						score+=20;
+					}
+				enemylist.remove(i);	
+				break;
+			}
+		}
+		
 	}
 
 	public void moveEnemyShot() {

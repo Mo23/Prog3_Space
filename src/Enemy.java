@@ -4,6 +4,8 @@ public class Enemy extends NormalFunctions {
 	public static int dmg_factor;
 	private int dmg = 20;
 	private EnemyShot eshot;
+	public ImageIcon img;
+	public boolean visible=true;
 
 	public Enemy(int x, int y) {
 		if (this.difficult == 0) {
@@ -20,7 +22,7 @@ public class Enemy extends NormalFunctions {
 		}
 		this.x = x;
 		this.y = y;
-		ImageIcon img = new ImageIcon("images/wurm_bild.png");
+		img = new ImageIcon("images/wurm_bild.png");
 		setImage(img.getImage());
 		eshot = new EnemyShot(x, y);
 

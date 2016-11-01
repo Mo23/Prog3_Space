@@ -44,8 +44,27 @@ public class PanelSpiel extends JPanel {
 
 	}
 
+	public Runnable act() {
+		gamerunning = new Thread() {
+			@SuppressWarnings("static-access")
+			public void run() {
+				try {
+					gamerunning.sleep(8);
+
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+
+				repaint();
+
+			}
+
+		};
+		gamerunning.start();
+		return gamerunning;
+	}
+
 	public void animations(Graphics g) {
-		g.setColor(Color.cyan);
 		DrawPlayer(g);
 		DrawComputer(g);
 		DrawEnemyShot(g);
@@ -55,6 +74,7 @@ public class PanelSpiel extends JPanel {
 
 	public void DrawStatus(Graphics g) {
 
+		g.setColor(Color.cyan);
 		g.drawString(
 				"Lebenspunkte: " + Integer.toString(logik.getSpieler().HP), 0,
 				680);
@@ -97,25 +117,6 @@ public class PanelSpiel extends JPanel {
 		}
 	}
 
-	public Runnable act() {
-		gamerunning = new Thread() {
-			@SuppressWarnings("static-access")
-			public void run() {
-				try {
-					gamerunning.sleep(8);
-
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-
-				repaint();
-
-			}
-
-		};
-		gamerunning.start();
-		return gamerunning;
-	}
 
 	private class TAdapter extends KeyAdapter {
 
