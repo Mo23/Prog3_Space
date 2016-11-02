@@ -13,7 +13,6 @@ public class PanelSpiel extends JPanel {
 
 	private TLogik adapter; // Tastatureingabe Adapter
 	public Thread gamerunning;
-
 	public static Logikadapter logik;
 
 	public PanelSpiel() {
@@ -32,7 +31,6 @@ public class PanelSpiel extends JPanel {
 		if (running) {
 			animations(g);
 		}
-	
 
 		SwingUtilities.invokeLater(act());
 		SwingUtilities.invokeLater(logik.act());
@@ -78,7 +76,6 @@ public class PanelSpiel extends JPanel {
 				680);
 		g.drawString("Score: " + Integer.toString(logik.getScore()), 1110, 680);
 
-
 	}
 
 	public void DrawPlayer(Graphics g) {
@@ -113,22 +110,23 @@ public class PanelSpiel extends JPanel {
 		}
 	}
 
-
 	private class TLogik extends KeyAdapter {
 
-		public void keyReleased(KeyEvent e) {
+		public synchronized void keyReleased(KeyEvent e) {
 
+			logik.getSpieler().keyReleased(e);
+
+		}
+
+		public synchronized void keyPressed(KeyEvent e) {
+
+			logik.getSpieler().keyPressed(e);
 			if (KeyEvent.VK_SPACE == e.getKeyCode()
 					&& logik.getShot().fired == false) {
 				logik.getShot().setXY(logik.getSpieler().getX(),
 						logik.getSpieler().getY() - 40);
 				logik.getShot().fired = true;
 			}
-
-		}
-
-		public void keyPressed(KeyEvent e) {
-			logik.getSpieler().keyPressed(e);
 
 			if (KeyEvent.VK_ESCAPE == e.getKeyCode()) {
 
@@ -138,7 +136,8 @@ public class PanelSpiel extends JPanel {
 				logik.getSound().playCompleted = true;
 
 			}
-
 		}
+
 	}
+
 }

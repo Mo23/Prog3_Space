@@ -5,7 +5,7 @@ public class Shot extends NormalFunctions {
 	public int dmg;
 
 	public Shot(int x, int y) {
-		this.dmg=20;
+		this.dmg = 20;
 		this.setXY(x, y);
 		this.img = new ImageIcon("images/Spielerschuss_bild.png");
 		setImage(img.getImage());

@@ -7,7 +7,7 @@ public class Logikadapter {
 	final private int computerY = 0;
 	final private int FIXED_HP = 100;
 	private short score = 0;
-	public int weapon=1;
+	public int weapon = 1;
 	private Spieler spieler = new Spieler(550, 625, FIXED_HP);
 	private Shot shot = new Shot(spieler.getX(), spieler.getY());
 	private ArrayList<Enemy> enemylist;
@@ -28,9 +28,10 @@ public class Logikadapter {
 			public void run() {
 				movePlayerShot();
 				moveEnemyShot();
-				if(spieler.HP<=0){
-					GameFrame.gameboard.framespiel.running=false;
-					sound.playCompleted=true;
+				movePlayer();
+				if (spieler.HP <= 0) {
+					GameFrame.gameboard.framespiel.running = false;
+					sound.playCompleted = true;
 					updates.stop();
 				}
 			}
@@ -52,30 +53,42 @@ public class Logikadapter {
 		}
 	}
 
+	public void movePlayer() {
+		if (spieler.getX() < 1100) {
+			spieler.setXY(spieler.x + spieler.dxD, spieler.y);
+		}
+		if(spieler.getX() > 0){
+			spieler.setXY(spieler.x + spieler.dxA, spieler.y);
+		}
+	}
+
 	public void movePlayerShot() {
-		if (shot.getY() > 0 && shot.fired){
-			shot.setXY(shot.getX(), shot.getY() - 1);
-				checkIfWormHit();}
-		else {
+		if (shot.getY() > 0 && shot.fired) {
+			shot.setXY(shot.getX(), shot.getY() - 4);
+			checkIfWormHit();
+		} else {
 			shot.fired = false;
 		}
 	}
-	
-	public void checkIfWormHit(){
+
+	public void checkIfWormHit() {
 		int size_t = enemylist.size();
-		for(int i=0;i<size_t;i++){
+		for (int i = 0; i < size_t; i++) {
 			Enemy e = enemylist.get(i);
-			if(shot.x<(e.x+e.img.getIconWidth()/2) && shot.x>=(e.x-e.img.getIconWidth()/2) && shot.y>=(e.y-e.img.getIconHeight()/2)&& shot.y<(e.y+e.img.getIconHeight()/2) ){
-				shot.fired=false;
-				e.HP-=shot.dmg;
-					if(e.HP<=0){
-						score+=20;
-						enemylist.remove(i);
-					}	
+			if (shot.x < (e.x + e.img.getIconWidth() / 2)
+					&& shot.x >= (e.x - e.img.getIconWidth() / 2)
+					&& shot.y >= (e.y - e.img.getIconHeight() / 2)
+					&& shot.y < (e.y + e.img.getIconHeight() / 2)) {
+				shot.fired = false;
+				e.HP -= shot.dmg;
+				if (e.HP <= 0) {
+					score += 20;
+					enemylist.remove(i);
+				}
 				break;
 			}
 		}
-		
+
 	}
 
 	public void moveEnemyShot() {
@@ -90,7 +103,7 @@ public class Logikadapter {
 
 			if (startshot == 0)
 				e.fired = true;
-			if (a.getY() < 1200  && e.fired) {
+			if (a.getY() < 1200 && e.fired && stoppinganimations == 0) {
 				a.setXY(a.getX(), a.y + 2);
 
 				ckeckIfPlayerHit(e, a);
@@ -101,14 +114,16 @@ public class Logikadapter {
 			}
 		}
 	}
-	
-	public void ckeckIfPlayerHit(Enemy e, EnemyShot a){
-		if(a.x<(spieler.x+spieler.img.getIconWidth()/2) && a.x>=(spieler.x-spieler.img.getIconWidth()/2) && a.y>=(spieler.y-spieler.img.getIconHeight()/2)&& a.y<(spieler.y+spieler.img.getIconHeight()/2) ){
-			e.fired=false;
+
+	public void ckeckIfPlayerHit(Enemy e, EnemyShot a) {
+		if (a.x < (spieler.x + spieler.img.getIconWidth() / 2)
+				&& a.x >= (spieler.x - spieler.img.getIconWidth() / 2)
+				&& a.y >= (spieler.y - spieler.img.getIconHeight() / 2)
+				&& a.y < (spieler.y + spieler.img.getIconHeight() / 2)) {
+			e.fired = false;
 			spieler.HP -= a.dmg;
 		}
-		
-		
+
 	}
 
 	/**

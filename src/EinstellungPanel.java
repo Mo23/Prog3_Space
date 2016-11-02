@@ -10,7 +10,7 @@ public class EinstellungPanel extends JPanel {
 	private JButton mittel = new JButton("Mittel");
 	private JButton schwer = new JButton("Schwer");
 	private JButton zurueck = new JButton("Zurück");
-	public int difficult=0;
+	public int difficult = 0;
 
 	public EinstellungPanel() {
 		this.setLayout(null);
@@ -35,7 +35,7 @@ public class EinstellungPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				difficult =0;
+				difficult = 0;
 
 			}
 		});
@@ -45,7 +45,6 @@ public class EinstellungPanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				difficult = 1;
 
-
 			}
 		});
 		schwer.addActionListener(new ActionListener() {
@@ -53,8 +52,6 @@ public class EinstellungPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				difficult = 2;
-				
-
 
 			}
 		});
