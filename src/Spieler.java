@@ -7,11 +7,11 @@ public class Spieler extends NormalFunctions {
 
 	@SuppressWarnings("unused")
 	private Image image;
-	public int dxA = 0;
-	public int dxD = 0;
 	private int wSc1 = 30;
 	private int wSc2 = 50;
 	private int wSc3 = 70;
+	public int dxA = 0;
+	public int dxD = 0;
 	public int HP;
 	public ImageIcon img;
 	public boolean move = false;

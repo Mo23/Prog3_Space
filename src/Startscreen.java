@@ -2,12 +2,13 @@ import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
 public class Startscreen extends JFrame {
+
+	final private short WIDTH = 1200;
+	final private short HEIGTH = 720;
 	public static Startscreen startscreen;
 	public static StartPanel startpanel;
 	public static AnleitungPanel anleitungpanel;
 	public static EinstellungPanel einstellungspanel;
-	final private short WIDTH = 1200;
-	final private short HEIGTH = 720;
 	public boolean startedgame;
 	public Thread gamestart;
 

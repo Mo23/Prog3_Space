@@ -1,9 +1,10 @@
 import javax.swing.ImageIcon;
 
 public class Enemy extends NormalFunctions {
-	public int dmg_factor = 0;;
 	private int dmg = 10;
 	private EnemyShot eshot;
+	
+	public int dmg_factor = 0;
 	public ImageIcon img;
 	public boolean visible = true;
 	public int HP;

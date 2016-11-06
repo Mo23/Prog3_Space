@@ -9,9 +9,10 @@ import javax.swing.SwingUtilities;
 @SuppressWarnings("serial")
 public class PanelSpiel extends JPanel {
 
-	public boolean running = false; // Still need to be Implemented
 
 	private TLogik adapter; // Tastatureingabe Adapter
+	
+	public boolean running = false; // Still need to be Implemented
 	public Thread gamerunning;
 	public static Logikadapter logik;
 

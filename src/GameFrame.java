@@ -5,8 +5,9 @@ public class GameFrame extends JFrame {
 
 	final private int WIDTH = 1200;
 	final private int HEIGTH = 720;
-	public PanelSpiel framespiel;
+
 	public static GameFrame gameboard;
+	public PanelSpiel framespiel;
 
 	public GameFrame() {
 		add(framespiel = new PanelSpiel());
