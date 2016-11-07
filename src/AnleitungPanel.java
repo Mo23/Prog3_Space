@@ -15,7 +15,8 @@ import javax.swing.JTextArea;
 public class AnleitungPanel extends JPanel {
 	private JTextArea text;
 	private JButton zurueck = new JButton("Zurück");
-	private String dataname ="test.txt";
+	private String dataname = "test.txt";
+
 	public AnleitungPanel() {
 		this.setLayout(null);
 		this.setSize(1200, 720);
@@ -24,36 +25,39 @@ public class AnleitungPanel extends JPanel {
 		this.setVisible(false);
 		text = new JTextArea(readdata(dataname));
 		createinput();
-		
+
 	}
-	private String readdata(String name){
+
+	private String readdata(String name) {
 		File file = new File(name);
 		String back = null;
-        if (!file.canRead() || !file.isFile())
-            System.exit(0);
+		if (!file.canRead() || !file.isFile())
+			System.exit(0);
 
-            BufferedReader in = null;
-        try {
-            in = new BufferedReader(new FileReader(name));
-            String zeile = null;
-            while ((zeile = in.readLine()) != null) {
-                if(back==null){
-                	back=zeile;}
-                else{
-                back+=(zeile+"\n");}
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (in != null)
-                try {
-                    in.close();
-                } catch (IOException e) {
-                }
-        } 	
-        return back;
+		BufferedReader in = null;
+		try {
+			in = new BufferedReader(new FileReader(name));
+			String zeile = null;
+			while ((zeile = in.readLine()) != null) {
+				if (back == null) {
+					back = zeile;
+				} else {
+					back += (zeile + "\n");
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (in != null)
+				try {
+					in.close();
+				} catch (IOException e) {
+				}
+		}
+		return back;
 	}
-	private void createinput(){
+
+	private void createinput() {
 		text.setBackground(Color.CYAN);
 		text.setEditable(false);
 		text.setFont(new Font("Times New Roman", Font.PLAIN, 20));

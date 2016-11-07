@@ -6,7 +6,7 @@ public class Logikadapter {
 	final private int computerX = 7;
 	final private int computerY = 0;
 	final private int FIXED_HP = 100;
-	
+
 	private Spieler spieler = new Spieler(550, 625, FIXED_HP);
 	private Shot shot = new Shot(spieler.getX(), spieler.getY());
 	private ArrayList<Enemy> enemylist;
@@ -16,10 +16,8 @@ public class Logikadapter {
 	// Variablen zur Verlangsamung.
 	private Random random = new Random();
 	private int stoppinganimations = 0;
-	
-	public int weapon = 1;
-	
 
+	public int weapon = 1;
 
 	public Logikadapter() {
 		this.initComputer();
@@ -60,7 +58,7 @@ public class Logikadapter {
 		if (spieler.getX() < 1100) {
 			spieler.setXY(spieler.x + spieler.dxD, spieler.y);
 		}
-		if(spieler.getX() > 0){
+		if (spieler.getX() > 0) {
 			spieler.setXY(spieler.x + spieler.dxA, spieler.y);
 		}
 	}

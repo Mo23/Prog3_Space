@@ -22,7 +22,7 @@ public class EinstellungPanel extends JPanel {
 	}
 
 	public void createInput() {
-		
+
 		leicht.addActionListener(new ActionListener() {
 
 			@Override
@@ -36,9 +36,8 @@ public class EinstellungPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				difficult = 1;	
+				difficult = 1;
 				goback();
-
 
 			}
 		});
@@ -48,7 +47,6 @@ public class EinstellungPanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				difficult = 2;
 				goback();
-
 
 			}
 		});
@@ -64,8 +62,8 @@ public class EinstellungPanel extends JPanel {
 		schwer.setVisible(true);
 
 	}
-	
-	private void goback(){
+
+	private void goback() {
 
 		Startscreen.einstellungspanel.setVisible(false);
 		Startscreen.startpanel.setVisible(true);
