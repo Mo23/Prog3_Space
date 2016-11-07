@@ -22,20 +22,13 @@ public class EinstellungPanel extends JPanel {
 	}
 
 	public void createInput() {
-		zurueck.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				Startscreen.einstellungspanel.setVisible(false);
-				Startscreen.startpanel.setVisible(true);
-
-			}
-		});
+		
 		leicht.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				difficult = 0;
+				goback();
 
 			}
 		});
@@ -43,7 +36,9 @@ public class EinstellungPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				difficult = 1;
+				difficult = 1;	
+				goback();
+
 
 			}
 		});
@@ -52,22 +47,27 @@ public class EinstellungPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				difficult = 2;
+				goback();
+
 
 			}
 		});
 		this.add(leicht);
 		this.add(mittel);
 		this.add(schwer);
-		this.add(zurueck);
 		leicht.setBounds(550, 200, 100, 30);
 		mittel.setBounds(550, 250, 100, 30);
 		schwer.setBounds(550, 300, 100, 30);
-		zurueck.setBounds(550, 350, 100, 30);
 
 		leicht.setVisible(true);
 		mittel.setVisible(true);
 		schwer.setVisible(true);
-		zurueck.setVisible(true);
 
+	}
+	
+	private void goback(){
+
+		Startscreen.einstellungspanel.setVisible(false);
+		Startscreen.startpanel.setVisible(true);
 	}
 }
