@@ -5,7 +5,6 @@ public class NormalFunctions {
 	private Image image;
 	protected int x;
 	protected int y;
-	protected int weapon = 0;
 	protected boolean fired = false;
 
 	public void setImage(Image bild) {

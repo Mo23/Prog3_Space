@@ -70,12 +70,17 @@ public class PanelSpiel extends JPanel {
 
 	public void DrawStatus(Graphics g) {
 
-		g.setColor(Color.cyan);
+		g.setColor(Color.red);
 		g.drawString(
 				"Lebenspunkte: " + Integer.toString(logik.getSpieler().HP), 0,
 				680);
 		g.drawString("Score: " + Integer.toString(logik.getScore()), 1110, 680);
-
+		
+		g.drawString("Aktuelle Waffe: "+logik.getSpieler().getWeaponname(), 0, 650);
+		if(logik.getScore()>=logik.getSpieler().getwSc1() && logik.weapon==1){
+			g.setColor(Color.MAGENTA);
+			g.drawString("Nächstes Waffensystem verfügbar",0,300);
+		}
 	}
 
 	public void DrawPlayer(Graphics g) {

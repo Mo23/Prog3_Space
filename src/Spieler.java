@@ -15,6 +15,7 @@ public class Spieler extends NormalFunctions {
 	public int HP;
 	public ImageIcon img;
 	public boolean move = false;
+	private String weaponname="Einfacher Schuss";
 
 	public Spieler(int startx, int starty, int hp) {
 		this.HP = hp;
@@ -36,6 +37,7 @@ public class Spieler extends NormalFunctions {
 					"images/Spielerschuss1_bild.png");
 			PanelSpiel.logik.getShot().setImage(
 					PanelSpiel.logik.getShot().img.getImage());
+			PanelSpiel.logik.getSpieler().weaponname="Doppelter Schuss";
 		} else if (key == KeyEvent.VK_2 && PanelSpiel.logik.getScore() > wSc2
 				&& PanelSpiel.logik.weapon < 3) {
 			PanelSpiel.logik.weapon = 3;
@@ -46,6 +48,8 @@ public class Spieler extends NormalFunctions {
 					"images/Spielerschuss2_bild.png");
 			PanelSpiel.logik.getShot().setImage(
 					PanelSpiel.logik.getShot().img.getImage());
+
+			PanelSpiel.logik.getSpieler().weaponname="Dreifacher Schuss";
 		} else if (key == KeyEvent.VK_3 && PanelSpiel.logik.getScore() > wSc3
 				&& PanelSpiel.logik.weapon < 4) {
 			PanelSpiel.logik.weapon = 4;
@@ -56,6 +60,8 @@ public class Spieler extends NormalFunctions {
 					"images/Spielerschuss3_bild.png");
 			PanelSpiel.logik.getShot().setImage(
 					PanelSpiel.logik.getShot().img.getImage());
+
+			PanelSpiel.logik.getSpieler().weaponname="Vierfacher Schuss";
 		}
 
 		if (key == KeyEvent.VK_A) {
@@ -80,6 +86,41 @@ public class Spieler extends NormalFunctions {
 			dxD = 0;
 
 		}
+	}
+
+	/**
+	 * @return the weaponname
+	 */
+	public String getWeaponname() {
+		return weaponname;
+	}
+
+	/**
+	 * @param weaponname the weaponname to set
+	 */
+	public void setWeaponname(String weaponname) {
+		this.weaponname = weaponname;
+	}
+
+	/**
+	 * @return the wSc1
+	 */
+	public int getwSc1() {
+		return wSc1;
+	}
+
+	/**
+	 * @return the wSc2
+	 */
+	public int getwSc2() {
+		return wSc2;
+	}
+
+	/**
+	 * @return the wSc3
+	 */
+	public int getwSc3() {
+		return wSc3;
 	}
 
 }
