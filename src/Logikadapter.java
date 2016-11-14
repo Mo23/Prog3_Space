@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.JLabel;
+
 public class Logikadapter {
 
 	final private int computerX = 7;
@@ -31,10 +33,13 @@ public class Logikadapter {
 				moveEnemyShot();
 				movePlayer();
 				if (spieler.HP <= 0) {
-					GameFrame.gameboard.framespiel.running = false;
+					GameFrame.gameboard.framespiel.runninglost = false;
 					sound.playCompleted = true;
-					updates.stop();
 				}
+				else if (enemylist.size()<=0){
+					GameFrame.gameboard.framespiel.runningwon=false;
+				}
+					
 			}
 		};
 		updates.start();

@@ -3,6 +3,8 @@ import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -11,16 +13,21 @@ public class PanelSpiel extends JPanel {
 
 	private TLogik adapter; // Tastatureingabe Adapter
 
-	public boolean running = false; // Still need to be Implemented
+	public boolean runninglost = false; // Still need to be Implemented
+	public boolean runningwon = false; // Still need to be Implemented
 	public Thread gamerunning;
 	public static Logikadapter logik;
-
+	public JLabel end;
+	private final ImageIcon gewonnen = new ImageIcon("images/spielgewonnen.png");
+	private final ImageIcon verloren = new ImageIcon("images/spielverloren.png");
 	public PanelSpiel() {
+		
 		addKeyListener(this.adapter = new TLogik());
 		setFocusable(true);
 		setBackground(Color.BLACK); // set background color for this JPanel
 		logik = new Logikadapter();
-		running = true;
+		runningwon = true;
+		runninglost = true;
 
 	}
 
@@ -28,8 +35,14 @@ public class PanelSpiel extends JPanel {
 		super.paint(g);
 		g.setColor(Color.GREEN);
 
-		if (running) {
+		if (runningwon && runninglost) {
 			animations(g);
+		}else{
+			if(!runningwon){
+			DrawEndWon(g);}
+			else{
+				DrawEndLost(g);
+			}
 		}
 
 		SwingUtilities.invokeLater(act());
@@ -67,7 +80,19 @@ public class PanelSpiel extends JPanel {
 		DrawStatus(g);
 
 	}
+	public void DrawEndWon(Graphics g){
+		g.setColor(Color.red);
+		g.drawString("Gewonnen",600,350);
 
+		g.drawImage(gewonnen.getImage(),0,0,this);
+	}
+	public void DrawEndLost(Graphics g){
+		g.setColor(Color.red);
+		g.drawString("Verloren",600,350);
+
+		g.drawImage(verloren.getImage(),0,0,this);
+		
+	}
 	public void DrawStatus(Graphics g) {
 
 		g.setColor(Color.red);
@@ -124,14 +149,14 @@ public class PanelSpiel extends JPanel {
 		}
 
 		public synchronized void keyPressed(KeyEvent e) {
-
+			if(GameFrame.gameboard.framespiel.runninglost==true && GameFrame.gameboard.framespiel.runninglost==true){
 			logik.getSpieler().keyPressed(e);
 			if (KeyEvent.VK_SPACE == e.getKeyCode()
 					&& logik.getShot().fired == false) {
 				logik.getShot().setXY(logik.getSpieler().getX(),
 						logik.getSpieler().getY() - 40);
 				logik.getShot().fired = true;
-			}
+			}}
 
 			if (KeyEvent.VK_ESCAPE == e.getKeyCode()) {
 

@@ -10,6 +10,7 @@ public class GameFrame extends JFrame {
 	public PanelSpiel framespiel;
 
 	public GameFrame() {
+
 		add(framespiel = new PanelSpiel());
 		setTitle("VirenSchleuder");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
