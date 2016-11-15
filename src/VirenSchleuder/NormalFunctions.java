@@ -32,7 +32,4 @@ public class NormalFunctions {
 		return this.y;
 	}
 
-	public int berechneraender() {
-		return 0;
-	}
 }

@@ -19,7 +19,6 @@ public class Startscreen extends JFrame {
 		add(anleitungpanel = new AnleitungPanel());
 		add(einstellungspanel = new EinstellungPanel());
 		add(startpanel = new StartPanel());
-		// anleitungpanel.setVisible(false);
 		setTitle("VirenSchleuder");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(WIDTH, HEIGTH);

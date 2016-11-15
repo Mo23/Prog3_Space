@@ -16,7 +16,7 @@ import javax.swing.JTextArea;
 public class AnleitungPanel extends JPanel {
 	private JTextArea text;
 	private JButton zurueck = new JButton("Zurück");
-	private String dataname = "test.txt";
+	private String dataname = AnleitungPanel.class.getResource("resources/Anleitung.txt").getPath();
 
 	public AnleitungPanel() {
 		this.setLayout(null);
