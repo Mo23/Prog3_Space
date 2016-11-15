@@ -22,7 +22,7 @@ public class Spieler extends NormalFunctions {
 		this.HP = hp;
 		this.x = startx;
 		this.y = starty;
-		img = new ImageIcon(this.getClass().getResource("resources/images/computer_bild.png"));
+		img = new ImageIcon(this.getClass().getClassLoader().getResource("images/computer_bild.png"));
 		
 		setImage(img.getImage());
 	}
@@ -35,7 +35,9 @@ public class Spieler extends NormalFunctions {
 			PanelSpiel.logik.getShot().dmg = 50;
 			PanelSpiel.logik
 					.setScore((short) (PanelSpiel.logik.getScore() - wSc1));
-			PanelSpiel.logik.getShot().img = new ImageIcon(this.getClass().getResource("resources/images/Spielerschuss1_bild.png"));
+			PanelSpiel.logik.getShot().img = new ImageIcon(this.getClass().getClassLoader().getResource("images/Spielerschuss1_bild.png"));
+
+			
 			PanelSpiel.logik.getShot().setImage(
 					PanelSpiel.logik.getShot().img.getImage());
 			PanelSpiel.logik.getSpieler().weaponname="Doppelter Schuss";
@@ -45,7 +47,7 @@ public class Spieler extends NormalFunctions {
 			PanelSpiel.logik
 					.setScore((short) (PanelSpiel.logik.getScore() - wSc2));
 			PanelSpiel.logik.getShot().dmg = 80;
-			PanelSpiel.logik.getShot().img = new ImageIcon(this.getClass().getResource("resources/images/Spielerschuss2_bild.png"));
+			PanelSpiel.logik.getShot().img = new ImageIcon(this.getClass().getClassLoader().getResource("images/Spielerschuss2_bild.png"));
 			PanelSpiel.logik.getShot().setImage(
 					PanelSpiel.logik.getShot().img.getImage());
 
@@ -56,7 +58,7 @@ public class Spieler extends NormalFunctions {
 			PanelSpiel.logik
 					.setScore((short) (PanelSpiel.logik.getScore() - wSc3));
 			PanelSpiel.logik.getShot().dmg = 90;
-			PanelSpiel.logik.getShot().img = new ImageIcon(this.getClass().getResource("resources/images/Spielerschuss3_bild.png"));
+			PanelSpiel.logik.getShot().img = new ImageIcon(this.getClass().getClassLoader().getResource("images/Spielerschuss3_bild.png"));
 			PanelSpiel.logik.getShot().setImage(
 					PanelSpiel.logik.getShot().img.getImage());
 

@@ -13,6 +13,7 @@ public class StartPanel extends JPanel {
 	private JButton ButtonZurueck = new JButton("Zurück");
 
 	public StartPanel() {
+		System.out.println("ss");
 		this.setLayout(null);
 		setFocusable(true);
 		setBackground(Color.black); // set background color for this JPanel

@@ -1,5 +1,6 @@
 package VirenSchleuder;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 @SuppressWarnings("serial")
 public class Startscreen extends JFrame {
@@ -12,11 +13,12 @@ public class Startscreen extends JFrame {
 	public static EinstellungPanel einstellungspanel;
 	public boolean startedgame;
 	public Thread gamestart;
+	private static Thread startgame;
 
 	public Startscreen() {
 		this.startedgame = false;
-		
 		add(anleitungpanel = new AnleitungPanel());
+
 		add(einstellungspanel = new EinstellungPanel());
 		add(startpanel = new StartPanel());
 		setTitle("VirenSchleuder");
@@ -25,10 +27,27 @@ public class Startscreen extends JFrame {
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setResizable(false);
+
 	}
 
 	public static void main(String[] args) {
-		startscreen = new Startscreen();
 
+		
+			startgame = new Thread(); {
+
+				startscreen = new Startscreen();
+
+			
+
+			};
+
+			startgame.start();
+		
+	
+		
+
+	
 	}
 }
+
+	
