@@ -1,3 +1,4 @@
+package VirenSchleuder;
 import javax.swing.ImageIcon;
 
 public class EnemyShot extends NormalFunctions {
