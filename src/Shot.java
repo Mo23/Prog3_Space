@@ -7,7 +7,8 @@ public class Shot extends NormalFunctions {
 	public Shot(int x, int y) {
 		this.dmg = 200;
 		this.setXY(x, y);
-		this.img = new ImageIcon("images/Spielerschuss_bild.png");
+		img = new ImageIcon(this.getClass().getResource("resources/images/Spielerschuss_bild.png"));
+		
 		setImage(img.getImage());
 
 	}

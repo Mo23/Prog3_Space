@@ -23,7 +23,7 @@ public class Enemy extends NormalFunctions {
 		}
 		this.x = x;
 		this.y = y;
-		img = new ImageIcon("images/wurm_bild2.png");
+		img = new ImageIcon(this.getClass().getResource("resources/images/wurm_bild2.png"));
 		setImage(img.getImage());
 
 	}

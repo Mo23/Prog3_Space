@@ -17,7 +17,6 @@ public class PanelSpiel extends JPanel {
 	public boolean runningwon = false; // Still need to be Implemented
 	public Thread gamerunning;
 	public static Logikadapter logik;
-	public JLabel end;
 	private final ImageIcon gewonnen = new ImageIcon("images/spielgewonnen.png");
 	private final ImageIcon verloren = new ImageIcon("images/spielverloren.png");
 	public PanelSpiel() {
@@ -81,14 +80,10 @@ public class PanelSpiel extends JPanel {
 
 	}
 	public void DrawEndWon(Graphics g){
-		g.setColor(Color.red);
-		g.drawString("Gewonnen",600,350);
 
 		g.drawImage(gewonnen.getImage(),0,0,this);
 	}
 	public void DrawEndLost(Graphics g){
-		g.setColor(Color.red);
-		g.drawString("Verloren",600,350);
 
 		g.drawImage(verloren.getImage(),0,0,this);
 		

@@ -14,7 +14,7 @@ public class Startscreen extends JFrame {
 
 	public Startscreen() {
 		this.startedgame = false;
-		this.
+		
 		add(anleitungpanel = new AnleitungPanel());
 		add(einstellungspanel = new EinstellungPanel());
 		add(startpanel = new StartPanel());

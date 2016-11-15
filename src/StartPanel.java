@@ -15,7 +15,7 @@ public class StartPanel extends JPanel {
 		this.setLayout(null);
 		setFocusable(true);
 		// dimension = new Dimension(1200, 720);
-		setBackground(Color.CYAN); // set background color for this JPanel
+		setBackground(Color.black); // set background color for this JPanel
 		this.setVisible(true);
 		ButtonStartGame.addActionListener(new ActionListener() {
 
