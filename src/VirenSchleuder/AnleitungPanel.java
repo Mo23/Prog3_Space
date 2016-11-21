@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.URL;
 
 import javax.swing.JButton;
@@ -29,18 +30,19 @@ public class AnleitungPanel extends JPanel {
 		this.setVisible(false);
 		text = new JTextArea(readdata(this.getClass().getClassLoader().getResourceAsStream("images/Anleitung.txt")));
 
-		System.out.println("s");
 		createinput();
 
 	}
 //FIXEN FÜR JAR
-	private static String readdata(InputStream name) {
+	private static String readdata(InputStream inputStream) {
 		
 		String back = null;
 
 		BufferedReader in = null;
 		try {
-			in = new BufferedReader(new InputStreamReader(name));
+			InputStreamReader is = new InputStreamReader(inputStream);
+			in = new BufferedReader(is);
+		
 			String zeile = null;
 			while ((zeile = in.readLine()) != null) {
 				if (back == null) {

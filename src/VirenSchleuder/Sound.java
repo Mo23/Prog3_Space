@@ -1,6 +1,7 @@
 package VirenSchleuder;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -33,8 +34,8 @@ public class Sound extends Thread implements LineListener {
 	}
 
 	void play() {
-		String audioFilePath = "/home/maurice/Schreibtisch/Failing_Defense.wav";
-
+		String audioFilePath = this.getClass().getClassLoader().getResource("images/Failing_Defense.wav").getFile();
+		System.out.println(audioFilePath);
 		File audioFile = new File(audioFilePath);
 		try {
 			AudioInputStream audioStream = AudioSystem
