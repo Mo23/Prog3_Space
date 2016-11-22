@@ -159,7 +159,7 @@ public class PanelSpiel extends JPanel {
 				GameFrame.gameboard.setVisible(false);
 				Startscreen.startpanel.setVisible(true);
 				Startscreen.startscreen.setVisible(true);
-				logik.getSound().playCompleted = true;
+				logik.getSound().playCompleted=true;
 
 			}
 		}

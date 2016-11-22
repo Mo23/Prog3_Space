@@ -13,7 +13,7 @@ public class Logikadapter {
 	private Spieler spieler = new Spieler(550, 625, FIXED_HP);
 	private Shot shot = new Shot(spieler.getX(), spieler.getY());
 	private ArrayList<Enemy> enemylist;
-	private Sound sound = new Sound();
+	private Sound sound;
 	private Thread updates;
 	private short score = 0;
 	// Variablen zur Verlangsamung.
@@ -24,6 +24,7 @@ public class Logikadapter {
 
 	public Logikadapter() {
 		this.initComputer();
+		this.sound = new Sound();
 
 	}
 
