@@ -54,7 +54,8 @@ public class Sound extends Thread implements LineListener {
 
 			audioClip.open(audioStream);
 
-			audioClip.start();
+			
+			audioClip.loop(Integer.MAX_VALUE);
 
 			while (!playCompleted) {
 				// wait for the playback completes
