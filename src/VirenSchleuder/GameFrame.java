@@ -1,4 +1,5 @@
 package VirenSchleuder;
+
 import javax.swing.JFrame;
 
 @SuppressWarnings("serial")

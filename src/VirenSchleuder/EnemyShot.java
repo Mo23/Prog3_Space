@@ -1,4 +1,5 @@
 package VirenSchleuder;
+
 import javax.swing.ImageIcon;
 
 public class EnemyShot extends NormalFunctions {
@@ -8,8 +9,8 @@ public class EnemyShot extends NormalFunctions {
 		this.dmg = d;
 		this.x = x;
 		this.y = y;
-		ImageIcon img = new ImageIcon(this.getClass().getClassLoader().getResource("images/wurmschuss_bild.png")
-);
+		ImageIcon img = new ImageIcon(this.getClass().getClassLoader()
+				.getResource("images/wurmschuss_bild.png"));
 		setImage(img.getImage());
 	}
 

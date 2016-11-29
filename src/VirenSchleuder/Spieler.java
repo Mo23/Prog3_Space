@@ -1,4 +1,5 @@
 package VirenSchleuder;
+
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 
@@ -16,53 +17,59 @@ public class Spieler extends NormalFunctions {
 	public int HP;
 	public ImageIcon img;
 	public boolean move = false;
-	private String weaponname="Einfacher Schuss";
+	private String weaponname = "Einfacher Schuss";
 
 	public Spieler(int startx, int starty, int hp) {
 		this.HP = hp;
 		this.x = startx;
 		this.y = starty;
-		img = new ImageIcon(this.getClass().getClassLoader().getResource("images/computer_bild.png"));
-		
+		img = new ImageIcon(this.getClass().getClassLoader()
+				.getResource("images/computer_bild.png"));
+
 		setImage(img.getImage());
 	}
 
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
-		if (key == KeyEvent.VK_1 && PanelSpiel.logik.getScore() > wSc1
-				&& PanelSpiel.logik.weapon < 2) {
-			PanelSpiel.logik.weapon = 2;
+		if (key == KeyEvent.VK_1 && PanelSpiel.logik.getScore() >= wSc1
+				&& PanelSpiel.logik.getWeapon() < 2) {
+			PanelSpiel.logik.setWeapon(2);
 			PanelSpiel.logik.getShot().dmg = 50;
 			PanelSpiel.logik
 					.setScore((short) (PanelSpiel.logik.getScore() - wSc1));
-			PanelSpiel.logik.getShot().img = new ImageIcon(this.getClass().getClassLoader().getResource("images/Spielerschuss1_bild.png"));
+			PanelSpiel.logik.getShot().img = new ImageIcon(this.getClass()
+					.getClassLoader()
+					.getResource("images/Spielerschuss1_bild.png"));
 
-			
 			PanelSpiel.logik.getShot().setImage(
 					PanelSpiel.logik.getShot().img.getImage());
-			PanelSpiel.logik.getSpieler().weaponname="Doppelter Schuss";
-		} else if (key == KeyEvent.VK_2 && PanelSpiel.logik.getScore() > wSc2
-				&& PanelSpiel.logik.weapon < 3) {
-			PanelSpiel.logik.weapon = 3;
+			PanelSpiel.logik.getSpieler().weaponname = "Doppelter Schuss";
+		} else if (key == KeyEvent.VK_2 && PanelSpiel.logik.getScore() >= wSc2
+				&& PanelSpiel.logik.getWeapon() < 3) {
+			PanelSpiel.logik.setWeapon(3);
 			PanelSpiel.logik
 					.setScore((short) (PanelSpiel.logik.getScore() - wSc2));
 			PanelSpiel.logik.getShot().dmg = 80;
-			PanelSpiel.logik.getShot().img = new ImageIcon(this.getClass().getClassLoader().getResource("images/Spielerschuss2_bild.png"));
+			PanelSpiel.logik.getShot().img = new ImageIcon(this.getClass()
+					.getClassLoader()
+					.getResource("images/Spielerschuss2_bild.png"));
 			PanelSpiel.logik.getShot().setImage(
 					PanelSpiel.logik.getShot().img.getImage());
 
-			PanelSpiel.logik.getSpieler().weaponname="Dreifacher Schuss";
-		} else if (key == KeyEvent.VK_3 && PanelSpiel.logik.getScore() > wSc3
-				&& PanelSpiel.logik.weapon < 4) {
-			PanelSpiel.logik.weapon = 4;
+			PanelSpiel.logik.getSpieler().weaponname = "Dreifacher Schuss";
+		} else if (key == KeyEvent.VK_3 && PanelSpiel.logik.getScore() >= wSc3
+				&& PanelSpiel.logik.getWeapon() < 4) {
+			PanelSpiel.logik.setWeapon(4);
 			PanelSpiel.logik
 					.setScore((short) (PanelSpiel.logik.getScore() - wSc3));
 			PanelSpiel.logik.getShot().dmg = 90;
-			PanelSpiel.logik.getShot().img = new ImageIcon(this.getClass().getClassLoader().getResource("images/Spielerschuss3_bild.png"));
+			PanelSpiel.logik.getShot().img = new ImageIcon(this.getClass()
+					.getClassLoader()
+					.getResource("images/Spielerschuss3_bild.png"));
 			PanelSpiel.logik.getShot().setImage(
 					PanelSpiel.logik.getShot().img.getImage());
 
-			PanelSpiel.logik.getSpieler().weaponname="Vierfacher Schuss";
+			PanelSpiel.logik.getSpieler().weaponname = "Vierfacher Schuss";
 		}
 
 		if (key == KeyEvent.VK_A) {
@@ -97,7 +104,8 @@ public class Spieler extends NormalFunctions {
 	}
 
 	/**
-	 * @param weaponname the weaponname to set
+	 * @param weaponname
+	 *            the weaponname to set
 	 */
 	public void setWeaponname(String weaponname) {
 		this.weaponname = weaponname;

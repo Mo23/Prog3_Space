@@ -1,4 +1,5 @@
 package VirenSchleuder;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
@@ -20,8 +21,12 @@ public class PanelSpiel extends JPanel {
 	public static Logikadapter logik;
 	private final ImageIcon gewonnen = new ImageIcon("images/spielgewonnen.png");
 	private final ImageIcon verloren = new ImageIcon("images/spielverloren.png");
+	boolean times = false;
+	boolean onetime = false;
+	long timeend;
+
 	public PanelSpiel() {
-		
+
 		addKeyListener(this.adapter = new TLogik());
 		setFocusable(true);
 		setBackground(Color.BLACK); // set background color for this JPanel
@@ -37,10 +42,10 @@ public class PanelSpiel extends JPanel {
 
 		if (runningwon && runninglost) {
 			animations(g);
-		}else{
-			if(!runningwon){
-			DrawEndWon(g);}
-			else{
+		} else {
+			if (!runningwon) {
+				DrawEndWon(g);
+			} else {
 				DrawEndLost(g);
 			}
 		}
@@ -80,15 +85,18 @@ public class PanelSpiel extends JPanel {
 		DrawStatus(g);
 
 	}
-	public void DrawEndWon(Graphics g){
 
-		g.drawImage(gewonnen.getImage(),0,0,this);
-	}
-	public void DrawEndLost(Graphics g){
+	public void DrawEndWon(Graphics g) {
 
-		g.drawImage(verloren.getImage(),0,0,this);
-		
+		g.drawImage(gewonnen.getImage(), 0, 0, this);
 	}
+
+	public void DrawEndLost(Graphics g) {
+
+		g.drawImage(verloren.getImage(), 0, 0, this);
+
+	}
+
 	public void DrawStatus(Graphics g) {
 
 		g.setColor(Color.red);
@@ -96,12 +104,56 @@ public class PanelSpiel extends JPanel {
 				"Lebenspunkte: " + Integer.toString(logik.getSpieler().HP), 0,
 				680);
 		g.drawString("Score: " + Integer.toString(logik.getScore()), 1110, 680);
-		
-		g.drawString("Aktuelle Waffe: "+logik.getSpieler().getWeaponname(), 0, 650);
-		if(logik.getScore()>=logik.getSpieler().getwSc1() && logik.weapon==1){
-			g.setColor(Color.MAGENTA);
-			g.drawString("Nächstes Waffensystem verfügbar",0,300);
+
+		g.drawString("Aktuelle Waffe: " + logik.getSpieler().getWeaponname(),
+				0, 650);
+		if (logik.getScore() >= logik.getSpieler().getwSc1()
+				&& logik.getWeapon() == 1) {
+
+			if (!onetime) {
+				timeend = System.currentTimeMillis() + 500;
+				onetime = true;
+			}
+			if (timeend <= System.currentTimeMillis()) {
+				times = true;
+
+			}
+			if (!times) {
+				g.setColor(Color.MAGENTA);
+				g.drawString("Nächstes Waffensystem verfügbar", 0, 300);
+			}
+
 		}
+		if (logik.getScore() >= logik.getSpieler().getwSc2()
+				&& logik.getWeapon() == 2) {
+
+			if (onetime) {
+				timeend = System.currentTimeMillis() + 500;
+				onetime = false;
+				times = false;
+			}
+			if (timeend <= System.currentTimeMillis())
+				times = true;
+			if (!times) {
+				g.setColor(Color.MAGENTA);
+				g.drawString("Nächstes Waffensystem verfügbar", 0, 300);
+			}
+		}
+		if (logik.getScore() >= logik.getSpieler().getwSc3()
+				&& logik.getWeapon() == 3) {
+			if (!onetime) {
+				timeend = System.currentTimeMillis() + 500;
+				onetime = true;
+				times = false;
+			}
+			if (timeend <= System.currentTimeMillis())
+				times = true;
+			if (!times) {
+				g.setColor(Color.MAGENTA);
+				g.drawString("Nächstes Waffensystem verfügbar", 0, 300);
+			}
+		}
+
 	}
 
 	public void DrawPlayer(Graphics g) {
@@ -145,21 +197,23 @@ public class PanelSpiel extends JPanel {
 		}
 
 		public synchronized void keyPressed(KeyEvent e) {
-			if(GameFrame.gameboard.framespiel.runninglost==true && GameFrame.gameboard.framespiel.runninglost==true){
-			logik.getSpieler().keyPressed(e);
-			if (KeyEvent.VK_SPACE == e.getKeyCode()
-					&& logik.getShot().fired == false) {
-				logik.getShot().setXY(logik.getSpieler().getX(),
-						logik.getSpieler().getY() - 40);
-				logik.getShot().fired = true;
-			}}
+			if (GameFrame.gameboard.framespiel.runninglost == true
+					&& GameFrame.gameboard.framespiel.runninglost == true) {
+				logik.getSpieler().keyPressed(e);
+				if (KeyEvent.VK_SPACE == e.getKeyCode()
+						&& logik.getShot().fired == false) {
+					logik.getShot().setXY(logik.getSpieler().getX(),
+							logik.getSpieler().getY() - 40);
+					logik.getShot().fired = true;
+				}
+			}
 
 			if (KeyEvent.VK_ESCAPE == e.getKeyCode()) {
 
 				GameFrame.gameboard.setVisible(false);
 				Startscreen.startpanel.setVisible(true);
 				Startscreen.startscreen.setVisible(true);
-				logik.getSound().playCompleted=true;
+				logik.getSound().playCompleted = true;
 
 			}
 		}

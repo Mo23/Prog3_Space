@@ -1,4 +1,5 @@
 package VirenSchleuder;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -32,22 +33,15 @@ public class Startscreen extends JFrame {
 
 	public static void main(String[] args) {
 
-		
-			startgame = new Thread(); {
+		startgame = new Thread();
+		{
 
-				startscreen = new Startscreen();
+			startscreen = new Startscreen();
 
-			
+		}
+		;
 
-			};
+		startgame.start();
 
-			startgame.start();
-		
-	
-		
-
-	
 	}
 }
-
-	

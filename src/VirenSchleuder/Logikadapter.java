@@ -1,4 +1,5 @@
 package VirenSchleuder;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -20,7 +21,7 @@ public class Logikadapter {
 	private Random random = new Random();
 	private int stoppinganimations = 0;
 
-	public int weapon = 1;
+	private int weapon = 1;
 
 	public Logikadapter() {
 		this.initComputer();
@@ -37,11 +38,10 @@ public class Logikadapter {
 				if (spieler.HP <= 0) {
 					GameFrame.gameboard.framespiel.runninglost = false;
 					sound.playCompleted = true;
+				} else if (enemylist.size() <= 0) {
+					GameFrame.gameboard.framespiel.runningwon = false;
 				}
-				else if (enemylist.size()<=0){
-					GameFrame.gameboard.framespiel.runningwon=false;
-				}
-					
+
 			}
 		};
 		updates.start();
@@ -190,6 +190,21 @@ public class Logikadapter {
 	 */
 	public void setSound(Sound sound) {
 		this.sound = sound;
+	}
+
+	/**
+	 * @return the weapon
+	 */
+	public int getWeapon() {
+		return weapon;
+	}
+
+	/**
+	 * @param weapon
+	 *            the weapon to set
+	 */
+	public void setWeapon(int weapon) {
+		this.weapon = weapon;
 	}
 
 }

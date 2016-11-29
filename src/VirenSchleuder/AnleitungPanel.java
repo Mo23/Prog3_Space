@@ -1,4 +1,5 @@
 package VirenSchleuder;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -20,7 +21,7 @@ import javax.swing.JTextArea;
 public class AnleitungPanel extends JPanel {
 	private JTextArea text;
 	private JButton zurueck = new JButton("Zurück");
-	
+
 	public AnleitungPanel() {
 
 		this.setLayout(null);
@@ -28,21 +29,23 @@ public class AnleitungPanel extends JPanel {
 		setFocusable(true);
 		this.setBackground(Color.CYAN); // set background color for this JPanel
 		this.setVisible(false);
-		text = new JTextArea(readdata(this.getClass().getClassLoader().getResourceAsStream("images/Anleitung.txt")));
+		text = new JTextArea(readdata(this.getClass().getClassLoader()
+				.getResourceAsStream("images/Anleitung.txt")));
 
 		createinput();
 
 	}
-//FIXEN FÜR JAR
+
+	// FIXEN FÜR JAR
 	private static String readdata(InputStream inputStream) {
-		
+
 		String back = null;
 
 		BufferedReader in = null;
 		try {
 			InputStreamReader is = new InputStreamReader(inputStream);
 			in = new BufferedReader(is);
-		
+
 			String zeile = null;
 			while ((zeile = in.readLine()) != null) {
 				if (back == null) {

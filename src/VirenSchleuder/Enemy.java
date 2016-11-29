@@ -1,4 +1,5 @@
 package VirenSchleuder;
+
 import javax.swing.ImageIcon;
 
 public class Enemy extends NormalFunctions {
@@ -24,8 +25,9 @@ public class Enemy extends NormalFunctions {
 		}
 		this.x = x;
 		this.y = y;
-		
-		img = new ImageIcon(this.getClass().getClassLoader().getResource("images/wurm_bild2.png"));
+
+		img = new ImageIcon(this.getClass().getClassLoader()
+				.getResource("images/wurm_bild2.png"));
 		setImage(img.getImage());
 
 	}
