@@ -3,8 +3,6 @@ package VirenSchleuder;
 import java.util.ArrayList;
 import java.util.Random;
 
-import javax.swing.JLabel;
-
 public class Logikadapter {
 
 	final private int computerX = 7;

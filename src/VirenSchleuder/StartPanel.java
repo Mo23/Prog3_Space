@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class StartPanel extends JPanel {
 	private JButton ButtonStartGame = new JButton("Spiel starten");
 	private JButton ButtonAnleitung = new JButton("Anleitung");

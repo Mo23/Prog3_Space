@@ -6,14 +6,13 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 @SuppressWarnings("serial")
 public class PanelSpiel extends JPanel {
 
-	private TLogik adapter; // Tastatureingabe Adapter
+	
 
 	public boolean runninglost = false; // Still need to be Implemented
 	public boolean runningwon = false; // Still need to be Implemented
@@ -27,7 +26,7 @@ public class PanelSpiel extends JPanel {
 
 	public PanelSpiel() {
 
-		addKeyListener(this.adapter = new TLogik());
+		addKeyListener(new TLogik());
 		setFocusable(true);
 		setBackground(Color.BLACK); // set background color for this JPanel
 		logik = new Logikadapter();
@@ -107,6 +106,12 @@ public class PanelSpiel extends JPanel {
 
 		g.drawString("Aktuelle Waffe: " + logik.getSpieler().getWeaponname(),
 				0, 650);
+		checkWeaponAvailable(g);
+		
+
+	}
+
+	private void checkWeaponAvailable(Graphics g) {
 		if (logik.getScore() >= logik.getSpieler().getwSc1()
 				&& logik.getWeapon() == 1) {
 
@@ -152,8 +157,7 @@ public class PanelSpiel extends JPanel {
 				g.setColor(Color.MAGENTA);
 				g.drawString("Nächstes Waffensystem verfügbar", 0, 300);
 			}
-		}
-
+		}		
 	}
 
 	public void DrawPlayer(Graphics g) {
