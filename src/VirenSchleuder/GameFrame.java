@@ -9,11 +9,11 @@ public class GameFrame extends JFrame {
 	final private int HEIGTH = 720;
 
 	public static GameFrame gameboard;
-	public PanelSpiel framespiel;
+	public SpielPanel framespiel;
 
 	public GameFrame() {
 
-		add(framespiel = new PanelSpiel());
+		add(framespiel = new SpielPanel());
 		setTitle("VirenSchleuder");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(WIDTH, HEIGTH);

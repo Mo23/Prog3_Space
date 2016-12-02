@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 @SuppressWarnings("serial")
-public class PanelSpiel extends JPanel {
+public class SpielPanel extends JPanel {
 
 	
 
@@ -24,7 +24,7 @@ public class PanelSpiel extends JPanel {
 	boolean onetime = false;
 	long timeend;
 
-	public PanelSpiel() {
+	public SpielPanel() {
 
 		addKeyListener(new TLogik());
 		setFocusable(true);
@@ -125,7 +125,7 @@ public class PanelSpiel extends JPanel {
 			}
 			if (!times) {
 				g.setColor(Color.MAGENTA);
-				g.drawString("Nächstes Waffensystem verfügbar", 0, 300);
+				g.drawString("Waffensystem 1 ist verfügbar", 300, 300);
 			}
 
 		}
@@ -141,7 +141,7 @@ public class PanelSpiel extends JPanel {
 				times = true;
 			if (!times) {
 				g.setColor(Color.MAGENTA);
-				g.drawString("Nächstes Waffensystem verfügbar", 0, 300);
+				g.drawString("Waffensystem 2 ist verfügbar", 300, 300);
 			}
 		}
 		if (logik.getScore() >= logik.getSpieler().getwSc3()
@@ -155,7 +155,7 @@ public class PanelSpiel extends JPanel {
 				times = true;
 			if (!times) {
 				g.setColor(Color.MAGENTA);
-				g.drawString("Nächstes Waffensystem verfügbar", 0, 300);
+				g.drawString("Waffensystem 3 ist verfügbar", 300, 300);
 			}
 		}		
 	}

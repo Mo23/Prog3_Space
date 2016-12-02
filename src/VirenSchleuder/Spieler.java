@@ -31,45 +31,45 @@ public class Spieler extends NormalFunctions {
 
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
-		if (key == KeyEvent.VK_1 && PanelSpiel.logik.getScore() >= wSc1
-				&& PanelSpiel.logik.getWeapon() < 2) {
-			PanelSpiel.logik.setWeapon(2);
-			PanelSpiel.logik.getShot().dmg = 50;
-			PanelSpiel.logik
-					.setScore((short) (PanelSpiel.logik.getScore() - wSc1));
-			PanelSpiel.logik.getShot().img = new ImageIcon(this.getClass()
+		if (key == KeyEvent.VK_1 && SpielPanel.logik.getScore() >= wSc1
+				&& SpielPanel.logik.getWeapon() < 2) {
+			SpielPanel.logik.setWeapon(2);
+			SpielPanel.logik.getShot().dmg = 50;
+			SpielPanel.logik
+					.setScore((short) (SpielPanel.logik.getScore() - wSc1));
+			SpielPanel.logik.getShot().img = new ImageIcon(this.getClass()
 					.getClassLoader()
 					.getResource("images/Spielerschuss1_bild.png"));
 
-			PanelSpiel.logik.getShot().setImage(
-					PanelSpiel.logik.getShot().img.getImage());
-			PanelSpiel.logik.getSpieler().weaponname = "Doppelter Schuss";
-		} else if (key == KeyEvent.VK_2 && PanelSpiel.logik.getScore() >= wSc2
-				&& PanelSpiel.logik.getWeapon() < 3) {
-			PanelSpiel.logik.setWeapon(3);
-			PanelSpiel.logik
-					.setScore((short) (PanelSpiel.logik.getScore() - wSc2));
-			PanelSpiel.logik.getShot().dmg = 80;
-			PanelSpiel.logik.getShot().img = new ImageIcon(this.getClass()
+			SpielPanel.logik.getShot().setImage(
+					SpielPanel.logik.getShot().img.getImage());
+			SpielPanel.logik.getSpieler().weaponname = "Doppelter Schuss";
+		} else if (key == KeyEvent.VK_2 && SpielPanel.logik.getScore() >= wSc2
+				&& SpielPanel.logik.getWeapon() < 3) {
+			SpielPanel.logik.setWeapon(3);
+			SpielPanel.logik
+					.setScore((short) (SpielPanel.logik.getScore() - wSc2));
+			SpielPanel.logik.getShot().dmg = 80;
+			SpielPanel.logik.getShot().img = new ImageIcon(this.getClass()
 					.getClassLoader()
 					.getResource("images/Spielerschuss2_bild.png"));
-			PanelSpiel.logik.getShot().setImage(
-					PanelSpiel.logik.getShot().img.getImage());
+			SpielPanel.logik.getShot().setImage(
+					SpielPanel.logik.getShot().img.getImage());
 
-			PanelSpiel.logik.getSpieler().weaponname = "Dreifacher Schuss";
-		} else if (key == KeyEvent.VK_3 && PanelSpiel.logik.getScore() >= wSc3
-				&& PanelSpiel.logik.getWeapon() < 4) {
-			PanelSpiel.logik.setWeapon(4);
-			PanelSpiel.logik
-					.setScore((short) (PanelSpiel.logik.getScore() - wSc3));
-			PanelSpiel.logik.getShot().dmg = 90;
-			PanelSpiel.logik.getShot().img = new ImageIcon(this.getClass()
+			SpielPanel.logik.getSpieler().weaponname = "Dreifacher Schuss";
+		} else if (key == KeyEvent.VK_3 && SpielPanel.logik.getScore() >= wSc3
+				&& SpielPanel.logik.getWeapon() < 4) {
+			SpielPanel.logik.setWeapon(4);
+			SpielPanel.logik
+					.setScore((short) (SpielPanel.logik.getScore() - wSc3));
+			SpielPanel.logik.getShot().dmg = 90;
+			SpielPanel.logik.getShot().img = new ImageIcon(this.getClass()
 					.getClassLoader()
 					.getResource("images/Spielerschuss3_bild.png"));
-			PanelSpiel.logik.getShot().setImage(
-					PanelSpiel.logik.getShot().img.getImage());
+			SpielPanel.logik.getShot().setImage(
+					SpielPanel.logik.getShot().img.getImage());
 
-			PanelSpiel.logik.getSpieler().weaponname = "Vierfacher Schuss";
+			SpielPanel.logik.getSpieler().weaponname = "Vierfacher Schuss";
 		}
 
 		if (key == KeyEvent.VK_A) {
