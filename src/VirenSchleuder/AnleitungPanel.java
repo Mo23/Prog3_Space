@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+@SuppressWarnings("serial")
 public class AnleitungPanel extends JPanel {
 	private JTextArea text;
 	final private JButton zurueck = new JButton("Zurück");
