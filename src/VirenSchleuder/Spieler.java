@@ -9,9 +9,12 @@ public class Spieler extends NormalFunctions {
 
 	@SuppressWarnings("unused")
 	private Image image;
-	private int wSc1 = 30;
-	private int wSc2 = 50;
-	private int wSc3 = 70;
+	final private int wSc1 = 30;
+	final private int wSc2 = 50;
+	final private int wSc3 = 70;
+	final private int w1dmg = 50;
+	final private int w2dmg = 80;
+	final private int w3dmg = 100;
 	public int dxA = 0;
 	public int dxD = 0;
 	public int HP;
@@ -34,7 +37,7 @@ public class Spieler extends NormalFunctions {
 		if (key == KeyEvent.VK_1 && SpielPanel.logik.getScore() >= wSc1
 				&& SpielPanel.logik.getWeapon() < 2) {
 			SpielPanel.logik.setWeapon(2);
-			SpielPanel.logik.getShot().dmg = 50;
+			SpielPanel.logik.getShot().dmg = w1dmg;
 			SpielPanel.logik
 					.setScore((short) (SpielPanel.logik.getScore() - wSc1));
 			SpielPanel.logik.getShot().img = new ImageIcon(this.getClass()
@@ -49,7 +52,7 @@ public class Spieler extends NormalFunctions {
 			SpielPanel.logik.setWeapon(3);
 			SpielPanel.logik
 					.setScore((short) (SpielPanel.logik.getScore() - wSc2));
-			SpielPanel.logik.getShot().dmg = 80;
+			SpielPanel.logik.getShot().dmg = w2dmg;
 			SpielPanel.logik.getShot().img = new ImageIcon(this.getClass()
 					.getClassLoader()
 					.getResource("images/Spielerschuss2_bild.png"));
@@ -62,7 +65,7 @@ public class Spieler extends NormalFunctions {
 			SpielPanel.logik.setWeapon(4);
 			SpielPanel.logik
 					.setScore((short) (SpielPanel.logik.getScore() - wSc3));
-			SpielPanel.logik.getShot().dmg = 90;
+			SpielPanel.logik.getShot().dmg = w3dmg;
 			SpielPanel.logik.getShot().img = new ImageIcon(this.getClass()
 					.getClassLoader()
 					.getResource("images/Spielerschuss3_bild.png"));

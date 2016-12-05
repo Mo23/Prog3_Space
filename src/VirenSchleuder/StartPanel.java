@@ -9,15 +9,15 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class StartPanel extends JPanel {
-	private JButton ButtonStartGame = new JButton("Spiel starten");
-	private JButton ButtonAnleitung = new JButton("Anleitung");
-	private JButton ButtonEinstellung = new JButton("Einstellung");
-	private JButton ButtonZurueck = new JButton("Zurück");
+	final private JButton ButtonStartGame = new JButton("Spiel starten");
+	final private JButton ButtonAnleitung = new JButton("Anleitung");
+	final private JButton ButtonEinstellung = new JButton("Einstellung");
+	final private JButton ButtonZurueck = new JButton("Zurück");
 
 	public StartPanel() {
 		this.setLayout(null);
-		setFocusable(true);
-		setBackground(Color.black); // set background color for this JPanel
+		this.setFocusable(true);
+		this.setBackground(Color.black); // set background color for this JPanel
 		this.setVisible(true);
 		ButtonStartGame.addActionListener(new ActionListener() {
 

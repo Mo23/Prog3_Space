@@ -12,23 +12,23 @@ import javax.swing.SwingUtilities;
 @SuppressWarnings("serial")
 public class SpielPanel extends JPanel {
 
-	
-
-	public boolean runninglost = false; // Still need to be Implemented
-	public boolean runningwon = false; // Still need to be Implemented
+	public boolean runninglost = false;
+	public boolean runningwon = false;
 	public Thread gamerunning;
 	public static Logikadapter logik;
-	private final ImageIcon gewonnen = new ImageIcon("images/spielgewonnen.png");
-	private final ImageIcon verloren = new ImageIcon("images/spielverloren.png");
+	private final ImageIcon gewonnen = new ImageIcon(this.getClass()
+			.getClassLoader().getResource("images/spielgewonnen.png"));
+	private final ImageIcon verloren = new ImageIcon(this.getClass()
+			.getClassLoader().getResource("images/spielverloren.png"));
 	boolean times = false;
 	boolean onetime = false;
 	long timeend;
 
 	public SpielPanel() {
 
-		addKeyListener(new TLogik());
-		setFocusable(true);
-		setBackground(Color.BLACK); // set background color for this JPanel
+		this.addKeyListener(new TLogik());
+		this.setFocusable(true);
+		this.setBackground(Color.BLACK); // set background color for this JPanel
 		logik = new Logikadapter();
 		runningwon = true;
 		runninglost = true;
@@ -107,7 +107,6 @@ public class SpielPanel extends JPanel {
 		g.drawString("Aktuelle Waffe: " + logik.getSpieler().getWeaponname(),
 				0, 650);
 		checkWeaponAvailable(g);
-		
 
 	}
 
@@ -157,7 +156,7 @@ public class SpielPanel extends JPanel {
 				g.setColor(Color.MAGENTA);
 				g.drawString("Waffensystem 3 ist verfügbar", 300, 300);
 			}
-		}		
+		}
 	}
 
 	public void DrawPlayer(Graphics g) {

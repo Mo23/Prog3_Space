@@ -5,38 +5,32 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.URL;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class AnleitungPanel extends JPanel {
 	private JTextArea text;
-	private JButton zurueck = new JButton("Zurück");
+	final private JButton zurueck = new JButton("Zurück");
 
 	public AnleitungPanel() {
 
 		this.setLayout(null);
 		this.setSize(1200, 720);
-		setFocusable(true);
+		this.setFocusable(true);
 		this.setBackground(Color.CYAN); // set background color for this JPanel
 		this.setVisible(false);
-		text = new JTextArea(readdata(this.getClass().getClassLoader()
+		this.text = new JTextArea(readdata(this.getClass().getClassLoader()
 				.getResourceAsStream("images/Anleitung.txt")));
 
-		createinput();
+		this.createinput();
 
 	}
 
-	// FIXEN FÜR JAR
 	private static String readdata(InputStream inputStream) {
 
 		String back = null;

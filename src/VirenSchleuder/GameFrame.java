@@ -13,13 +13,13 @@ public class GameFrame extends JFrame {
 
 	public GameFrame() {
 
-		add(framespiel = new SpielPanel());
-		setTitle("VirenSchleuder");
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(WIDTH, HEIGTH);
-		setLocationRelativeTo(null);
-		setVisible(true);
-		setResizable(false);
+		this.add(framespiel = new SpielPanel());
+		this.setTitle("VirenSchleuder");
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setSize(WIDTH, HEIGTH);
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
+		this.setResizable(false);
 
 	}
 

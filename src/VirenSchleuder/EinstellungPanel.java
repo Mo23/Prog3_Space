@@ -8,19 +8,19 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class EinstellungPanel extends JPanel {
-	private JButton leicht = new JButton("Leicht");
-	private JButton mittel = new JButton("Mittel");
-	private JButton schwer = new JButton("Schwer");
-	private JButton zurueck = new JButton("Zurück");
+	final private JButton leicht = new JButton("Leicht");
+	final private JButton mittel = new JButton("Mittel");
+	final private JButton schwer = new JButton("Schwer");
+	final private JButton zurueck = new JButton("Zurück");
 	public int difficult = 0;
 
 	public EinstellungPanel() {
 		this.setLayout(null);
 		this.setSize(1200, 720);
-		setFocusable(true);
+		this.setFocusable(true);
 		this.setBackground(Color.CYAN); // set background color for this JPanel
 		this.setVisible(false);
-		createInput();
+		this.createInput();
 	}
 
 	public void createInput() {
