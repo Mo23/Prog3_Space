@@ -1,6 +1,8 @@
 package VirenSchleuder;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 @SuppressWarnings("serial")
@@ -15,6 +17,7 @@ public class Startscreen extends JFrame {
 	public boolean startedgame;
 	public Thread gamestart;
 	private static Thread startgame;
+	
 
 	public Startscreen() {
 		this.startedgame = false;

@@ -1,10 +1,13 @@
 package VirenSchleuder;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
@@ -13,12 +16,16 @@ public class StartPanel extends JPanel {
 	final private JButton ButtonAnleitung = new JButton("Anleitung");
 	final private JButton ButtonEinstellung = new JButton("Einstellung");
 	final private JButton ButtonZurueck = new JButton("Zurück");
-
+	final private ImageIcon img;
+	
 	public StartPanel() {
+		img = new ImageIcon(this.getClass().getClassLoader()
+				.getResource("images/background.png"));
 		this.setLayout(null);
 		this.setFocusable(true);
-		this.setBackground(Color.black); // set background color for this JPanel
+		
 		this.setVisible(true);
+	
 		ButtonStartGame.addActionListener(new ActionListener() {
 
 			@Override
@@ -67,6 +74,13 @@ public class StartPanel extends JPanel {
 		ButtonStartGame.setVisible(true);
 		ButtonEinstellung.setVisible(true);
 		ButtonZurueck.setVisible(true);
+	}
+
+
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(img.getImage(),0,0,this);
+		
 	}
 
 }

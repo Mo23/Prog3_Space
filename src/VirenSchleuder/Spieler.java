@@ -2,7 +2,13 @@ package VirenSchleuder;
 
 import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.nio.ByteOrder;
 
+import javax.imageio.ImageIO;
+import javax.imageio.stream.IIOByteBuffer;
+import javax.imageio.stream.ImageInputStream;
 import javax.swing.ImageIcon;
 
 public class Spieler extends NormalFunctions {
@@ -19,6 +25,7 @@ public class Spieler extends NormalFunctions {
 	public int dxD = 0;
 	public int HP;
 	public ImageIcon img;
+	public BufferedImage bimg;
 	public boolean move = false;
 	private String weaponname = "Einfacher Schuss";
 
