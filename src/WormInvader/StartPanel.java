@@ -1,5 +1,6 @@
 package WormInvader;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -64,6 +65,10 @@ public class StartPanel extends JPanel {
 		this.add(ButtonStartGame);
 		this.add(ButtonAnleitung);
 		this.add(ButtonZurueck);
+		ButtonZurueck.setBackground(Color.pink);
+		ButtonAnleitung.setBackground(Color.pink);
+		ButtonStartGame.setBackground(Color.pink);
+		ButtonEinstellung.setBackground(Color.pink);
 		ButtonZurueck.setBounds(520, 260, 150, 20);
 		ButtonAnleitung.setBounds(520, 180, 150, 20);
 		ButtonStartGame.setBounds(520, 140, 150, 20);

@@ -76,8 +76,9 @@ public class AnleitungPanel extends JPanel {
 	private void createinput() {
 		textFeldAnleitung.setBackground(Color.CYAN);
 		textFeldAnleitung.setEditable(false);
+		textFeldAnleitung.setFocusable(false);
 		textFeldAnleitung.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textFeldAnleitung.setBounds(0, 0, 1200, 650);
+		textFeldAnleitung.setBounds(0, 200, 1200, 350);
 		zurueck.setBounds(550, 650, 100, 30);
 		zurueck.addActionListener(new ActionListener() {
 

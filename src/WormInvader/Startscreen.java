@@ -25,7 +25,7 @@ public class Startscreen extends JFrame {
 
 		add(einstellungspanel = new EinstellungPanel());
 		add(startpanel = new StartPanel());
-		setTitle("VirenSchleuder");
+		setTitle("WormInvader");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(WIDTH, HEIGTH);
 		setLocationRelativeTo(null);
