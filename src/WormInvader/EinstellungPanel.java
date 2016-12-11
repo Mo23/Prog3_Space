@@ -65,12 +65,18 @@ public class EinstellungPanel extends JPanel {
 		this.add(leicht);
 		this.add(mittel);
 		this.add(schwer);
-		leicht.setBackground(Color.pink);
-		mittel.setBackground(Color.pink);
-		schwer.setBackground(Color.pink);
-		leicht.setBounds(550, 200, 100, 30);
-		mittel.setBounds(550, 250, 100, 30);
-		schwer.setBounds(550, 300, 100, 30);
+		leicht.setBorderPainted(false);
+		mittel.setBorderPainted(false);
+		schwer.setBorderPainted(false);
+		leicht.setFont(Startscreen.font);
+		mittel.setFont(Startscreen.font);
+		schwer.setFont(Startscreen.font);
+		leicht.setBackground(Startscreen.color);
+		mittel.setBackground(Startscreen.color);
+		schwer.setBackground(Startscreen.color);
+		leicht.setBounds(460, 200, 300, 60);
+		mittel.setBounds(460, 280, 300, 60);
+		schwer.setBounds(460, 360, 300, 60);
 
 		leicht.setVisible(true);
 		mittel.setVisible(true);

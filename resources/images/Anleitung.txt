@@ -1,13 +1,13 @@
-		Spielanleitung:
-		
+Spielanleitung:
 
-		Drücke A/D-Tasten um den Spieler nach links/rechts zu bewegen.
-		Drücke die Leertaste um einen Schuss abzufeuern.
-		Über die Tasten 1-3 kann bei ausreichendem Score ein besseres Waffensystem erworben werden.
-		Durch drücken der "ESC"-Taste wird das Spiel beendet und man gelangt in das Hauptmenü.
-		
-		Ziel des Spiels:
 
-		Besiege alle gegnerischen Computerwürme und weiche dabei deren Angriffe aus.
-		Der Spieler hat gewonnen, sobald alle Computerwürmer besiegt sind, wird der Spieler
-		zu oft getroffen und die Lebenspunkte fallen auf 0 hat der Spieler verloren und das System ist infiziert.
+Drücke A/D-Tasten um den Spieler nach links/rechts zu bewegen.
+Drücke die Leertaste um einen Schuss abzufeuern.
+Über die Tasten 1-3 kann bei ausreichendem Score ein besseres Waffensystem erworben werden.
+Durch drücken der "ESC"-Taste wird das Spiel beendet und man gelangt in das Hauptmenü.
+		
+Ziel des Spiels:
+
+Besiege alle gegnerischen Computerwürme und weiche dabei deren Angriffe aus.
+Der Spieler hat gewonnen, sobald alle Computerwürmer besiegt sind, wird der Spieler
+zu oft getroffen und die Lebenspunkte fallen auf 0 hat der Spieler verloren und das System ist infiziert.

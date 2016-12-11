@@ -85,10 +85,10 @@ public class AnleitungPanel extends JPanel {
 		textFeldAnleitung.setFocusable(false);
 		textFeldAnleitung.setOpaque(false);
 
-		textFeldAnleitung.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		textFeldAnleitung.setFont(new Font("Ubuntu", Font.PLAIN, 20));
 		textFeldAnleitung.setForeground(Color.WHITE);
-		textFeldAnleitung.setBounds(0, 200, 1200, 350);
-		zurueck.setBounds(550, 650, 100, 30);
+		textFeldAnleitung.setBounds(150, 150, 1200, 350);
+		zurueck.setBounds(450, 500, 300, 60);
 		zurueck.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
@@ -99,7 +99,9 @@ public class AnleitungPanel extends JPanel {
 		});
 		this.add(textFeldAnleitung);
 		this.add(zurueck);
-		zurueck.setBackground(Color.pink);
+		zurueck.setBorderPainted(false);
+		zurueck.setFont(Startscreen.font);
+		zurueck.setBackground(Startscreen.color);
 		zurueck.setVisible(true);
 		textFeldAnleitung.setVisible(true);
 

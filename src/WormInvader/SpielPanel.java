@@ -1,6 +1,7 @@
 package WormInvader;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -23,6 +24,8 @@ public class SpielPanel extends JPanel {
 	boolean times = false;
 	boolean onetime = false;
 	long timeend;
+	final public Font font = new Font("Ubuntu", Font.BOLD, 20);
+	final int displaynewWeapon = 1250;
 
 	public SpielPanel() {
 
@@ -98,13 +101,14 @@ public class SpielPanel extends JPanel {
 
 	public void DrawStatus(Graphics g) {
 
-		g.setColor(Color.red);
+		g.setColor(Startscreen.color);
+		g.setFont(font);
 		g.drawString(
 				"Lebenspunkte: " + Integer.toString(logik.getSpieler().HP), 0,
 				700);
 		g.drawString("Aktuelle Waffe: " + logik.getSpieler().getWeaponname(),
 				0, 670);
-		g.drawString("Score: " + Integer.toString(logik.getScore()), 1110, 700);
+		g.drawString("Score: " + Integer.toString(logik.getScore()), 1100, 700);
 
 		checkWeaponAvailable(g);
 
@@ -115,7 +119,7 @@ public class SpielPanel extends JPanel {
 				&& logik.getWeapon() == 1) {
 
 			if (!onetime) {
-				timeend = System.currentTimeMillis() + 500;
+				timeend = System.currentTimeMillis() + displaynewWeapon;
 				onetime = true;
 			}
 			if (timeend <= System.currentTimeMillis()) {
@@ -123,7 +127,7 @@ public class SpielPanel extends JPanel {
 
 			}
 			if (!times) {
-				g.setColor(Color.MAGENTA);
+				g.setColor(Startscreen.color);
 
 				g.drawString("Waffensystem 1 ist verfügbar", 300, 300);
 			}
@@ -133,28 +137,28 @@ public class SpielPanel extends JPanel {
 				&& logik.getWeapon() == 2) {
 
 			if (onetime) {
-				timeend = System.currentTimeMillis() + 500;
+				timeend = System.currentTimeMillis() + displaynewWeapon;
 				onetime = false;
 				times = false;
 			}
 			if (timeend <= System.currentTimeMillis())
 				times = true;
 			if (!times) {
-				g.setColor(Color.MAGENTA);
+				g.setColor(Startscreen.color);
 				g.drawString("Waffensystem 2 ist verfügbar", 300, 300);
 			}
 		}
 		if (logik.getScore() >= logik.getSpieler().getwSc3()
 				&& logik.getWeapon() == 3) {
 			if (!onetime) {
-				timeend = System.currentTimeMillis() + 500;
+				timeend = System.currentTimeMillis() + displaynewWeapon;
 				onetime = true;
 				times = false;
 			}
 			if (timeend <= System.currentTimeMillis())
 				times = true;
 			if (!times) {
-				g.setColor(Color.MAGENTA);
+				g.setColor(Startscreen.color);
 				g.drawString("Waffensystem 3 ist verfügbar", 300, 300);
 			}
 		}
