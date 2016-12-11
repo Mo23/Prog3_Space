@@ -9,7 +9,7 @@ public class Logikadapter {
 	final private int computerY = 0;
 	final private int FIXED_HP = 100;
 
-	private Spieler spieler = new Spieler(550, 625, FIXED_HP);
+	private Spieler spieler = new Spieler(550, 650, FIXED_HP);
 	private Shot shot = new Shot(spieler.getX(), spieler.getY());
 	private ArrayList<Enemy> enemylist;
 	private Sound sound;

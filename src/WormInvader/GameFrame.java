@@ -15,7 +15,7 @@ public class GameFrame extends JFrame {
 	 * Konstruktor zum erzeugen des Frames für das Spiel.
 	 */
 	public GameFrame() {
-
+		
 		this.add(framespiel = new SpielPanel());
 		this.setTitle("WormInvader");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

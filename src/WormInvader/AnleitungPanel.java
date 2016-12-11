@@ -2,6 +2,7 @@ package WormInvader;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -9,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -17,6 +19,8 @@ import javax.swing.JTextArea;
 public class AnleitungPanel extends JPanel {
 	private JTextArea textFeldAnleitung;
 	final private JButton zurueck = new JButton("Zurück");
+	final private ImageIcon img = new ImageIcon(this.getClass().getClassLoader()
+			.getResource("images/background.png"));
 
 	/**
 	 * Standkonstruktor zur Erzeugung des Panels mit Inhalt.
@@ -77,7 +81,10 @@ public class AnleitungPanel extends JPanel {
 		textFeldAnleitung.setBackground(Color.CYAN);
 		textFeldAnleitung.setEditable(false);
 		textFeldAnleitung.setFocusable(false);
+		textFeldAnleitung.setOpaque(false);
+		
 		textFeldAnleitung.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		textFeldAnleitung.setForeground(Color.WHITE);
 		textFeldAnleitung.setBounds(0, 200, 1200, 350);
 		zurueck.setBounds(550, 650, 100, 30);
 		zurueck.addActionListener(new ActionListener() {
@@ -90,7 +97,14 @@ public class AnleitungPanel extends JPanel {
 		});
 		this.add(textFeldAnleitung);
 		this.add(zurueck);
+		zurueck.setBackground(Color.pink);
 		zurueck.setVisible(true);
 		textFeldAnleitung.setVisible(true);
+
+	}
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(img.getImage(),0,0,this);
+		
 	}
 }

@@ -1,9 +1,11 @@
 package WormInvader;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -13,6 +15,8 @@ public class EinstellungPanel extends JPanel {
 	final private JButton schwer = new JButton("Schwer");
 	final private JButton zurueck = new JButton("Zurück");
 	public int difficult = 0;
+	final private ImageIcon img = new ImageIcon(this.getClass().getClassLoader()
+			.getResource("images/background.png"));
 
 	/**
 	 * Überschriebener Standardkonstruktor zum erstellen des Layouts.
@@ -61,6 +65,9 @@ public class EinstellungPanel extends JPanel {
 		this.add(leicht);
 		this.add(mittel);
 		this.add(schwer);
+		leicht.setBackground(Color.pink);
+		mittel.setBackground(Color.pink);
+		schwer.setBackground(Color.pink);
 		leicht.setBounds(550, 200, 100, 30);
 		mittel.setBounds(550, 250, 100, 30);
 		schwer.setBounds(550, 300, 100, 30);
@@ -78,5 +85,10 @@ public class EinstellungPanel extends JPanel {
 
 		Startscreen.einstellungspanel.setVisible(false);
 		Startscreen.startpanel.setVisible(true);
+	}
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(img.getImage(),0,0,this);
+		
 	}
 }

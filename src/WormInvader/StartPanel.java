@@ -15,11 +15,11 @@ public class StartPanel extends JPanel {
 	final private JButton ButtonAnleitung = new JButton("Anleitung");
 	final private JButton ButtonEinstellung = new JButton("Einstellung");
 	final private JButton ButtonZurueck = new JButton("Zurück");
-	final private ImageIcon img;
+	final private ImageIcon img = new ImageIcon(this.getClass().getClassLoader()
+			.getResource("images/background.png"));
 	
 	public StartPanel() {
-		img = new ImageIcon(this.getClass().getClassLoader()
-				.getResource("images/background.png"));
+		
 		this.setLayout(null);
 		this.setFocusable(true);
 		

@@ -101,11 +101,12 @@ public class SpielPanel extends JPanel {
 		g.setColor(Color.red);
 		g.drawString(
 				"Lebenspunkte: " + Integer.toString(logik.getSpieler().HP), 0,
-				680);
-		g.drawString("Score: " + Integer.toString(logik.getScore()), 1110, 680);
-
+				700);
 		g.drawString("Aktuelle Waffe: " + logik.getSpieler().getWeaponname(),
-				0, 650);
+				0, 670);
+		g.drawString("Score: " + Integer.toString(logik.getScore()), 1110, 700);
+
+		
 		checkWeaponAvailable(g);
 
 	}
