@@ -15,18 +15,23 @@ public class Logikadapter {
 	private Sound sound;
 	private Thread updates;
 	private short score = 0;
-	// Variablen zur Verlangsamung.
 	private Random random = new Random();
 	private int stoppinganimations = 0;
-
 	private int weapon = 1;
 
+	/**
+	 * Konstruktor eines neuen Logikadapters.
+	 */
 	public Logikadapter() {
 		this.initComputer();
 		this.sound = new Sound();
 
 	}
 
+	/**
+	 * Neuer Thread zum aktualisieren des Spielfeldes.
+	 * @return gibt ein Zugriff auf den Thread zurück.
+	 */
 	public Runnable act() {
 		updates = new Thread() {
 			public void run() {
@@ -46,6 +51,9 @@ public class Logikadapter {
 		return updates;
 	}
 
+	/**
+	 * Erzeugt eine ArrayList von Gegner mit Koordinaten.
+	 */
 	public void initComputer() {
 		enemylist = new ArrayList<Enemy>();
 
@@ -59,6 +67,10 @@ public class Logikadapter {
 		}
 	}
 
+	/**
+	 * Methode die den Spieler im Rahmen des Spielfeld 
+	 * weitersetzt, falls die notwendigen Paramter gesetzt.
+	 */
 	public void movePlayer() {
 		if (spieler.getX() < 1100) {
 			spieler.setXY(spieler.x + spieler.dxD, spieler.y);
@@ -68,6 +80,9 @@ public class Logikadapter {
 		}
 	}
 
+	/**
+	 * Methode die den Schuss kontinuirlich bewegt.
+	 */
 	public void movePlayerShot() {
 		if (shot.getY() > 0 && shot.fired) {
 			shot.setXY(shot.getX(), shot.getY() - 4);
@@ -77,6 +92,9 @@ public class Logikadapter {
 		}
 	}
 
+	/**
+	 * Überprüft ob ein Schuss vom Spieler einen Wurm getroffen hat und setzt ggf. HP herunter.
+	 */
 	public void checkIfWormHit() {
 		int size_t = enemylist.size();
 		for (int i = 0; i < size_t; i++) {
@@ -97,6 +115,9 @@ public class Logikadapter {
 
 	}
 
+	/**
+	 * Bewegt die Schüsse der Gegner mit Verzögerung und prüft, ob der Spieler getroffen wurde.
+	 */
 	public void moveEnemyShot() {
 		int size_a = enemylist.size();
 
@@ -121,6 +142,11 @@ public class Logikadapter {
 		}
 	}
 
+	/**
+	 * @param e Gegner
+	 * @param a Schuss dieses Gegner
+	 * Berechnet die Koordinaten und setzt ggf. HP des Spieler herunter.
+	 */
 	public void ckeckIfPlayerHit(Enemy e, EnemyShot a) {
 		if (a.x < (spieler.x + spieler.img.getIconWidth() / 2)
 				&& a.x >= (spieler.x - spieler.img.getIconWidth() / 2)
