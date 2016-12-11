@@ -1,4 +1,4 @@
-package VirenSchleuder;
+package WormInvader;
 
 import javax.swing.ImageIcon;
 
@@ -11,6 +11,11 @@ public class Enemy extends NormalFunctions {
 	public boolean visible = true;
 	public int HP;
 
+	/**
+	 * Kosntruktor zum erzeugen eines neuen Gegner mit gegebenen Koordinaten und dem Schwierigkeitsgrad.
+	 * @param x X-Wert auf dem Panel
+	 * @param y Y-Wert auf dem Panel
+	 */
 	public Enemy(int x, int y) {
 		if (Startscreen.startscreen.einstellungspanel.difficult == 0) {
 			HP = 100;
@@ -32,6 +37,10 @@ public class Enemy extends NormalFunctions {
 
 	}
 
+	/**
+	 * Getter für den Schuss des Gegners.
+	 * @return EnemyShot
+	 */
 	public EnemyShot geteshot() {
 		return this.eshot;
 	}

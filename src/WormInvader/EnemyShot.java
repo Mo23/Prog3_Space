@@ -1,12 +1,18 @@
-package VirenSchleuder;
+package WormInvader;
 
 import javax.swing.ImageIcon;
 
 public class EnemyShot extends NormalFunctions {
 	public int dmg;
 
-	public EnemyShot(int x, int y, int d) {
-		this.dmg = d;
+	/**
+	 * Erzeugt einen neuen Schuss.
+	 * @param x X-Wert für die Koordinate
+	 * @param y Y-Wert für die Koordinate
+	 * @param schaden Wert um den Schaden zu setzen.
+	 */
+	public EnemyShot(int x, int y, int schaden) {
+		this.dmg = schaden;
 		this.x = x;
 		this.y = y;
 		ImageIcon img = new ImageIcon(this.getClass().getClassLoader()

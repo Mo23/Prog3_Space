@@ -1,4 +1,4 @@
-package VirenSchleuder;
+package WormInvader;
 
 import javax.swing.ImageIcon;
 

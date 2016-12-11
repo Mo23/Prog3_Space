@@ -1,4 +1,4 @@
-package VirenSchleuder;
+package WormInvader;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;

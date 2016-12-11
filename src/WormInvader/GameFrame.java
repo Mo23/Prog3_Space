@@ -1,4 +1,4 @@
-package VirenSchleuder;
+package WormInvader;
 
 import javax.swing.JFrame;
 
@@ -10,11 +10,14 @@ public class GameFrame extends JFrame {
 
 	public static GameFrame gameboard;
 	public SpielPanel framespiel;
-
+  
+	/**
+	 * Konstruktor zum erzeugen des Frames für das Spiel.
+	 */
 	public GameFrame() {
 
 		this.add(framespiel = new SpielPanel());
-		this.setTitle("VirenSchleuder");
+		this.setTitle("WormInvader");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setSize(WIDTH, HEIGTH);
 		this.setLocationRelativeTo(null);
@@ -23,6 +26,9 @@ public class GameFrame extends JFrame {
 
 	}
 
+	/**
+	 * Methode zum erzeugen eines neuen Objekts des Frames und starte dies im neuen Thread.
+	 */
 	public static void spielstart() {
 
 		Thread thread = new Thread() {

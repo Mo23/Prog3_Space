@@ -1,4 +1,4 @@
-package VirenSchleuder;
+package WormInvader;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -14,6 +14,9 @@ public class EinstellungPanel extends JPanel {
 	final private JButton zurueck = new JButton("Zurück");
 	public int difficult = 0;
 
+	/**
+	 * Überschriebener Standardkonstruktor zum erstellen des Layouts.
+	 */
 	public EinstellungPanel() {
 		this.setLayout(null);
 		this.setSize(1200, 720);
@@ -23,6 +26,9 @@ public class EinstellungPanel extends JPanel {
 		this.createInput();
 	}
 
+	/**
+	 * Erzeugt den Inhalt des Pänels.
+	 */
 	public void createInput() {
 
 		leicht.addActionListener(new ActionListener() {
@@ -65,6 +71,9 @@ public class EinstellungPanel extends JPanel {
 
 	}
 
+	/**
+	 * Methode zum wechseln zwischen den Panels.
+	 */
 	private void goback() {
 
 		Startscreen.einstellungspanel.setVisible(false);

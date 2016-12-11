@@ -1,4 +1,4 @@
-package VirenSchleuder;
+package WormInvader;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -15,9 +15,12 @@ import javax.swing.JTextArea;
 
 @SuppressWarnings("serial")
 public class AnleitungPanel extends JPanel {
-	private JTextArea text;
+	private JTextArea textFeldAnleitung;
 	final private JButton zurueck = new JButton("Zurück");
 
+	/**
+	 * Standkonstruktor zur Erzeugung des Panels mit Inhalt.
+	 */
 	public AnleitungPanel() {
 
 		this.setLayout(null);
@@ -25,13 +28,19 @@ public class AnleitungPanel extends JPanel {
 		this.setFocusable(true);
 		this.setBackground(Color.CYAN); // set background color for this JPanel
 		this.setVisible(false);
-		this.text = new JTextArea(readdata(this.getClass().getClassLoader()
+		this.textFeldAnleitung = new JTextArea(readdata(this.getClass().getClassLoader()
 				.getResourceAsStream("images/Anleitung.txt")));
 
 		this.createinput();
 
 	}
 
+	/**
+	 * Methode zum einlesen des Textfeldes und Umwandlung in einen String mit Formatierung.
+	 * @param inputStream
+	 * @return String
+	 * 
+	 */
 	private static String readdata(InputStream inputStream) {
 
 		String back = null;
@@ -61,11 +70,14 @@ public class AnleitungPanel extends JPanel {
 		return back;
 	}
 
+	/**
+	 * Methode zum setzen der Inhaltelemente des Anleitungspanels.
+	 */
 	private void createinput() {
-		text.setBackground(Color.CYAN);
-		text.setEditable(false);
-		text.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		text.setBounds(0, 0, 1200, 650);
+		textFeldAnleitung.setBackground(Color.CYAN);
+		textFeldAnleitung.setEditable(false);
+		textFeldAnleitung.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		textFeldAnleitung.setBounds(0, 0, 1200, 650);
 		zurueck.setBounds(550, 650, 100, 30);
 		zurueck.addActionListener(new ActionListener() {
 
@@ -75,9 +87,9 @@ public class AnleitungPanel extends JPanel {
 
 			}
 		});
-		this.add(text);
+		this.add(textFeldAnleitung);
 		this.add(zurueck);
 		zurueck.setVisible(true);
-		text.setVisible(true);
+		textFeldAnleitung.setVisible(true);
 	}
 }

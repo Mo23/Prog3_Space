@@ -1,4 +1,4 @@
-package VirenSchleuder;
+package WormInvader;
 
 import java.util.ArrayList;
 import java.util.Random;

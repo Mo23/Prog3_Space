@@ -1,4 +1,4 @@
-package VirenSchleuder;
+package WormInvader;
 
 import java.awt.Color;
 import java.awt.Graphics;
