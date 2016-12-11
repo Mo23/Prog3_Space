@@ -106,7 +106,6 @@ public class SpielPanel extends JPanel {
 				0, 670);
 		g.drawString("Score: " + Integer.toString(logik.getScore()), 1110, 700);
 
-		
 		checkWeaponAvailable(g);
 
 	}
@@ -125,7 +124,7 @@ public class SpielPanel extends JPanel {
 			}
 			if (!times) {
 				g.setColor(Color.MAGENTA);
-				
+
 				g.drawString("Waffensystem 1 ist verfügbar", 300, 300);
 			}
 
@@ -162,7 +161,7 @@ public class SpielPanel extends JPanel {
 	}
 
 	public void DrawPlayer(Graphics g) {
-		
+
 		g.drawImage(logik.getSpieler().getImage(), logik.getSpieler().getX(),
 				logik.getSpieler().getY(), this);
 	}

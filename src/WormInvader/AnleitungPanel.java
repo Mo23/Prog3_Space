@@ -19,8 +19,8 @@ import javax.swing.JTextArea;
 public class AnleitungPanel extends JPanel {
 	private JTextArea textFeldAnleitung;
 	final private JButton zurueck = new JButton("Zurück");
-	final private ImageIcon img = new ImageIcon(this.getClass().getClassLoader()
-			.getResource("images/background.png"));
+	final private ImageIcon img = new ImageIcon(this.getClass()
+			.getClassLoader().getResource("images/background.png"));
 
 	/**
 	 * Standkonstruktor zur Erzeugung des Panels mit Inhalt.
@@ -32,15 +32,17 @@ public class AnleitungPanel extends JPanel {
 		this.setFocusable(true);
 		this.setBackground(Color.CYAN); // set background color for this JPanel
 		this.setVisible(false);
-		this.textFeldAnleitung = new JTextArea(readdata(this.getClass().getClassLoader()
-				.getResourceAsStream("images/Anleitung.txt")));
+		this.textFeldAnleitung = new JTextArea(readdata(this.getClass()
+				.getClassLoader().getResourceAsStream("images/Anleitung.txt")));
 
 		this.createinput();
 
 	}
 
 	/**
-	 * Methode zum einlesen des Textfeldes und Umwandlung in einen String mit Formatierung.
+	 * Methode zum einlesen des Textfeldes und Umwandlung in einen String mit
+	 * Formatierung.
+	 * 
 	 * @param inputStream
 	 * @return String
 	 * 
@@ -82,7 +84,7 @@ public class AnleitungPanel extends JPanel {
 		textFeldAnleitung.setEditable(false);
 		textFeldAnleitung.setFocusable(false);
 		textFeldAnleitung.setOpaque(false);
-		
+
 		textFeldAnleitung.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		textFeldAnleitung.setForeground(Color.WHITE);
 		textFeldAnleitung.setBounds(0, 200, 1200, 350);
@@ -102,9 +104,10 @@ public class AnleitungPanel extends JPanel {
 		textFeldAnleitung.setVisible(true);
 
 	}
+
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(img.getImage(),0,0,this);
-		
+		g.drawImage(img.getImage(), 0, 0, this);
+
 	}
 }

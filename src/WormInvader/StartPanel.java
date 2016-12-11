@@ -15,16 +15,16 @@ public class StartPanel extends JPanel {
 	final private JButton ButtonAnleitung = new JButton("Anleitung");
 	final private JButton ButtonEinstellung = new JButton("Einstellung");
 	final private JButton ButtonZurueck = new JButton("Zurück");
-	final private ImageIcon img = new ImageIcon(this.getClass().getClassLoader()
-			.getResource("images/background.png"));
-	
+	final private ImageIcon img = new ImageIcon(this.getClass()
+			.getClassLoader().getResource("images/background.png"));
+
 	public StartPanel() {
-		
+
 		this.setLayout(null);
 		this.setFocusable(true);
-		
+
 		this.setVisible(true);
-	
+
 		ButtonStartGame.addActionListener(new ActionListener() {
 
 			@Override
@@ -79,11 +79,10 @@ public class StartPanel extends JPanel {
 		ButtonZurueck.setVisible(true);
 	}
 
-
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(img.getImage(),0,0,this);
-		
+		g.drawImage(img.getImage(), 0, 0, this);
+
 	}
 
 }

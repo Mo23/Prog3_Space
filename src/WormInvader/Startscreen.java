@@ -17,7 +17,6 @@ public class Startscreen extends JFrame {
 	public boolean startedgame;
 	public Thread gamestart;
 	private static Thread startgame;
-	
 
 	public Startscreen() {
 		this.startedgame = false;

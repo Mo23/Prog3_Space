@@ -7,9 +7,13 @@ public class EnemyShot extends NormalFunctions {
 
 	/**
 	 * Erzeugt einen neuen Schuss.
-	 * @param x X-Wert für die Koordinate
-	 * @param y Y-Wert für die Koordinate
-	 * @param schaden Wert um den Schaden zu setzen.
+	 * 
+	 * @param x
+	 *            X-Wert für die Koordinate
+	 * @param y
+	 *            Y-Wert für die Koordinate
+	 * @param schaden
+	 *            Wert um den Schaden zu setzen.
 	 */
 	public EnemyShot(int x, int y, int schaden) {
 		this.dmg = schaden;

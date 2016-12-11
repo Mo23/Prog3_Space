@@ -30,6 +30,7 @@ public class Logikadapter {
 
 	/**
 	 * Neuer Thread zum aktualisieren des Spielfeldes.
+	 * 
 	 * @return gibt ein Zugriff auf den Thread zurück.
 	 */
 	public Runnable act() {
@@ -68,8 +69,8 @@ public class Logikadapter {
 	}
 
 	/**
-	 * Methode die den Spieler im Rahmen des Spielfeld 
-	 * weitersetzt, falls die notwendigen Paramter gesetzt.
+	 * Methode die den Spieler im Rahmen des Spielfeld weitersetzt, falls die
+	 * notwendigen Paramter gesetzt.
 	 */
 	public void movePlayer() {
 		if (spieler.getX() < 1100) {
@@ -93,7 +94,8 @@ public class Logikadapter {
 	}
 
 	/**
-	 * Überprüft ob ein Schuss vom Spieler einen Wurm getroffen hat und setzt ggf. HP herunter.
+	 * Überprüft ob ein Schuss vom Spieler einen Wurm getroffen hat und setzt
+	 * ggf. HP herunter.
 	 */
 	public void checkIfWormHit() {
 		int size_t = enemylist.size();
@@ -116,7 +118,8 @@ public class Logikadapter {
 	}
 
 	/**
-	 * Bewegt die Schüsse der Gegner mit Verzögerung und prüft, ob der Spieler getroffen wurde.
+	 * Bewegt die Schüsse der Gegner mit Verzögerung und prüft, ob der Spieler
+	 * getroffen wurde.
 	 */
 	public void moveEnemyShot() {
 		int size_a = enemylist.size();
@@ -143,9 +146,11 @@ public class Logikadapter {
 	}
 
 	/**
-	 * @param e Gegner
-	 * @param a Schuss dieses Gegner
-	 * Berechnet die Koordinaten und setzt ggf. HP des Spieler herunter.
+	 * @param e
+	 *            Gegner
+	 * @param a
+	 *            Schuss dieses Gegner Berechnet die Koordinaten und setzt ggf.
+	 *            HP des Spieler herunter.
 	 */
 	public void ckeckIfPlayerHit(Enemy e, EnemyShot a) {
 		if (a.x < (spieler.x + spieler.img.getIconWidth() / 2)

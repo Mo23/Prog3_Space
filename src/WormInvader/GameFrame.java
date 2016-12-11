@@ -10,12 +10,12 @@ public class GameFrame extends JFrame {
 
 	public static GameFrame gameboard;
 	public SpielPanel framespiel;
-  
+
 	/**
 	 * Konstruktor zum erzeugen des Frames für das Spiel.
 	 */
 	public GameFrame() {
-		
+
 		this.add(framespiel = new SpielPanel());
 		this.setTitle("WormInvader");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -27,7 +27,8 @@ public class GameFrame extends JFrame {
 	}
 
 	/**
-	 * Methode zum erzeugen eines neuen Objekts des Frames und starte dies im neuen Thread.
+	 * Methode zum erzeugen eines neuen Objekts des Frames und starte dies im
+	 * neuen Thread.
 	 */
 	public static void spielstart() {
 
