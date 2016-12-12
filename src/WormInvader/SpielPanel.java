@@ -25,7 +25,8 @@ public class SpielPanel extends JPanel {
 	boolean onetime = false;
 	long timeend;
 	final public Font font = new Font("Ubuntu", Font.BOLD, 20);
-	final int displaynewWeapon = 1250;
+	final private int displaynewWeapon = 1250;
+	final private int displaynewWeapony = 640;
 
 	public SpielPanel() {
 
@@ -127,9 +128,9 @@ public class SpielPanel extends JPanel {
 
 			}
 			if (!times) {
-				g.setColor(Startscreen.color);
+				g.setColor(Startscreen.color.brighter());
 
-				g.drawString("Waffensystem 1 ist verfügbar", 300, 300);
+				g.drawString("Waffensystem 1 ist verfügbar", 0, displaynewWeapony);
 			}
 
 		}
@@ -144,8 +145,8 @@ public class SpielPanel extends JPanel {
 			if (timeend <= System.currentTimeMillis())
 				times = true;
 			if (!times) {
-				g.setColor(Startscreen.color);
-				g.drawString("Waffensystem 2 ist verfügbar", 300, 300);
+				g.setColor(Startscreen.color.brighter());
+				g.drawString("Waffensystem 2 ist verfügbar", 0, displaynewWeapony);
 			}
 		}
 		if (logik.getScore() >= logik.getSpieler().getwSc3()
@@ -158,8 +159,8 @@ public class SpielPanel extends JPanel {
 			if (timeend <= System.currentTimeMillis())
 				times = true;
 			if (!times) {
-				g.setColor(Startscreen.color);
-				g.drawString("Waffensystem 3 ist verfügbar", 300, 300);
+				g.setColor(Startscreen.color.brighter());
+				g.drawString("Waffensystem 3 ist verfügbar", 0, displaynewWeapony);
 			}
 		}
 	}
