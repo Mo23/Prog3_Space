@@ -21,9 +21,9 @@ public class SpielPanel extends JPanel {
 			.getClassLoader().getResource("images/spielgewonnen.png"));
 	private final ImageIcon verloren = new ImageIcon(this.getClass()
 			.getClassLoader().getResource("images/spielverloren.png"));
-	boolean times = false;
-	boolean onetime = false;
-	long timeend;
+	private boolean times = false;
+	private boolean onetime = false;
+	private long timeend;
 	final public Font font = new Font("Ubuntu", Font.BOLD, 20);
 	final private int displaynewWeapon = 1250;
 	final private int displaynewWeapony = 640;
@@ -215,6 +215,7 @@ public class SpielPanel extends JPanel {
 					logik.getShot().setXY(logik.getSpieler().getX(),
 							logik.getSpieler().getY() - 40);
 					logik.getShot().fired = true;
+					Sound fire = new Sound(1);
 				}
 			}
 

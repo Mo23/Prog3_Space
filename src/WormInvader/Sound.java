@@ -17,16 +17,22 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class Sound extends Thread implements LineListener {
 
 	protected boolean playCompleted;
+	private InputStream backgroundmusic = this.getClass().getClassLoader().getResourceAsStream("images/Failing_Defense.wav");
+	private InputStream shotfired = this.getClass().getClassLoader().getResourceAsStream("images/Laser_Blaster.wav");
 
-	public Sound() {
-		start(this);
+	public Sound(final int n) {
+		start(this,n);
 	}
 
-	public void start(final Sound sound) {
+	public void start(final Sound sound, final int n) {
 
 		Thread thread = new Thread() {
 			public void run() {
-				play();
+				if(n==0){
+				play(backgroundmusic, n);}
+				else{
+					play(shotfired,n);
+				}
 			}
 		};
 
@@ -34,13 +40,8 @@ public class Sound extends Thread implements LineListener {
 
 	}
 
-	void play() {
-		// String audioFilePath =
-		// ClassLoader.getSystemResource("images/Failing_Defense.wav");
-		// System.out.println(audioFilePath);
-		InputStream stream = this.getClass().getClassLoader()
-				.getResourceAsStream("images/Failing_Defense.wav");
-		// File audioFile = new File(url.getFile());
+	void play(InputStream stream, final int n) {
+		
 
 		try {
 			AudioInputStream audioStream = AudioSystem
@@ -55,11 +56,14 @@ public class Sound extends Thread implements LineListener {
 			audioClip.addLineListener(this);
 
 			audioClip.open(audioStream);
-
-			audioClip.loop(Integer.MAX_VALUE);
+			if(n==0){
+			audioClip.loop(Integer.MAX_VALUE);}
+			else{
+				
+				audioClip.start();
+			}
 
 			while (!playCompleted) {
-				// wait for the playback completes
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException ex) {
@@ -84,15 +88,7 @@ public class Sound extends Thread implements LineListener {
 
 	@Override
 	public void update(LineEvent event) {
-		LineEvent.Type type = event.getType();
-
-		if (type == LineEvent.Type.START) {
-			System.out.println("Playback started.");
-
-		} else if (type == LineEvent.Type.STOP) {
-
-			System.out.println("Playback completed.");
-		}
+		
 
 	}
 

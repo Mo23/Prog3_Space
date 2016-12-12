@@ -24,7 +24,7 @@ public class Logikadapter {
 	 */
 	public Logikadapter() {
 		this.initComputer();
-		this.sound = new Sound();
+		this.sound = new Sound(0);
 
 	}
 
