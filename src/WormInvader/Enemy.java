@@ -20,6 +20,7 @@ public class Enemy extends NormalFunctions {
 	 * @param y
 	 *            Y-Wert auf dem Panel
 	 */
+	@SuppressWarnings("static-access")
 	public Enemy(int x, int y) {
 		if (Startscreen.startscreen.einstellungspanel.difficult == 0) {
 			HP = 100;

@@ -9,11 +9,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class EinstellungPanel extends JPanel {
 	final private JButton leicht = new JButton("Leicht");
 	final private JButton mittel = new JButton("Mittel");
 	final private JButton schwer = new JButton("Schwer");
-	final private JButton zurueck = new JButton("Zurück");
 	public int difficult = 0;
 	final private ImageIcon img = new ImageIcon(this.getClass()
 			.getClassLoader().getResource("images/background.png"));

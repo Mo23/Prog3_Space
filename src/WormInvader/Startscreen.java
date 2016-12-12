@@ -2,11 +2,7 @@ package WormInvader;
 
 import java.awt.Color;
 import java.awt.Font;
-
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 @SuppressWarnings("serial")
 public class Startscreen extends JFrame {
@@ -20,7 +16,6 @@ public class Startscreen extends JFrame {
 	public static AnleitungPanel anleitungpanel;
 	public static EinstellungPanel einstellungspanel;
 	public boolean startedgame;
-	public Thread gamestart;
 	private static Thread startgame;
 
 	public Startscreen() {
@@ -46,7 +41,7 @@ public class Startscreen extends JFrame {
 			startscreen = new Startscreen();
 
 		}
-		;
+		
 
 		startgame.start();
 
