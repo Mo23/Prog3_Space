@@ -17,7 +17,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class Sound extends Thread implements LineListener {
 
 	protected boolean playCompleted;
-	private InputStream backgroundmusic = this.getClass().getClassLoader().getResourceAsStream("images/Failing_Defense.wav");
+	private InputStream backgroundmusic = this.getClass().getClassLoader().getResourceAsStream("images/Background_Music.wav");
 	private InputStream shotfired = this.getClass().getClassLoader().getResourceAsStream("images/Laser_Blaster.wav");
 	private InputStream playerhit = this.getClass().getClassLoader().getResourceAsStream("images/Player_Hit.wav");
 	private InputStream wormhit = this.getClass().getClassLoader().getResourceAsStream("images/Worm_Hit.wav");
