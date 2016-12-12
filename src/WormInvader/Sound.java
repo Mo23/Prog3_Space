@@ -19,6 +19,8 @@ public class Sound extends Thread implements LineListener {
 	protected boolean playCompleted;
 	private InputStream backgroundmusic = this.getClass().getClassLoader().getResourceAsStream("images/Failing_Defense.wav");
 	private InputStream shotfired = this.getClass().getClassLoader().getResourceAsStream("images/Laser_Blaster.wav");
+	private InputStream playerhit = this.getClass().getClassLoader().getResourceAsStream("images/Player_Hit.wav");
+	private InputStream wormhit = this.getClass().getClassLoader().getResourceAsStream("images/Worm_Hit.wav");
 
 	public Sound(final int n) {
 		start(this,n);
@@ -30,8 +32,14 @@ public class Sound extends Thread implements LineListener {
 			public void run() {
 				if(n==0){
 				play(backgroundmusic, n);}
-				else{
+				else if(n==1){
 					play(shotfired,n);
+				}
+				else if(n==2){
+					play(playerhit,n);
+				}
+				else if(n==3){
+					play(wormhit,n);
 				}
 			}
 		};

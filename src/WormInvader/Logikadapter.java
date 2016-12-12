@@ -105,6 +105,7 @@ public class Logikadapter {
 					&& shot.x >= (e.x - e.img.getIconWidth() / 2)
 					&& shot.y >= (e.y - e.img.getIconHeight() / 2)
 					&& shot.y < (e.y + e.img.getIconHeight() / 2)) {
+				new Sound(3);
 				shot.fired = false;
 				e.HP -= shot.dmg;
 				if (e.HP <= 0) {
@@ -157,6 +158,7 @@ public class Logikadapter {
 				&& a.x >= (spieler.x - spieler.img.getIconWidth() / 2)
 				&& a.y >= (spieler.y - spieler.img.getIconHeight() / 2)
 				&& a.y < (spieler.y + spieler.img.getIconHeight() / 2)) {
+			new Sound(2);
 			e.fired = false;
 			spieler.HP -= a.dmg;
 		}
