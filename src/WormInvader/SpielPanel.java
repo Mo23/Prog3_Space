@@ -15,7 +15,7 @@ public class SpielPanel extends JPanel {
 
 	public boolean runninglost = false;
 	public boolean runningwon = false;
-	public Thread gamerunning;
+	private Thread gamerunning;
 	public static Logikadapter logik;
 	private final ImageIcon gewonnen = new ImageIcon(this.getClass()
 			.getClassLoader().getResource("images/spielgewonnen.png"));
@@ -41,7 +41,6 @@ public class SpielPanel extends JPanel {
 
 	public void paint(Graphics g) {
 		super.paint(g);
-		g.setColor(Color.GREEN);
 
 		if (runningwon && runninglost) {
 			animations(g);
@@ -55,6 +54,7 @@ public class SpielPanel extends JPanel {
 
 		SwingUtilities.invokeLater(act());
 		SwingUtilities.invokeLater(logik.act());
+
 		if (logik.getShot().fired == true) {
 			DrawShot(g);
 		}
@@ -130,7 +130,8 @@ public class SpielPanel extends JPanel {
 			if (!times) {
 				g.setColor(Startscreen.color.brighter());
 
-				g.drawString("Waffensystem 1 ist verfügbar", 0, displaynewWeapony);
+				g.drawString("Waffensystem 1 ist verfügbar", 0,
+						displaynewWeapony);
 			}
 
 		}
@@ -146,7 +147,8 @@ public class SpielPanel extends JPanel {
 				times = true;
 			if (!times) {
 				g.setColor(Startscreen.color.brighter());
-				g.drawString("Waffensystem 2 ist verfügbar", 0, displaynewWeapony);
+				g.drawString("Waffensystem 2 ist verfügbar", 0,
+						displaynewWeapony);
 			}
 		}
 		if (logik.getScore() >= logik.getSpieler().getwSc3()
@@ -160,7 +162,8 @@ public class SpielPanel extends JPanel {
 				times = true;
 			if (!times) {
 				g.setColor(Startscreen.color.brighter());
-				g.drawString("Waffensystem 3 ist verfügbar", 0, displaynewWeapony);
+				g.drawString("Waffensystem 3 ist verfügbar", 0,
+						displaynewWeapony);
 			}
 		}
 	}

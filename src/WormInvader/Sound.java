@@ -17,29 +17,31 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class Sound extends Thread implements LineListener {
 
 	protected boolean playCompleted;
-	private InputStream backgroundmusic = this.getClass().getClassLoader().getResourceAsStream("images/Background_Music.wav");
-	private InputStream shotfired = this.getClass().getClassLoader().getResourceAsStream("images/Laser_Blaster.wav");
-	private InputStream playerhit = this.getClass().getClassLoader().getResourceAsStream("images/Player_Hit.wav");
-	private InputStream wormhit = this.getClass().getClassLoader().getResourceAsStream("images/Worm_Hit.wav");
+	private InputStream backgroundmusic = this.getClass().getClassLoader()
+			.getResourceAsStream("images/Background_Music.wav");
+	private InputStream shotfired = this.getClass().getClassLoader()
+			.getResourceAsStream("images/Laser_Blaster.wav");
+	private InputStream playerhit = this.getClass().getClassLoader()
+			.getResourceAsStream("images/Player_Hit.wav");
+	private InputStream wormhit = this.getClass().getClassLoader()
+			.getResourceAsStream("images/Worm_Hit.wav");
 
 	public Sound(final int n) {
-		start(this,n);
+		start(this, n);
 	}
 
 	public void start(final Sound sound, final int n) {
 
 		Thread thread = new Thread() {
 			public void run() {
-				if(n==0){
-				play(backgroundmusic, n);}
-				else if(n==1){
-					play(shotfired,n);
-				}
-				else if(n==2){
-					play(playerhit,n);
-				}
-				else if(n==3){
-					play(wormhit,n);
+				if (n == 0) {
+					play(backgroundmusic, n);
+				} else if (n == 1) {
+					play(shotfired, n);
+				} else if (n == 2) {
+					play(playerhit, n);
+				} else if (n == 3) {
+					play(wormhit, n);
 				}
 			}
 		};
@@ -49,7 +51,6 @@ public class Sound extends Thread implements LineListener {
 	}
 
 	void play(InputStream stream, final int n) {
-		
 
 		try {
 			AudioInputStream audioStream = AudioSystem
@@ -64,10 +65,10 @@ public class Sound extends Thread implements LineListener {
 			audioClip.addLineListener(this);
 
 			audioClip.open(audioStream);
-			if(n==0){
-			audioClip.loop(Integer.MAX_VALUE);}
-			else{
-				
+			if (n == 0) {
+				audioClip.loop(Integer.MAX_VALUE);
+			} else {
+
 				audioClip.start();
 			}
 
@@ -96,7 +97,6 @@ public class Sound extends Thread implements LineListener {
 
 	@Override
 	public void update(LineEvent event) {
-		
 
 	}
 

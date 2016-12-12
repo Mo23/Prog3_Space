@@ -10,7 +10,7 @@ public class Startscreen extends JFrame {
 	final private short WIDTH = 1200;
 	final private short HEIGTH = 720;
 	final public static Font font = new Font("Ubuntu", Font.BOLD, 40);
-	final public static Color color = new Color(255,200,160);
+	final public static Color color = new Color(255, 200, 160);
 	public static Startscreen startscreen;
 	public static StartPanel startpanel;
 	public static AnleitungPanel anleitungpanel;
@@ -41,7 +41,6 @@ public class Startscreen extends JFrame {
 			startscreen = new Startscreen();
 
 		}
-		
 
 		startgame.start();
 
