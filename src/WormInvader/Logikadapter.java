@@ -44,6 +44,7 @@ public class Logikadapter {
 					sound.playCompleted = true;
 				} else if (enemylist.size() <= 0) {
 					GameFrame.gameboard.framespiel.runningwon = false;
+					sound.playCompleted = true;
 				}
 
 			}

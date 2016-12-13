@@ -47,8 +47,10 @@ public class SpielPanel extends JPanel {
 		} else {
 			if (!runningwon) {
 				DrawEndWon(g);
+				gamerunning.stop();
 			} else {
 				DrawEndLost(g);
+				gamerunning.stop();
 			}
 		}
 
