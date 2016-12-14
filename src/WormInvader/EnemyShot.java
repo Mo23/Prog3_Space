@@ -2,6 +2,10 @@ package WormInvader;
 
 import javax.swing.ImageIcon;
 
+/**
+ * @author maurice
+ *
+ */
 public class EnemyShot extends NormalFunctions {
 	public int dmg;
 

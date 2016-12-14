@@ -10,6 +10,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+/**
+ * @author maurice
+ *
+ */
 @SuppressWarnings("serial")
 public class SpielPanel extends JPanel {
 
@@ -28,6 +32,9 @@ public class SpielPanel extends JPanel {
 	final private int displaynewWeapon = 1250;
 	final private int displaynewWeapony = 640;
 
+	/**
+	 * Konstruiert neues Spielpanel.
+	 */
 	public SpielPanel() {
 
 		this.addKeyListener(new TLogik());
@@ -39,6 +46,9 @@ public class SpielPanel extends JPanel {
 
 	}
 
+	/* 
+	 * Überschriebene Paint-Methode zum zeichnen der gewünschten Inhalte.
+	 */
 	public void paint(Graphics g) {
 		super.paint(g);
 
@@ -63,6 +73,10 @@ public class SpielPanel extends JPanel {
 
 	}
 
+	/**
+	 * @return Den erstellten Thread.
+	 * Führt in einem neuen Thread repaint aus, um das Spiel zu erneuern.
+	 */
 	public Runnable act() {
 		gamerunning = new Thread() {
 			@SuppressWarnings("static-access")
@@ -83,25 +97,41 @@ public class SpielPanel extends JPanel {
 		return gamerunning;
 	}
 
+	/**
+	 * @param g
+	 * Beeinhaltet alle Methoden, die während des Spiels aufjedenfall neu gezeichnet werden müssen.
+	 */
 	public void animations(Graphics g) {
 		DrawPlayer(g);
-		DrawComputer(g);
+		DrawWorms(g);
 		DrawEnemyShot(g);
 		DrawStatus(g);
 
 	}
 
+	/**
+	 * @param g
+	 * Zeichnet das Endimage des Spiels, wenn gewonnen wurde.
+	 */
 	public void DrawEndWon(Graphics g) {
 
 		g.drawImage(gewonnen.getImage(), 0, 0, this);
 	}
 
+	/**
+	 * @param g
+	 * Zeichnet das Endimage des Spiels, wenn verloren wurde.
+	 */
 	public void DrawEndLost(Graphics g) {
 
 		g.drawImage(verloren.getImage(), 0, 0, this);
 
 	}
 
+	/**
+	 * @param g
+	 * Zeichnet alle Statusbars im Spiel.
+	 */
 	public void DrawStatus(Graphics g) {
 
 		g.setColor(Startscreen.color);
@@ -117,6 +147,10 @@ public class SpielPanel extends JPanel {
 
 	}
 
+	/**
+	 * @param g
+	 * Methode zum Überprüfen, ob eine neue Waffe verfügbar ist und gibt dann eine Nachricht aus.
+	 */
 	private void checkWeaponAvailable(Graphics g) {
 		if (logik.getScore() >= logik.getSpieler().getwSc1()
 				&& logik.getWeapon() == 1) {
@@ -170,13 +204,21 @@ public class SpielPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * @param g
+	 * Zeichnet den Spieler.
+	 */
 	public void DrawPlayer(Graphics g) {
 
 		g.drawImage(logik.getSpieler().getImage(), logik.getSpieler().getX(),
 				logik.getSpieler().getY(), this);
 	}
 
-	public void DrawComputer(Graphics g) {
+	/**
+	 * @param g
+	 * Zeichnet die Gegenerischen Würmer.
+	 */
+	public void DrawWorms(Graphics g) {
 		int size_a = logik.getEnemylist().size();
 
 		for (int i = 0; i < size_a; i++) {
@@ -187,11 +229,19 @@ public class SpielPanel extends JPanel {
 
 	}
 
+	/**
+	 * @param g
+	 * Zeichnet den Spielerschuss.
+	 */
 	public void DrawShot(Graphics g) {
 		g.drawImage(logik.getShot().getImage(), logik.getShot().getX(), logik
 				.getShot().getY(), this);
 	}
 
+	/**
+	 * @param g
+	 * Zeichnet die Schüsse der Würmer
+	 */
 	public void DrawEnemyShot(Graphics g) {
 
 		int size_a = logik.getEnemylist().size();
@@ -203,14 +253,25 @@ public class SpielPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * @author maurice
+	 * Klasse zur Interaktion mit der Tastatur
+	 *
+	 */
 	private class TLogik extends KeyAdapter {
 
+		/* (non-Javadoc)
+		 * Methode zum erfassen von losgelassenen Tasten.
+		 */
 		public synchronized void keyReleased(KeyEvent e) {
 
 			logik.getSpieler().keyReleased(e);
 
 		}
 
+		/* (non-Javadoc)
+		 * Methode zum erfassen von gedrückten Tasten.
+		 */
 		public synchronized void keyPressed(KeyEvent e) {
 			if (GameFrame.gameboard.framespiel.runninglost == true
 					&& GameFrame.gameboard.framespiel.runninglost == true) {

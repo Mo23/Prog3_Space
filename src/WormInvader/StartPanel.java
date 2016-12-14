@@ -7,6 +7,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * @author maurice
+ *
+ */
 @SuppressWarnings("serial")
 public class StartPanel extends JPanel {
 	final private JButton ButtonStartGame = new JButton("Spiel starten");
@@ -16,6 +20,9 @@ public class StartPanel extends JPanel {
 	final private ImageIcon img = new ImageIcon(this.getClass()
 			.getClassLoader().getResource("images/background.png"));
 
+	/**
+	 * Konstruktor des Startpanels.
+	 */
 	public StartPanel() {
 
 		this.setLayout(null);
@@ -85,6 +92,9 @@ public class StartPanel extends JPanel {
 		ButtonZurueck.setVisible(true);
 	}
 
+	/* (non-Javadoc)
+	 * Methode zum zeichnen des Hintergrunds im Menü.
+	 */
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(img.getImage(), 0, 0, this);

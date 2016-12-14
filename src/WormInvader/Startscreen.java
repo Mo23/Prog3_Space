@@ -4,6 +4,10 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JFrame;
 
+/**
+ * @author maurice
+ *
+ */
 @SuppressWarnings("serial")
 public class Startscreen extends JFrame {
 
@@ -18,6 +22,9 @@ public class Startscreen extends JFrame {
 	public boolean startedgame;
 	private static Thread startgame;
 
+	/**
+	 * Konstruktor des Startmenüs.
+	 */
 	public Startscreen() {
 		this.startedgame = false;
 		add(anleitungpanel = new AnleitungPanel());

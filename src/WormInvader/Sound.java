@@ -14,6 +14,10 @@ import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+/**
+ * @author maurice
+ *
+ */
 public class Sound extends Thread implements LineListener {
 
 	protected boolean playCompleted;
@@ -26,10 +30,19 @@ public class Sound extends Thread implements LineListener {
 	private InputStream wormhit = this.getClass().getClassLoader()
 			.getResourceAsStream("images/Worm_Hit.wav");
 
+	/**
+	 * Konstruktor des Sounds mit angabe der Abspielart.
+	 * @param n
+	 */
 	public Sound(final int n) {
 		start(this, n);
 	}
 
+	/**
+	 * Startet neuen Ton mit Auswahl welcher gespielt werden soll.
+	 * @param sound
+	 * @param n
+	 */
 	public void start(final Sound sound, final int n) {
 
 		Thread thread = new Thread() {
@@ -50,6 +63,11 @@ public class Sound extends Thread implements LineListener {
 
 	}
 
+	/**
+	 * Nimmmt den zu spielenden Tonstream entgegen und die Auswahl der dauer.
+	 * @param stream
+	 * @param n
+	 */
 	void play(InputStream stream, final int n) {
 
 		try {
@@ -95,6 +113,9 @@ public class Sound extends Thread implements LineListener {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see javax.sound.sampled.LineListener#update(javax.sound.sampled.LineEvent)
+	 */
 	@Override
 	public void update(LineEvent event) {
 

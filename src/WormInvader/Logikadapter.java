@@ -3,6 +3,10 @@ package WormInvader;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * @author maurice
+ *
+ */
 public class Logikadapter {
 
 	final private int computerX = 7;

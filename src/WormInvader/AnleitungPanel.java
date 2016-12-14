@@ -15,6 +15,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+/**
+ * @author maurice
+ *
+ */
 @SuppressWarnings("serial")
 public class AnleitungPanel extends JPanel {
 	private JTextArea textFeldAnleitung;
@@ -26,7 +30,7 @@ public class AnleitungPanel extends JPanel {
 	 * Standkonstruktor zur Erzeugung des Panels mit Inhalt.
 	 */
 	public AnleitungPanel() {
-
+		
 		this.setLayout(null);
 		this.setSize(1200, 720);
 		this.setFocusable(true);

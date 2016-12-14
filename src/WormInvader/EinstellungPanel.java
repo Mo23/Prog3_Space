@@ -9,6 +9,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * @author maurice
+ *
+ */
 @SuppressWarnings("serial")
 public class EinstellungPanel extends JPanel {
 	final private JButton leicht = new JButton("Leicht");

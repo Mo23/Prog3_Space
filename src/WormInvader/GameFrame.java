@@ -2,6 +2,10 @@ package WormInvader;
 
 import javax.swing.JFrame;
 
+/**
+ * @author maurice
+ *
+ */
 @SuppressWarnings("serial")
 public class GameFrame extends JFrame {
 

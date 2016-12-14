@@ -4,6 +4,10 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 
+/**
+ * @author maurice
+ *
+ */
 public class Spieler extends NormalFunctions {
 
 	final private int wSc1 = 30;
@@ -20,6 +24,12 @@ public class Spieler extends NormalFunctions {
 	public boolean move = false;
 	private String weaponname = "Einfacher Schuss";
 
+	/**
+	 * Konstruiert neuen Spieler, mit Lebenspunkten und den Koordinaten.
+	 * @param startx
+	 * @param starty
+	 * @param hp
+	 */
 	public Spieler(int startx, int starty, int hp) {
 		this.HP = hp;
 		this.x = startx;
@@ -30,6 +40,10 @@ public class Spieler extends NormalFunctions {
 		setImage(img.getImage());
 	}
 
+	/**
+	 * Führt alle Operationen zum Spieler aus, bei Tastendruck.
+	 * @param e gedrückte Tastet
+	 */
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 		if (key == KeyEvent.VK_1 && SpielPanel.logik.getScore() >= wSc1
@@ -84,6 +98,10 @@ public class Spieler extends NormalFunctions {
 
 	}
 
+	/**
+	 * @param e Losgelassene Tasten.
+	 * Führt Änderungen am Spieler aus, beim loslassen der Taste.
+	 */
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();
 
