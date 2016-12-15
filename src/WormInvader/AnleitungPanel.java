@@ -23,21 +23,20 @@ import javax.swing.JTextArea;
 public class AnleitungPanel extends JPanel {
 	private JTextArea textFeldAnleitung;
 	final private JButton zurueck = new JButton("Zurück");
-	final private ImageIcon img = new ImageIcon(this.getClass()
-			.getClassLoader().getResource("images/background.png"));
+	final private ImageIcon img = new ImageIcon(this.getClass().getClassLoader().getResource("images/background.png"));
 
 	/**
 	 * Standkonstruktor zur Erzeugung des Panels mit Inhalt.
 	 */
 	public AnleitungPanel() {
-		
+
 		this.setLayout(null);
 		this.setSize(1200, 720);
 		this.setFocusable(true);
 		this.setBackground(Color.CYAN); // set background color for this JPanel
 		this.setVisible(false);
-		this.textFeldAnleitung = new JTextArea(readdata(this.getClass()
-				.getClassLoader().getResourceAsStream("images/Anleitung.txt")));
+		this.textFeldAnleitung = new JTextArea(
+				readdata(this.getClass().getClassLoader().getResourceAsStream("images/Anleitung.txt")));
 
 		this.createinput();
 
@@ -95,6 +94,7 @@ public class AnleitungPanel extends JPanel {
 		zurueck.setBounds(450, 500, 300, 60);
 		zurueck.addActionListener(new ActionListener() {
 
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				Startscreen.anleitungpanel.setVisible(false);
 				Startscreen.startpanel.setVisible(true);
@@ -111,6 +111,7 @@ public class AnleitungPanel extends JPanel {
 
 	}
 
+	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(img.getImage(), 0, 0, this);

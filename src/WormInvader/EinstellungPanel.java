@@ -19,8 +19,7 @@ public class EinstellungPanel extends JPanel {
 	final private JButton mittel = new JButton("Mittel");
 	final private JButton schwer = new JButton("Schwer");
 	public int difficult = 0;
-	final private ImageIcon img = new ImageIcon(this.getClass()
-			.getClassLoader().getResource("images/background.png"));
+	final private ImageIcon img = new ImageIcon(this.getClass().getClassLoader().getResource("images/background.png"));
 
 	/**
 	 * Überschriebener Standardkonstruktor zum erstellen des Layouts.
@@ -97,6 +96,7 @@ public class EinstellungPanel extends JPanel {
 		Startscreen.startpanel.setVisible(true);
 	}
 
+	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(img.getImage(), 0, 0, this);

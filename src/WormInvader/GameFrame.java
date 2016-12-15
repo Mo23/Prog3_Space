@@ -37,6 +37,7 @@ public class GameFrame extends JFrame {
 	public static void spielstart() {
 
 		Thread thread = new Thread() {
+			@Override
 			public void run() {
 				gameboard = new GameFrame();
 

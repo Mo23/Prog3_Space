@@ -15,6 +15,7 @@ public class NormalFunctions {
 
 	/**
 	 * Setzt das aktuelle Bild.
+	 * 
 	 * @param bild
 	 */
 	public void setImage(Image bild) {
@@ -30,14 +31,24 @@ public class NormalFunctions {
 	}
 
 	/**
-	 * @param x X-Wert des Objekts
-	 * @param y >-Wert des Objekts
+	 * @param x
+	 *            X-Wert des Objekts
+	 * @param y
+	 *            >-Wert des Objekts
 	 */
 	public void setXY(int x, int y) {
 
 		this.x = x;
 		this.y = y;
 
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public void setY(int y) {
+		this.y = y;
 	}
 
 	/**

@@ -3,6 +3,7 @@ package WormInvader;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -17,8 +18,7 @@ public class StartPanel extends JPanel {
 	final private JButton ButtonAnleitung = new JButton("Anleitung");
 	final private JButton ButtonEinstellung = new JButton("Einstellung");
 	final private JButton ButtonZurueck = new JButton("Zurück");
-	final private ImageIcon img = new ImageIcon(this.getClass()
-			.getClassLoader().getResource("images/background.png"));
+	final private ImageIcon img = new ImageIcon(this.getClass().getClassLoader().getResource("images/background.png"));
 
 	/**
 	 * Konstruktor des Startpanels.
@@ -92,9 +92,10 @@ public class StartPanel extends JPanel {
 		ButtonZurueck.setVisible(true);
 	}
 
-	/* (non-Javadoc)
-	 * Methode zum zeichnen des Hintergrunds im Menü.
+	/*
+	 * (non-Javadoc) Methode zum zeichnen des Hintergrunds im Menü.
 	 */
+	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(img.getImage(), 0, 0, this);

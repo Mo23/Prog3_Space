@@ -23,15 +23,13 @@ public class Sound extends Thread implements LineListener {
 	protected boolean playCompleted;
 	private InputStream backgroundmusic = this.getClass().getClassLoader()
 			.getResourceAsStream("images/Background_Music.wav");
-	private InputStream shotfired = this.getClass().getClassLoader()
-			.getResourceAsStream("images/Laser_Blaster.wav");
-	private InputStream playerhit = this.getClass().getClassLoader()
-			.getResourceAsStream("images/Player_Hit.wav");
-	private InputStream wormhit = this.getClass().getClassLoader()
-			.getResourceAsStream("images/Worm_Hit.wav");
+	private InputStream shotfired = this.getClass().getClassLoader().getResourceAsStream("images/Laser_Blaster.wav");
+	private InputStream playerhit = this.getClass().getClassLoader().getResourceAsStream("images/Player_Hit.wav");
+	private InputStream wormhit = this.getClass().getClassLoader().getResourceAsStream("images/Worm_Hit.wav");
 
 	/**
 	 * Konstruktor des Sounds mit angabe der Abspielart.
+	 * 
 	 * @param n
 	 */
 	public Sound(final int n) {
@@ -40,12 +38,14 @@ public class Sound extends Thread implements LineListener {
 
 	/**
 	 * Startet neuen Ton mit Auswahl welcher gespielt werden soll.
+	 * 
 	 * @param sound
 	 * @param n
 	 */
 	public void start(final Sound sound, final int n) {
 
 		Thread thread = new Thread() {
+			@Override
 			public void run() {
 				if (n == 0) {
 					play(backgroundmusic, n);
@@ -65,14 +65,14 @@ public class Sound extends Thread implements LineListener {
 
 	/**
 	 * Nimmmt den zu spielenden Tonstream entgegen und die Auswahl der dauer.
+	 * 
 	 * @param stream
 	 * @param n
 	 */
 	void play(InputStream stream, final int n) {
 
 		try {
-			AudioInputStream audioStream = AudioSystem
-					.getAudioInputStream(new BufferedInputStream(stream));
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(new BufferedInputStream(stream));
 
 			AudioFormat format = audioStream.getFormat();
 
@@ -113,8 +113,11 @@ public class Sound extends Thread implements LineListener {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see javax.sound.sampled.LineListener#update(javax.sound.sampled.LineEvent)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * javax.sound.sampled.LineListener#update(javax.sound.sampled.LineEvent)
 	 */
 	@Override
 	public void update(LineEvent event) {

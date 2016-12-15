@@ -21,15 +21,15 @@ public class SpielPanel extends JPanel {
 	public boolean runningwon = false;
 	private Thread gamerunning;
 	public static Logikadapter logik;
-	private final ImageIcon gewonnen = new ImageIcon(this.getClass()
-			.getClassLoader().getResource("images/spielgewonnen.png"));
-	private final ImageIcon verloren = new ImageIcon(this.getClass()
-			.getClassLoader().getResource("images/spielverloren.png"));
+	final private ImageIcon gewonnen = new ImageIcon(
+			this.getClass().getClassLoader().getResource("images/spielgewonnen.png"));
+	final private ImageIcon verloren = new ImageIcon(
+			this.getClass().getClassLoader().getResource("images/spielverloren.png"));
 	private boolean times = false;
 	private boolean onetime = false;
 	private long timeend;
 	final public Font font = new Font("Ubuntu", Font.BOLD, 20);
-	final private int displaynewWeapon = 1250;
+	final private int displaynewWeapon = 1500;
 	final private int displaynewWeapony = 640;
 
 	/**
@@ -46,9 +46,11 @@ public class SpielPanel extends JPanel {
 
 	}
 
-	/* 
+	/*
 	 * Überschriebene Paint-Methode zum zeichnen der gewünschten Inhalte.
 	 */
+	@Override
+	@SuppressWarnings("deprecation")
 	public void paint(Graphics g) {
 		super.paint(g);
 
@@ -74,15 +76,16 @@ public class SpielPanel extends JPanel {
 	}
 
 	/**
-	 * @return Den erstellten Thread.
-	 * Führt in einem neuen Thread repaint aus, um das Spiel zu erneuern.
+	 * @return Den erstellten Thread. Führt in einem neuen Thread repaint aus,
+	 *         um das Spiel zu erneuern.
 	 */
 	public Runnable act() {
 		gamerunning = new Thread() {
+			@Override
 			@SuppressWarnings("static-access")
 			public void run() {
 				try {
-					gamerunning.sleep(8);
+					Thread.sleep(8);
 
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -99,7 +102,8 @@ public class SpielPanel extends JPanel {
 
 	/**
 	 * @param g
-	 * Beeinhaltet alle Methoden, die während des Spiels aufjedenfall neu gezeichnet werden müssen.
+	 *            Beeinhaltet alle Methoden, die während des Spiels aufjedenfall
+	 *            neu gezeichnet werden müssen.
 	 */
 	public void animations(Graphics g) {
 		DrawPlayer(g);
@@ -111,7 +115,7 @@ public class SpielPanel extends JPanel {
 
 	/**
 	 * @param g
-	 * Zeichnet das Endimage des Spiels, wenn gewonnen wurde.
+	 *            Zeichnet das Endimage des Spiels, wenn gewonnen wurde.
 	 */
 	public void DrawEndWon(Graphics g) {
 
@@ -120,7 +124,7 @@ public class SpielPanel extends JPanel {
 
 	/**
 	 * @param g
-	 * Zeichnet das Endimage des Spiels, wenn verloren wurde.
+	 *            Zeichnet das Endimage des Spiels, wenn verloren wurde.
 	 */
 	public void DrawEndLost(Graphics g) {
 
@@ -130,17 +134,14 @@ public class SpielPanel extends JPanel {
 
 	/**
 	 * @param g
-	 * Zeichnet alle Statusbars im Spiel.
+	 *            Zeichnet alle Statusbars im Spiel.
 	 */
 	public void DrawStatus(Graphics g) {
 
 		g.setColor(Startscreen.color);
 		g.setFont(font);
-		g.drawString(
-				"Lebenspunkte: " + Integer.toString(logik.getSpieler().HP), 0,
-				700);
-		g.drawString("Aktuelle Waffe: " + logik.getSpieler().getWeaponname(),
-				0, 670);
+		g.drawString("Lebenspunkte: " + Integer.toString(logik.getSpieler().HP), 0, 700);
+		g.drawString("Aktuelle Waffe: " + logik.getSpieler().getWeaponname(), 0, 670);
 		g.drawString("Score: " + Integer.toString(logik.getScore()), 1100, 700);
 
 		checkWeaponAvailable(g);
@@ -149,11 +150,11 @@ public class SpielPanel extends JPanel {
 
 	/**
 	 * @param g
-	 * Methode zum Überprüfen, ob eine neue Waffe verfügbar ist und gibt dann eine Nachricht aus.
+	 *            Methode zum Überprüfen, ob eine neue Waffe verfügbar ist und
+	 *            gibt dann eine Nachricht aus.
 	 */
 	private void checkWeaponAvailable(Graphics g) {
-		if (logik.getScore() >= logik.getSpieler().getwSc1()
-				&& logik.getWeapon() == 1) {
+		if (logik.getScore() >= logik.getSpieler().getwSc1() && logik.getWeapon() == 1) {
 
 			if (!onetime) {
 				timeend = System.currentTimeMillis() + displaynewWeapon;
@@ -166,13 +167,11 @@ public class SpielPanel extends JPanel {
 			if (!times) {
 				g.setColor(Startscreen.color.brighter());
 
-				g.drawString("Waffensystem 1 ist verfügbar", 0,
-						displaynewWeapony);
+				g.drawString("Waffensystem 1 ist verfügbar", 0, displaynewWeapony);
 			}
 
 		}
-		if (logik.getScore() >= logik.getSpieler().getwSc2()
-				&& logik.getWeapon() == 2) {
+		if (logik.getScore() >= logik.getSpieler().getwSc2() && logik.getWeapon() == 2) {
 
 			if (onetime) {
 				timeend = System.currentTimeMillis() + displaynewWeapon;
@@ -183,12 +182,10 @@ public class SpielPanel extends JPanel {
 				times = true;
 			if (!times) {
 				g.setColor(Startscreen.color.brighter());
-				g.drawString("Waffensystem 2 ist verfügbar", 0,
-						displaynewWeapony);
+				g.drawString("Waffensystem 2 ist verfügbar", 0, displaynewWeapony);
 			}
 		}
-		if (logik.getScore() >= logik.getSpieler().getwSc3()
-				&& logik.getWeapon() == 3) {
+		if (logik.getScore() >= logik.getSpieler().getwSc3() && logik.getWeapon() == 3) {
 			if (!onetime) {
 				timeend = System.currentTimeMillis() + displaynewWeapon;
 				onetime = true;
@@ -198,49 +195,45 @@ public class SpielPanel extends JPanel {
 				times = true;
 			if (!times) {
 				g.setColor(Startscreen.color.brighter());
-				g.drawString("Waffensystem 3 ist verfügbar", 0,
-						displaynewWeapony);
+				g.drawString("Waffensystem 3 ist verfügbar", 0, displaynewWeapony);
 			}
 		}
 	}
 
 	/**
 	 * @param g
-	 * Zeichnet den Spieler.
+	 *            Zeichnet den Spieler.
 	 */
 	public void DrawPlayer(Graphics g) {
 
-		g.drawImage(logik.getSpieler().getImage(), logik.getSpieler().getX(),
-				logik.getSpieler().getY(), this);
+		g.drawImage(logik.getSpieler().getImage(), logik.getSpieler().getX(), logik.getSpieler().getY(), this);
 	}
 
 	/**
 	 * @param g
-	 * Zeichnet die Gegenerischen Würmer.
+	 *            Zeichnet die Gegenerischen Würmer.
 	 */
 	public void DrawWorms(Graphics g) {
 		int size_a = logik.getEnemylist().size();
 
 		for (int i = 0; i < size_a; i++) {
 			Enemy computer = logik.getEnemylist().get(i);
-			g.drawImage(computer.getImage(), computer.getX(), computer.getY(),
-					this);
+			g.drawImage(computer.getImage(), computer.getX(), computer.getY(), this);
 		}
 
 	}
 
 	/**
 	 * @param g
-	 * Zeichnet den Spielerschuss.
+	 *            Zeichnet den Spielerschuss.
 	 */
 	public void DrawShot(Graphics g) {
-		g.drawImage(logik.getShot().getImage(), logik.getShot().getX(), logik
-				.getShot().getY(), this);
+		g.drawImage(logik.getShot().getImage(), logik.getShot().getX(), logik.getShot().getY(), this);
 	}
 
 	/**
 	 * @param g
-	 * Zeichnet die Schüsse der Würmer
+	 *            Zeichnet die Schüsse der Würmer
 	 */
 	public void DrawEnemyShot(Graphics g) {
 
@@ -254,34 +247,33 @@ public class SpielPanel extends JPanel {
 	}
 
 	/**
-	 * @author maurice
-	 * Klasse zur Interaktion mit der Tastatur
+	 * @author maurice Klasse zur Interaktion mit der Tastatur
 	 *
 	 */
 	private class TLogik extends KeyAdapter {
 
-		/* (non-Javadoc)
-		 * Methode zum erfassen von losgelassenen Tasten.
+		/*
+		 * (non-Javadoc) Methode zum erfassen von losgelassenen Tasten.
 		 */
+		@Override
 		public synchronized void keyReleased(KeyEvent e) {
 
 			logik.getSpieler().keyReleased(e);
 
 		}
 
-		/* (non-Javadoc)
-		 * Methode zum erfassen von gedrückten Tasten.
+		/*
+		 * (non-Javadoc) Methode zum erfassen von gedrückten Tasten.
 		 */
+		@Override
 		public synchronized void keyPressed(KeyEvent e) {
 			if (GameFrame.gameboard.framespiel.runninglost == true
 					&& GameFrame.gameboard.framespiel.runninglost == true) {
 				logik.getSpieler().keyPressed(e);
-				if (KeyEvent.VK_SPACE == e.getKeyCode()
-						&& logik.getShot().fired == false) {
-					logik.getShot().setXY(logik.getSpieler().getX(),
-							logik.getSpieler().getY() - 40);
+				if (KeyEvent.VK_SPACE == e.getKeyCode() && logik.getShot().fired == false) {
+					logik.getShot().setXY(logik.getSpieler().getX(), logik.getSpieler().getY() - 40);
 					logik.getShot().fired = true;
-					Sound fire = new Sound(1);
+					new Sound(1);
 				}
 			}
 

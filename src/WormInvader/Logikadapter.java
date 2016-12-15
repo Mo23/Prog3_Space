@@ -11,14 +11,15 @@ public class Logikadapter {
 
 	final private int computerX = 7;
 	final private int computerY = 0;
-	final private int FIXED_HP = 100;
+	final private int START_HP = 100;
 
-	private Spieler spieler = new Spieler(550, 650, FIXED_HP);
-	private Shot shot = new Shot(spieler.getX(), spieler.getY());
+	private Spieler spieler;
+	private Shot shot;
 	private ArrayList<Enemy> enemylist;
 	private Sound sound;
 	private Thread updates;
-	private short score = 0;
+	private int score = 0;
+	private int addscore = 20;
 	private Random random = new Random();
 	private int stoppinganimations = 0;
 	private int weapon = 1;
@@ -28,8 +29,17 @@ public class Logikadapter {
 	 */
 	public Logikadapter() {
 		this.initComputer();
+		this.initPlayer();
 		this.sound = new Sound(0);
 
+	}
+
+	/**
+	 * Initialisiert den Spieler und seinen Schuss.
+	 */
+	private void initPlayer() {
+		spieler = new Spieler(550, 650, START_HP);
+		shot = new Shot(spieler.getX(), spieler.getY());
 	}
 
 	/**
@@ -39,6 +49,7 @@ public class Logikadapter {
 	 */
 	public Runnable act() {
 		updates = new Thread() {
+			@Override
 			public void run() {
 				movePlayerShot();
 				moveEnemyShot();
@@ -65,8 +76,7 @@ public class Logikadapter {
 
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 10; j++) {
-				Enemy gegner = new Enemy((computerX + 120 * j),
-						(computerY + 80 * i));
+				Enemy gegner = new Enemy((computerX + 120 * j), (computerY + 80 * i));
 				gegner.fired = false;
 				enemylist.add(gegner);
 			}
@@ -79,10 +89,10 @@ public class Logikadapter {
 	 */
 	public void movePlayer() {
 		if (spieler.getX() < 1100) {
-			spieler.setXY(spieler.x + spieler.dxD, spieler.y);
+			spieler.setX(spieler.x + spieler.dxD);
 		}
 		if (spieler.getX() > 0) {
-			spieler.setXY(spieler.x + spieler.dxA, spieler.y);
+			spieler.setX(spieler.x + spieler.dxA);
 		}
 	}
 
@@ -91,7 +101,7 @@ public class Logikadapter {
 	 */
 	public void movePlayerShot() {
 		if (shot.getY() > 0 && shot.fired) {
-			shot.setXY(shot.getX(), shot.getY() - 4);
+			shot.setY(shot.getY() - 4);
 			checkIfWormHit();
 		} else {
 			shot.fired = false;
@@ -106,15 +116,13 @@ public class Logikadapter {
 		int size_t = enemylist.size();
 		for (int i = 0; i < size_t; i++) {
 			Enemy e = enemylist.get(i);
-			if (shot.x < (e.x + e.img.getIconWidth() / 2)
-					&& shot.x >= (e.x - e.img.getIconWidth() / 2)
-					&& shot.y >= (e.y - e.img.getIconHeight() / 2)
-					&& shot.y < (e.y + e.img.getIconHeight() / 2)) {
+			if (shot.x < (e.x + e.img.getIconWidth() / 2) && shot.x >= (e.x - e.img.getIconWidth() / 2)
+					&& shot.y >= (e.y - e.img.getIconHeight() / 2) && shot.y < (e.y + e.img.getIconHeight() / 2)) {
 				new Sound(3);
 				shot.fired = false;
 				e.HP -= shot.dmg;
 				if (e.HP <= 0) {
-					score += 20;
+					score += addscore;
 					enemylist.remove(i);
 				}
 				break;
@@ -140,7 +148,7 @@ public class Logikadapter {
 			if (startshot == 0)
 				e.fired = true;
 			if (a.getY() < 1200 && e.fired && stoppinganimations == 0) {
-				a.setXY(a.getX(), a.y + 2);
+				a.setY(a.y + 2);
 
 				ckeckIfPlayerHit(e, a);
 			} else if (a.getY() >= 1200) {
@@ -159,8 +167,7 @@ public class Logikadapter {
 	 *            HP des Spieler herunter.
 	 */
 	public void ckeckIfPlayerHit(Enemy e, EnemyShot a) {
-		if (a.x < (spieler.x + spieler.img.getIconWidth() / 2)
-				&& a.x >= (spieler.x - spieler.img.getIconWidth() / 2)
+		if (a.x < (spieler.x + spieler.img.getIconWidth() / 2) && a.x >= (spieler.x - spieler.img.getIconWidth() / 2)
 				&& a.y >= (spieler.y - spieler.img.getIconHeight() / 2)
 				&& a.y < (spieler.y + spieler.img.getIconHeight() / 2)) {
 			new Sound(2);
@@ -181,7 +188,7 @@ public class Logikadapter {
 	 * @return the fIXED_HP
 	 */
 	public int getFIXED_HP() {
-		return FIXED_HP;
+		return START_HP;
 	}
 
 	/**
@@ -201,7 +208,7 @@ public class Logikadapter {
 	/**
 	 * @return the score
 	 */
-	public short getScore() {
+	public int getScore() {
 		return score;
 	}
 
@@ -209,7 +216,7 @@ public class Logikadapter {
 	 * @param score
 	 *            the score to set
 	 */
-	public void setScore(short score) {
+	public void setScore(int score) {
 		this.score = score;
 	}
 
